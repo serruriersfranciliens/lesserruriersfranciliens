@@ -3,8 +3,6 @@
 Things only you can do, in rough priority order. Open questions are in [QUESTIONS.md](QUESTIONS.md).
 
 ## Before going live
-- [ ] **Validate the contact number +33 7 88 80 46 56** (calls and WhatsApp), now used
-      everywhere on the site (`src/content/company.ts`) and in `public/og-image.png`.
 - [ ] Fill the two remaining legal fields in `company.legal` (`src/content/company.ts`):
       publication director and insurer. Company identity, address, SIRET and VAT are done.
 - [ ] Create a Web3Forms key (https://web3forms.com, with serruriersfranciliens@gmail.com):
@@ -32,17 +30,17 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
   - [ ] set up a permanent (301) redirect to `https://www.lesserruriersfranciliens.fr`,
         so the old search ranking carries over;
   - [ ] enable the transfer lock (disable outbound transfer) so it cannot be moved away.
-- [ ] Move the site to Guillaume's GitHub account:
-  - [ ] transfer the repository (Settings → General → Transfer ownership) or recreate it there;
+- [ ] Move the site to the `serruriersfranciliens` GitHub account:
+  - [x] transfer the repository (now `serruriersfranciliens/lesserruriersfranciliens`);
   - [ ] on the new repo: Settings → Pages → Source **GitHub Actions**, custom domain
         `www.lesserruriersfranciliens.fr`, then Enforce HTTPS;
   - [ ] re-add the Actions secret `VITE_WEB3FORMS_KEY` (check it survived the transfer);
-  - [ ] OVH DNS zone: change `www` → `CNAME` → `<guillaume-login>.github.io.`
+  - [ ] OVH DNS zone: change `www` → `CNAME` → `serruriersfranciliens.github.io.`
         (the apex `A` / `AAAA` records stay the same);
-  - [ ] optional: verify the domain on Guillaume's account (Settings → Pages → Add a domain,
-        TXT record `_github-pages-challenge-<guillaume-login>` in the OVH zone);
-  - [ ] update the local remote: `git remote set-url origin git@github.com:<guillaume-login>/lesserruriersfranciliens.git`.
-- [ ] **OVH**: update the contact information (phone +33 7 88 80 46 56, e-mail, address
+  - [ ] optional: verify the domain on the `serruriersfranciliens` account (Settings → Pages → Add a domain,
+        TXT record `_github-pages-challenge-serruriersfranciliens` in the OVH zone);
+  - [x] update the local remote: `git remote set-url origin git@github.com:serruriersfranciliens/lesserruriersfranciliens.git`.
+- [ ] **OVH**: update the contact information (phone 01 70 07 20 00, e-mail, address
       60 rue François Ier, 75008 Paris) on the OVH account / domain contacts.
 
 ## SEO after launch
