@@ -6,13 +6,13 @@ import { Award, BadgeEuro, Clock, FileCheck } from 'lucide-react';
 export const company = {
   name: 'Les Serruriers Franciliens',
   tagline: 'Serrurerie & blindage en Île-de-France',
-  // TODO: number to be validated by the client (see NOTES.md).
-  phone: '07 88 80 46 56',
-  phoneHref: 'tel:+33788804656',
-  phoneE164: '+33788804656',
+  // Landline shown on the site for calls.
+  phone: '01 70 07 20 00',
+  phoneHref: 'tel:+33170072000',
+  phoneE164: '+33170072000',
   email: 'serruriersfranciliens@gmail.com',
-  // Same mobile number as the phone (calls and WhatsApp).
-  whatsappHref: 'https://wa.me/33788804656',
+  // Mobile number used only for WhatsApp (+33 6 30 93 52 88).
+  whatsappHref: 'https://wa.me/33630935288',
   hours: '7 jours sur 7, de 8h à 22h',
   hoursShort: '7j/7 · 8h–22h',
   zone: 'Toute l’Île-de-France',

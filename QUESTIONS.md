@@ -47,7 +47,7 @@ When you answer an open question, move it to "Answered" with the answer.
 | Service area | All of Île-de-France (75, 77, 78, 91, 92, 93, 94, 95) |
 | Design stack | Tailwind CSS + shadcn/ui |
 | Legal identity | LES SERRURIERS FRANCILIENS, SAS au capital de 1 200 €, created 12/11/2025, RNE 04/12/2025 |
-| Phone & WhatsApp | +33 7 88 80 46 56, single number for the whole site (replaces 01 70 07 20 00 and 06 30 93 52 88), to be validated |
+| Phone & WhatsApp | Landline 01 70 07 20 00 shown on the site for calls; WhatsApp CTA on +33 6 30 93 52 88 |
 | Head office | 60 rue François Ier, 75008 Paris |
 | SIREN / SIRET / VAT | 994 060 275 / 994 060 275 00017 / FR33 994 060 275 |
 | NAF | 43.32B – Travaux de menuiserie métallique et serrurerie |
