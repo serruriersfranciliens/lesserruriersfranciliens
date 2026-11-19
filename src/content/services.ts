@@ -15,7 +15,7 @@ export const services: Service[] = [
   {
     id: 'depannage',
     icon: DoorOpen,
-    title: "Dépannage d'urgence",
+    title: 'Dépannage d’urgence',
     summary:
       'Porte claquée, serrure bloquée, clé perdue, vandalisme ou effraction : nous intervenons vite et proprement.',
     intro:
