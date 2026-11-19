@@ -9,6 +9,8 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
   - [ ] locally: `.env` → `VITE_WEB3FORMS_KEY=...`
   - [ ] GitHub: Settings → Secrets and variables → Actions → `VITE_WEB3FORMS_KEY`
   - [ ] send a test message from `/contact`.
+  - Photo upload in the form is a Web3Forms **Pro (paid)** feature: not done for now.
+    Customers send photos by WhatsApp or e-mail instead.
 - [ ] Replace the placeholders:
   - [ ] key figures `XX` on `/entreprise` (`src/pages/Entreprise.tsx`).
 - [x] Images: all 15 slots generated with fal (Nano Banana 2.1, prompts in
