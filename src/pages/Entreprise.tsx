@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CtaBand } from '@/components/CtaBand';
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 import { PageHeader } from '@/components/PageHeader';
+import { SocialLinks } from '@/components/SocialLinks';
 import { CheckList, Eyebrow, IconBadge, Section, SectionHeading } from '@/components/Section';
 
 // TODO: replace placeholder figures with real ones (see QUESTIONS.md).
@@ -44,7 +45,13 @@ export default function Entreprise() {
                 (réactivité, traçabilité, devis détaillés) font notre méthode, et en font aussi
                 profiter nos clients particuliers.
               </p>
+              <p>Retrouvez nos chantiers récents sur nos réseaux :</p>
             </div>
+            <SocialLinks
+              withLabels
+              className="mt-3"
+              linkClassName="font-medium text-brand-ink hover:underline"
+            />
             <blockquote className="mt-7 rounded-r-lg border-l-4 border-brand bg-cream px-6 py-5 font-heading text-3xl leading-tight">
               « Un service qualifié, des produits sélectionnés, un accompagnement complet, adapté et
               des tarifs garantis. »

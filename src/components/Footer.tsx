@@ -3,6 +3,7 @@ import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { navItems } from '@/content/navigation';
 import { services } from '@/content/services';
+import { SocialLinks } from '@/components/SocialLinks';
 import { WhatsAppGlyph } from '@/components/WhatsAppIcon';
 
 const linkClass = 'transition-colors hover:text-brand';
@@ -19,6 +20,10 @@ export function Footer() {
             Serrurier en Île-de-France : dépannage, remplacement de serrures et blindage de portes
             pour les syndics, bailleurs, gestionnaires et particuliers.
           </p>
+          <SocialLinks
+            className="mt-5 justify-center sm:justify-start"
+            linkClassName="text-brand hover:text-white"
+          />
         </div>
 
         <div>

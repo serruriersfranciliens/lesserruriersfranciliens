@@ -13,6 +13,10 @@ export const company = {
   email: 'serruriersfranciliens@gmail.com',
   // Mobile number used only for WhatsApp (+33 6 30 93 52 88).
   whatsappHref: 'https://wa.me/33630935288',
+  social: {
+    instagram: 'https://www.instagram.com/les_serruriers_franciliens/',
+    facebook: 'https://www.facebook.com/profile.php?id=61560218402796',
+  },
   hours: '7 jours sur 7, de 8h à 22h',
   hoursShort: '7j/7 · 8h–22h',
   zone: 'Toute l’Île-de-France',

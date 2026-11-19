@@ -117,6 +117,7 @@ function localBusiness() {
     image: `${siteUrl}/og-image.png`,
     telephone: company.phoneE164,
     email: company.email,
+    sameAs: [company.social.instagram, company.social.facebook],
     description:
       'Serrurerie, dépannage et blindage de portes pour les syndics de copropriété, bailleurs, gestionnaires de biens et particuliers en Île-de-France.',
     address: {

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHeader } from '@/components/PageHeader';
 import { Section } from '@/components/Section';
+import { SocialLinks } from '@/components/SocialLinks';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 export default function Contact() {
@@ -63,6 +64,14 @@ export default function Contact() {
                 </Link>
               </li>
             </ul>
+
+            <div>
+              <h2 className="mb-1 text-2xl">Suivez nos chantiers</h2>
+              <p className="mb-3 text-sm text-muted-foreground">
+                Nos interventions en photos, au fil des semaines.
+              </p>
+              <SocialLinks withLabels linkClassName="font-medium text-brand-ink hover:underline" />
+            </div>
 
             <Card className="bg-cream ring-0">
               <CardContent className="flex gap-4">
