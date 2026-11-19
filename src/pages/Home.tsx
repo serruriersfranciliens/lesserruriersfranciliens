@@ -50,7 +50,7 @@ export default function Home() {
                   'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
                 )}
               >
-                <WhatsAppIcon />
+                <WhatsAppIcon variant="white" />
                 WhatsApp
               </a>
               <a

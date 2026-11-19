@@ -24,7 +24,7 @@ export default function Contact() {
               rel="noreferrer"
               className="flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
             >
-              <WhatsAppIcon className="size-7" />
+              <WhatsAppIcon variant="black" className="size-7" />
               <span className="font-heading text-[2.6rem] leading-none">
                 <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
                   Photos & messages

@@ -51,7 +51,7 @@ export default function Zones() {
                   rel="noreferrer"
                   className={buttonVariants({ size: 'xl' })}
                 >
-                  <WhatsAppIcon />
+                  <WhatsAppIcon variant="black" />
                   WhatsApp
                 </a>
                 <a

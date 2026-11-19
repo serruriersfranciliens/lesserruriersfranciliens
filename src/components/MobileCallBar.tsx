@@ -15,7 +15,7 @@ export function MobileCallBar() {
         rel="noreferrer"
         className={cn(buttonVariants({ size: 'xl' }), 'w-full gap-1 px-1 text-sm')}
       >
-        <WhatsAppIcon className="size-4.5" />
+        <WhatsAppIcon variant="black" className="size-4.5" />
         WhatsApp
       </a>
       <a

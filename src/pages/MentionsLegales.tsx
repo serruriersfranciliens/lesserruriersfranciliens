@@ -66,20 +66,6 @@ export default function MentionsLegales() {
             L’ensemble des contenus de ce site (textes, logo, images) est la propriété de{' '}
             {company.name}. Toute reproduction sans autorisation est interdite.
           </p>
-          <p>
-            Icône WhatsApp :{' '}
-            <a
-              href="https://commons.wikimedia.org/wiki/File:WhatsApp_icon.png"
-              className="underline"
-            >
-              Wikimedia Commons
-            </a>
-            , licence{' '}
-            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" className="underline">
-              CC BY-SA 4.0
-            </a>
-            , redimensionnée. WhatsApp est une marque de WhatsApp LLC.
-          </p>
         </div>
       </Section>
     </>

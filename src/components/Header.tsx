@@ -64,7 +64,7 @@ export function Header() {
             'hidden px-3 xl:inline-flex',
           )}
         >
-          <WhatsAppIcon className="size-6" />
+          <WhatsAppIcon variant="green" className="size-6" />
         </a>
         <a
           href={company.phoneHref}
@@ -112,7 +112,7 @@ export function Header() {
                 rel="noreferrer"
                 className={cn(buttonVariants({ size: 'xl' }), 'w-full')}
               >
-                <WhatsAppIcon />
+                <WhatsAppIcon variant="black" />
                 WhatsApp
               </a>
               <a

@@ -8,3 +8,6 @@ build_docs/
 .DS_Store
 *.tsbuildinfo
 dist-server/
+
+# WhatsApp brand kit (downloaded from Meta, not redistributed)
+WhatsApp-Brand-Resource-Center.zip
