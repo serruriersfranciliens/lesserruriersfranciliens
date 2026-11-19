@@ -99,10 +99,17 @@ const list = 'list-disc space-y-1 pl-6';
         </p>
 
         <h3 class={h3}>Assurance professionnelle</h3>
-        <p>{legal.insurance}</p>
+        <p>
+          Responsabilité civile professionnelle et garantie décennale : {legal.insurance.insurer},
+          contrat {legal.insurance.contract} n° {legal.insurance.policyNumber}. Couverture
+          géographique : {legal.insurance.coverage}.
+        </p>
 
-        <h3 class={h3}>Marques et documents à consulter</h3>
-        <p>{company.name} et son logo sont des marques déposées.</p>
+        <h3 class={h3}>Dénomination et documents à consulter</h3>
+        <p>
+          « {company.name} » est la dénomination sociale de la société, immatriculée au Registre
+          national des entreprises.
+        </p>
         <p>
           Documents à consulter : <a href="/cgv" class={link}>Conditions générales de vente</a>.
         </p>
@@ -248,7 +255,7 @@ const list = 'list-disc space-y-1 pl-6';
           à les utiliser et Vous êtes seul responsable en cas d’utilisation et/ou d’exploitation non
           autorisée.
         </p>
-        <p>« {company.name} » et son logo sont des marques déposées.</p>
+        <p>« {company.name} » est la dénomination sociale de la société.</p>
         <p>
           Vous ne pouvez utiliser le Service et les éléments qu’il contient qu’à des fins
           strictement personnelles et non commerciales, sous réserve de respecter les droits de « {
@@ -496,9 +503,7 @@ const list = 'list-disc space-y-1 pl-6';
         <p>
           Conformément aux articles L611-1 et suivants du code de la consommation, le client
           consommateur peut recourir gratuitement à un médiateur de la consommation en vue de la
-          résolution amiable d’un litige : BATIRMEDIATION CONSO, contact@batirmediation-conso.fr,
-          tél. 07 68 46 59 09, par courrier : 22 corniche du Soleil, 83430 Saint-Mandrier. La
-          procédure de réclamation préalable et les coordonnées du médiateur sont détaillées à
+          résolution amiable d’un litige. La procédure de réclamation préalable est détaillée à
           l’article 5.2 des <a href="/cgv" class={link}>conditions générales de vente</a>.
         </p>
 

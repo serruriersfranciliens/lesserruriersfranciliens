@@ -6,16 +6,11 @@ When you answer an open question, move it to "Answered" with the answer.
 ## Open
 
 ### Legal (blocking: required by law before going live)
-- [ ] Publication director (name of the SAS president)?
-- [ ] RC Pro / décennale insurer (name, policy number)? The "Garanties" block on `/entreprise`
-      states "Assurance responsabilité civile professionnelle": confirm or remove.
-- [ ] CGV (`/cgv`, based on the CGV you wrote): the open points are listed in
-      `build_docs/CGV-NOTES.md` — jurisdiction (Tribunal de commerce de Tours vs Paris),
-      quote validity (2 months vs 30 days), insurance wording (§7.5), data clause vs the legal
-      notice (§9), articles quoted in their pre-2022 wording (§10).
-- [ ] Mentions légales (rewritten from your own text): open points in `build_docs/MENTIONS-LEGALES-NOTES.md`
-      — "marques déposées" claim, call recording still mentioned in the CGV §9, Web3Forms
-      transfer outside the EU, jurisdiction wording to align with the CGV.
+- [ ] Consumer mediator: no agreement signed yet, although it is mandatory (L612-1). Which
+      mediator will you join? Its name and contact details then go in CGV §5.2 and legal notice
+      §2.16 (currently generic, no mediator named).
+- [ ] CGV §10: articles L217-4 and L217-5 are quoted in their pre-2022 wording. Update them?
+- [ ] Web3Forms is hosted in the US: add a sentence on transfers outside the EU?
 
 ### Company (`/entreprise`)
 - [ ] Short history: founding year, founders, team size?
@@ -55,3 +50,10 @@ When you answer an open question, move it to "Answered" with the answer.
 | CGV | Built from the client's own text, articles 1 to 10 kept in order and wording: `/cgv`, footer link, `noindex` like `/mentions-legales`. Changes and open points in `build_docs/CGV-NOTES.md` |
 | Mentions légales | Rewritten from the client's own text (§1 and §2.1 to §2.14 kept): host changed to GitHub Pages, `.fr` domain, appliances/TV/hi-fi removed from the activity, paid diagnosis replaced by the free quote, broken privacy/cookies references replaced by §2.11 and §2.15, mediator and CNIL added. Details in `build_docs/MENTIONS-LEGALES-NOTES.md` |
 | `.com` domain | Still owned: transferred from Squarespace to OVH, active from 2026-11-25, then 301 redirect to the `.fr` (steps in `NOTES.md` → Domains) |
+| Publication director | Guillaume Hayoun (SAS president from 2027-01-01) |
+| Insurance | RC Pro + décennale with ERGO, contract Probat Création n° 26016542184; may change in 2027 |
+| CGV jurisdiction | Paris (Tribunal des activités économiques de Paris) instead of Tours |
+| Quote validity | 60 days |
+| Call recording | None: removed from the CGV §9, along with partners inside/outside the EU |
+| Trademark | Company name registered with the INPI (RNE) but not as a trademark, no logo: "marques déposées" replaced by "dénomination sociale" |
+| Payment methods | Card, bank transfer, cash (within legal limits): added to CGV §6.1 |

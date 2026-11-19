@@ -78,9 +78,9 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
           compter du {versionDate}. Elles sont accessibles à tout moment sur le site <a
             href="/cgv"
             class={link}>lesserruriersfranciliens.fr/cgv</a
-          > et sont remises au CLIENT sur simple demande, avant la conclusion du contrat. Les
-          coordonnées du médiateur de la consommation et les garanties légales figurent aux
-          paragraphes 5.2 et 7 des présentes.
+          > et sont remises au CLIENT sur simple demande, avant la conclusion du contrat. La
+          procédure de réclamation et les garanties légales figurent aux paragraphes 5.2 et 7 des
+          présentes.
         </p>
 
         <h2 id="generalites" class={h2}>1. Généralités</h2>
@@ -123,8 +123,7 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
         </p>
         <p>
           Le devis accepté et signé par le CLIENT vaut commande pour l’exécution des travaux et
-          lie les parties. Il est valable 2 mois à compter de son émission, l’acceptation devant
-          toutefois intervenir dans les 30 jours de son émission. Passé ce délai, les prix
+          lie les parties. Il est valable 60 jours à compter de son émission. Passé ce délai, les prix
           pourront être modifiés par « {company.name} ». Les devis sont gratuits. À défaut de
           délai convenu, les travaux seront exécutés dans un délai maximum de 12 mois après
           signature.
@@ -231,18 +230,17 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
             company.name
           } ». En cas de litige ou de désaccord dans l’application du présent contrat, le
           consommateur adressera une lettre en RAR à l’entreprise qui aura deux mois pour la prise
-          en compte de la demande, passé ce délai le consommateur peut saisir le médiateur pour
-          trouver un accord amiable et gratuit. Le consommateur a la possibilité de recourir à la
-          procédure de Médiation de la Consommation, Articles L611-1 et suivants Code Consommation
-          : BATIRMEDIATION CONSO contact@batirmediation-conso.fr Tel : 07 68 46 59 09 par courrier
-          : 22 corniche du soleil 83430 St Mandrier. Et en cas de contestation de quelque nature
+          en compte de la demande, passé ce délai le consommateur peut recourir gratuitement à un
+          médiateur de la consommation pour trouver un accord amiable, conformément aux articles
+          L611-1 et suivants du code de la consommation. Et en cas de contestation de quelque nature
           que ce soit, en référence des lois françaises applicables, l’attribution de juridiction
           est du ressort du Tribunal Judiciaire ou des instances compétentes.
         </p>
         <p>
           L’envoi d’une réclamation à « {company.name} » n’autorise pas le CLIENT à suspendre ou
           différer le paiement de la facture des travaux réalisés. A défaut de résolution amiable,
-          tout différend sera attribué exclusivement au Tribunal de Commerce de Tours. Toutefois,
+          tout différend sera attribué exclusivement au Tribunal des activités économiques de Paris
+          (anciennement Tribunal de commerce de Paris). Toutefois,
           si le CLIENT est un particulier/consommateur, les règles de compétence légales
           s’appliquent. Les présentes CGV sont soumises au Droit Français.
         </p>
@@ -256,6 +254,10 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
           régler directement à « {company.name} », sur présentation d’un document « commande de
           travaux » avant démarrage des travaux, le montant de la franchise et/ou d’autres frais
           qui lui sont opposables.
+        </p>
+        <p>
+          Moyens de paiement acceptés : carte bancaire, virement et espèces (dans la limite des
+          plafonds fixés par la loi).
         </p>
         <p>
           Pour le CLIENT professionnel, tout défaut de paiement à l’échéance entraînera de plein
@@ -352,8 +354,9 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
         <h3 class={h3}>7.5. Assurances</h3>
         <p>
           « {company.name} » est assurée en responsabilité civile professionnelle et décennale
-          auprès de la compagnie April - Partenaires (ERGO) immatriculée à l’ORIAS sous le numéro
-          07 024 083, sur le territoire de la France métropolitaine.
+          auprès de {company.legal.insurance.insurer} (contrat {
+            `${company.legal.insurance.contract} n° ${company.legal.insurance.policyNumber}`
+          }), sur le territoire de la {company.legal.insurance.coverage}.
         </p>
 
         <h2 id="reserve" class={h2}>8. Clause de réserve de propriété</h2>
@@ -367,16 +370,14 @@ const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text
 
         <h2 id="informatique" class={h2}>9. Informatique et libertés</h2>
         <p>
-          Les informations concernant le CLIENT sont destinées à « {company.name} », ainsi qu’à
-          leurs prestataires et partenaires situés dans ou en dehors de l’Union européenne, aux
-          fins de lui proposer ou de lui fournir les services « {company.name} » adaptés à ses
-          intérêts ou à sa situation. Ces informations seront conservées par « {company.name} »
-          pendant les durées nécessaires aux finalités. Afin d’améliorer la qualité de nos services
-          et de faciliter leur prise en charge par nos partenaires, les appels peuvent être
-          enregistrés. « {company.name} » pourra ainsi recontacter le CLIENT. Sous réserve de son
-          choix, il pourra recevoir des offres ou participer à des enquêtes concernant « {
+          Les informations concernant le CLIENT sont destinées à « {company.name} », aux fins de
+          lui proposer ou de lui fournir les services « {company.name} » adaptés à ses intérêts ou
+          à sa situation. Ces informations seront conservées par « {company.name} » pendant les
+          durées nécessaires aux finalités. Les appels téléphoniques ne sont pas enregistrés. « {
             company.name
-          } » ou ses partenaires. Le CLIENT peut à tout moment s’opposer à recevoir des offres de
+          } » pourra recontacter le CLIENT dans le cadre de sa demande. Sous réserve de son choix,
+          il pourra recevoir des offres ou participer à des enquêtes concernant « {company.name} ».
+          Le CLIENT peut à tout moment s’opposer à recevoir des offres de
           notre part ou s’inscrire sur www.bloctel.gouv.fr, la liste d’opposition au démarchage
           téléphonique. Il peut aussi demander à accéder, à faire porter auprès d’un tiers, à faire
           rectifier ou à faire supprimer les informations le concernant. Enfin, le CLIENT peut nous

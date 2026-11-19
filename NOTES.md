@@ -3,10 +3,12 @@
 Things only you can do, in rough priority order. Open questions are in [QUESTIONS.md](QUESTIONS.md).
 
 ## Before going live
-- [ ] Fill the two remaining legal fields in `company.legal` (`src/content/company.ts`):
-      publication director and insurer. They are still placeholders on `/mentions-legales` and
-      `/cgv`. Open legal points: [CGV-NOTES.md](build_docs/CGV-NOTES.md),
+- [ ] **Join a consumer mediator** (mandatory to sell to consumers, L612-1; fine up to 3 000 €),
+      then add its name and contact details to CGV §5.2 and legal notice §2.16. Other open
+      legal points: [CGV-NOTES.md](build_docs/CGV-NOTES.md),
       [MENTIONS-LEGALES-NOTES.md](build_docs/MENTIONS-LEGALES-NOTES.md).
+- [ ] 2027: update `company.legal.insurance` (`src/content/company.ts`) if the insurance
+      contract changes; it feeds both `/cgv` and `/mentions-legales`.
 - [ ] Replace the AI image of the workshop (`public/images/entreprise-atelier.webp` and its
       `-800` variant) with a real photo.
 - [ ] Proofread all texts in `src/content/` and the pages (especially FAQ legal statements).

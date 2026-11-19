@@ -43,9 +43,14 @@ export const company = {
     vat: 'FR33 994 060 275',
     registry: 'Immatriculée au Registre national des entreprises (RNE) le 4 décembre 2025',
     naf: '43.32B – Travaux de menuiserie métallique et serrurerie',
-    // TODO: still to confirm (see QUESTIONS.md).
-    director: '[Directeur de la publication à compléter]',
-    insurance: '[Assureur RC Pro / décennale à compléter]',
+    director: 'Guillaume Hayoun',
+    // RC Pro + décennale. Contract may change in 2027.
+    insurance: {
+      insurer: 'ERGO',
+      contract: 'Probat Création',
+      policyNumber: '26016542184',
+      coverage: 'France métropolitaine',
+    },
   },
 } as const;
 
