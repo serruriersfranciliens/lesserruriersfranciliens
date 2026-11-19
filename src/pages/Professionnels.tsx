@@ -16,9 +16,9 @@ export default function Professionnels() {
   return (
     <>
       <PageHeader eyebrow="Professionnels" title="Serrurier partenaire des syndics et bailleurs">
-        Syndics de copropriété, bailleurs, administrateurs de biens : nous connaissons vos
-        contraintes et vos procédures. Une offre conçue pour simplifier la gestion des accès de
-        votre patrimoine en Île-de-France.
+        Syndics de copropriété, bailleurs, agences immobilières, administrateurs de biens : nous
+        connaissons vos contraintes et vos procédures. Une offre conçue pour simplifier la gestion
+        des accès de votre patrimoine en Île-de-France.
       </PageHeader>
 
       <nav aria-label="Publics" className="sticky top-19 z-40 border-b bg-background">

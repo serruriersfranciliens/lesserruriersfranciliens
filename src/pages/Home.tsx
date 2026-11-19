@@ -34,8 +34,8 @@ export default function Home() {
               <span className="text-brand">au service des particuliers et des professionnels</span>
             </h1>
             <p className="mb-7 max-w-xl text-lg text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:180ms]">
-              Syndics, bailleurs, gestionnaires et particuliers : une équipe d’artisans qualifiés
-              pour vos dépannages d’urgence et vos travaux de serrurerie.
+              Syndics, bailleurs, agences immobilières et particuliers : une équipe d’artisans
+              qualifiés pour vos dépannages d’urgence et vos travaux de serrurerie.
             </p>
             <div className="flex flex-wrap gap-3 motion-safe:animate-rise motion-safe:[animation-delay:280ms]">
               <Link to="/contact" className={cn(buttonVariants({ size: 'xl' }), 'px-5')}>
@@ -190,7 +190,8 @@ export default function Home() {
             <p>
               Les Serruriers Franciliens accompagnent les{' '}
               <strong className="text-foreground">syndics de copropriété</strong>, les{' '}
-              <strong className="text-foreground">bailleurs</strong> et les{' '}
+              <strong className="text-foreground">bailleurs</strong>, les{' '}
+              <strong className="text-foreground">agences immobilières</strong> et les{' '}
               <strong className="text-foreground">administrateurs de biens</strong> dans la gestion
               quotidienne des accès de leurs immeubles : portes de hall, caves, locaux techniques,
               boîtes aux lettres, logements entre deux locataires.

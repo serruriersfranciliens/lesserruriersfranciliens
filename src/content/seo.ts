@@ -36,7 +36,7 @@ export const pages: PageMeta[] = [
     path: '/entreprise',
     title: `Notre entreprise de serrurerie en Île-de-France${suffix}`,
     description:
-      'Les Serruriers Franciliens : des artisans serruriers qualifiés au service des syndics, bailleurs, gestionnaires et particuliers. Notre charte et nos garanties.',
+      'Les Serruriers Franciliens : des artisans serruriers qualifiés au service des syndics, bailleurs, agences immobilières et particuliers. Notre charte et nos garanties.',
     label: 'L’entreprise',
     priority: 0.7,
   },
@@ -52,7 +52,7 @@ export const pages: PageMeta[] = [
     path: '/professionnels',
     title: `Serrurier pour syndics de copropriété et bailleurs${suffix}`,
     description:
-      'Serrurier partenaire des syndics et bailleurs en Île-de-France : parties communes, changement de cylindres entre locataires, logements vacants, compte-rendu photo.',
+      'Serrurier partenaire des syndics, bailleurs et agences immobilières en Île-de-France : parties communes, changement de cylindres entre locataires, logements vacants, compte-rendu photo.',
     label: 'Professionnels',
     priority: 0.9,
     faq: proFaq,
@@ -119,7 +119,7 @@ function localBusiness() {
     email: company.email,
     sameAs: [company.social.instagram, company.social.facebook],
     description:
-      'Serrurerie, dépannage et blindage de portes pour les syndics de copropriété, bailleurs, gestionnaires de biens et particuliers en Île-de-France.',
+      'Serrurerie, dépannage et blindage de portes pour les syndics de copropriété, bailleurs, agences immobilières, gestionnaires de biens et particuliers en Île-de-France.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: company.legal.streetAddress,
@@ -235,7 +235,7 @@ export function renderLlmsTxt(): string {
   return [
     `# ${company.name}`,
     '',
-    `> Entreprise de serrurerie et de blindage de portes en Île-de-France, au service des syndics de copropriété, bailleurs, gestionnaires de biens et particuliers. Dépannage, ouverture de porte, changement de serrure et de cylindre, blindage. Devis gratuit, intervention ${company.hours}.`,
+    `> Entreprise de serrurerie et de blindage de portes en Île-de-France, au service des syndics de copropriété, bailleurs, agences immobilières, gestionnaires de biens et particuliers. Dépannage, ouverture de porte, changement de serrure et de cylindre, blindage. Devis gratuit, intervention ${company.hours}.`,
     '',
     `- Téléphone : ${company.phone} (${company.phoneE164})`,
     `- WhatsApp : ${company.whatsappHref}`,

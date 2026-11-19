@@ -18,7 +18,7 @@ export function Footer() {
           </div>
           <p className="text-sm text-white/65">
             Serrurier en Île-de-France : dépannage, remplacement de serrures et blindage de portes
-            pour les syndics, bailleurs, gestionnaires et particuliers.
+            pour les syndics, bailleurs, agences immobilières et particuliers.
           </p>
           <SocialLinks className="mt-5 justify-center sm:justify-start" />
         </div>

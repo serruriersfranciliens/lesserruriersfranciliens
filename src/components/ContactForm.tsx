@@ -14,7 +14,7 @@ const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 
 const profiles = [
   'Syndic / copropriété',
-  'Bailleur / gestionnaire',
+  'Bailleur / agence immobilière',
   'Entreprise / commerce',
   'Particulier',
 ];

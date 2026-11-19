@@ -41,9 +41,9 @@ export default function Entreprise() {
               </p>
               <p>
                 Notre clientèle est majoritairement composée de professionnels de l’immobilier :
-                syndics de copropriété, bailleurs, administrateurs de biens. Leurs exigences
-                (réactivité, traçabilité, devis détaillés) font notre méthode, et en font aussi
-                profiter nos clients particuliers.
+                syndics de copropriété, bailleurs, agences immobilières, administrateurs de biens.
+                Leurs exigences (réactivité, traçabilité, devis détaillés) font notre méthode, et en
+                font aussi profiter nos clients particuliers.
               </p>
               <p>Retrouvez nos chantiers récents sur nos réseaux :</p>
             </div>
