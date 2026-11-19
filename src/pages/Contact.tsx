@@ -23,7 +23,7 @@ export default function Contact() {
               href={company.whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
+              className="group/button flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
             >
               <WhatsAppIcon variant="black" className="size-7" />
               <span className="font-heading text-[2.6rem] leading-none">

@@ -41,8 +41,7 @@ export function CtaBand({
               'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
             )}
           >
-            <WhatsAppIcon variant="black" className="group-hover/button:hidden" />
-            <WhatsAppIcon variant="white" className="hidden group-hover/button:block" />
+            <WhatsAppIcon variant="black" />
             WhatsApp
           </a>
           <a
