@@ -59,7 +59,7 @@ export default function Entreprise() {
         <h2 className="sr-only">Chiffres clés</h2>
         <ul data-reveal="stagger" className="grid gap-6 sm:grid-cols-3">
           {figures.map((f) => (
-            <li key={f.label} className="flex flex-col">
+            <li key={f.label} className="flex flex-col items-center text-center">
               <strong className="font-heading text-7xl leading-none text-brand">{f.value}</strong>
               <span className="text-muted-foreground">{f.label}</span>
             </li>
