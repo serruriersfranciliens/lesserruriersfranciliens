@@ -43,7 +43,7 @@ export function Header() {
                     cn(
                       'relative block rounded-md px-3 py-2 text-[0.92rem] font-medium transition-colors hover:text-brand-ink',
                       isActive &&
-                        'text-brand-ink after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand',
+                        'text-brand-ink after:absolute after:inset-x-1.5 after:bottom-0 after:h-0.5 after:bg-brand',
                     )
                   }
                 >
