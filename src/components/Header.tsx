@@ -40,8 +40,9 @@ export function Header() {
                   end={item.to === '/'}
                   className={({ isActive }) =>
                     cn(
-                      'block rounded-md px-3 py-2 text-[0.92rem] font-medium transition-colors hover:text-brand-ink',
-                      isActive && 'text-brand-ink shadow-[inset_0_-3px_0_var(--brand)]',
+                      'relative block rounded-md px-3 py-2 text-[0.92rem] font-medium transition-colors hover:text-brand-ink',
+                      isActive &&
+                        'text-brand-ink after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-brand',
                     )
                   }
                 >
