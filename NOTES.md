@@ -23,10 +23,20 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
       **enable "Enforce HTTPS"** once GitHub has issued the certificate.
 - [x] OVH DNS zone: apex → 4 `A` (185.199.108–111.153) + 4 `AAAA` (2606:50c0:8000–8003::153),
       `www` → `CNAME` → `erikaouizerate.github.io.` (MX/SPF kept).
-- [ ] `lesserruriersfranciliens.com` (Squarespace): keep it there for 3 years, then:
-  - [ ] set up a permanent (301) redirect to `https://lesserruriersfranciliens.fr`,
-        so the old search ranking carries over;
+- [ ] `lesserruriersfranciliens.com` (transferred from Squarespace to OVH, active from 2026-11-25;
+      never published, so no search ranking to carry over):
+  - [ ] check the domain's DNS servers are OVH's (`dnsXX.ovh.net` / `nsXX.ovh.net`);
+  - [ ] OVH → Redirection: apex and `www` → visible permanent (301) redirect to
+        `https://lesserruriersfranciliens.fr` (HTTP only: `https://…com` is not covered);
+  - [ ] Google Workspace MX: re-add them in the OVH zone only if `@lesserruriersfranciliens.com`
+        mailboxes are still used;
   - [ ] enable the transfer lock (disable outbound transfer) so it cannot be moved away.
+- [ ] Check all redirects once the `.com` is active (`curl -sI <url>` → `301` + `location`):
+  - [ ] `http://lesserruriersfranciliens.com/` → `https://lesserruriersfranciliens.fr/`;
+  - [ ] `http://www.lesserruriersfranciliens.com/` → `https://lesserruriersfranciliens.fr/`;
+  - [ ] `https://www.lesserruriersfranciliens.fr/` → `https://lesserruriersfranciliens.fr/`;
+  - [ ] `http://lesserruriersfranciliens.fr/` → `https://lesserruriersfranciliens.fr/`;
+  - [ ] old paths still redirect on the `.fr` (`/depannage`, `/installation`, `/contacts`).
 - [ ] Move the site to the `serruriersfranciliens` GitHub account:
   - [x] transfer the repository (now `serruriersfranciliens/lesserruriersfranciliens`);
   - [ ] on the new repo: Settings → Pages → Source **GitHub Actions**, custom domain
