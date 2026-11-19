@@ -240,7 +240,7 @@ export default function Home() {
             {company.departments.map((d) => (
               <li
                 key={d.code}
-                className="flex flex-col rounded-lg border-l-4 border-brand bg-background p-4"
+                className="relative flex flex-col rounded-lg bg-background p-4 before:absolute before:inset-y-4 before:left-0 before:w-1 before:bg-brand"
               >
                 <strong className="font-heading text-4xl leading-none">{d.code}</strong>
                 <span className="text-sm text-muted-foreground">{d.name}</span>
