@@ -122,7 +122,6 @@ function localBusiness() {
     '@id': businessId,
     name: company.name,
     url: absoluteUrl('/'),
-    logo: `${siteUrl}/logo.png`,
     image: `${siteUrl}/og-image.png`,
     telephone: company.phoneE164,
     email: company.email,
