@@ -28,9 +28,11 @@ export default function Home() {
         />
         <div className="container-site relative grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <Eyebrow className="motion-safe:animate-rise">Serrurerie & blindage · 7j/7</Eyebrow>
-            <h1 className="mb-6 text-5xl motion-safe:animate-rise motion-safe:[animation-delay:80ms] md:text-6xl xl:text-[4.25rem]">
-              Serrurier à Paris & Île-de-France{' '}
+            <Eyebrow className="mb-5 motion-safe:animate-rise">
+              Serrurerie & blindage · 7j/7
+            </Eyebrow>
+            <h1 className="mb-6 text-[2.5rem] motion-safe:animate-rise motion-safe:[animation-delay:80ms] md:text-[3.5rem]">
+              Serrurier à Paris <span className="whitespace-nowrap">& Île-de-France</span>{' '}
               <span className="text-brand">au service des particuliers et des professionnels</span>
             </h1>
             <p className="mb-7 max-w-xl text-lg text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:180ms]">
