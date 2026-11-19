@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MentionsLegales from '@/views/MentionsLegales.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/mentions-legales')}>
+  <MentionsLegales />
+</Layout>

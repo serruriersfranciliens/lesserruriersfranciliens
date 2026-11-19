@@ -1,0 +1,277 @@
+---
+import { ArrowRight, Building2, Home as HomeIcon, Phone } from '@lucide/astro';
+import { commitments, company } from '@/content/company';
+import { generalFaq } from '@/content/faq';
+import { images } from '@/content/images';
+import { services } from '@/content/services';
+import Badge from '@/components/ui/Badge.astro';
+import { buttonVariants } from '@/components/ui/button';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import Faq from '@/components/Faq.astro';
+import ImagePlaceholder from '@/components/ImagePlaceholder.astro';
+import OpeningPrices from '@/components/OpeningPrices.astro';
+import ProcessSteps from '@/components/ProcessSteps.astro';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+import Eyebrow from '@/components/Eyebrow.astro';
+import IconBadge from '@/components/IconBadge.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { cn } from '@/lib/utils';
+
+const linkArrow = 'inline-flex items-center gap-1.5 font-semibold text-brand-ink hover:underline';
+---
+
+<>
+  {/* Hero */}
+  <section class="dark relative overflow-hidden bg-background py-12 text-foreground md:py-26">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-y-0 right-0 left-[55%] hidden lg:block bg-[linear-gradient(115deg,transparent_0_30%,--alpha(var(--color-brand)/7%)_30%_100%)]"
+    />
+    <div class="container-site relative grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <Eyebrow class="mb-5 motion-safe:animate-rise">
+          Serrurerie & blindage · 7j/7
+        </Eyebrow>
+        <h1 class="mb-6 text-[2.5rem] motion-safe:animate-rise motion-safe:[animation-delay:80ms] md:text-[3.5rem]">
+          Serrurier à Paris <span class="whitespace-nowrap">& Île-de-France</span>{' '}
+          <span class="text-brand">au service des particuliers et des professionnels</span>
+        </h1>
+        <p class="mb-7 max-w-xl text-lg text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:180ms]">
+          Syndics, bailleurs, agences immobilières et particuliers : une équipe d’artisans
+          qualifiés pour vos dépannages d’urgence et vos travaux de serrurerie.
+        </p>
+        <div class="flex flex-wrap gap-3 motion-safe:animate-rise motion-safe:[animation-delay:280ms]">
+          <a href="/contact" class={cn(buttonVariants({ size: 'xl' }), 'px-5')}>
+            Demander un devis
+          </a>
+          <a
+            href={company.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            class={cn(
+              buttonVariants({ size: 'xl', variant: 'outline' }),
+              'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
+            )}
+          >
+            <WhatsAppIcon variant="white" />
+            WhatsApp
+          </a>
+          <a
+            href={company.phoneHref}
+            class={cn(
+              buttonVariants({ size: 'xl', variant: 'outline' }),
+              'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
+            )}
+          >
+            <Phone aria-hidden="true" />
+            {company.phone}
+          </a>
+        </div>
+        <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:380ms]">
+          {[company.hoursShort, 'Devis gratuit', 'Paris & Île-de-France'].map((item) => (
+            <li class="flex items-center gap-2">
+              <span class="size-2 rotate-45 bg-brand" aria-hidden="true" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <ImagePlaceholder
+        image={images.hero}
+        priority
+        class="shadow-2xl shadow-black/35 motion-safe:animate-settle"
+      />
+    </div>
+  </section>
+
+  {/* Commitments */}
+  <section aria-labelledby="engagements" class="border-b bg-background py-9">
+    <h2 id="engagements" class="sr-only">
+      Nos engagements
+    </h2>
+    <div
+      data-reveal="stagger"
+      class="container-site grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+    >
+      {commitments.map(({ icon: Icon, title, text }) => (
+        <div class="flex items-start gap-4">
+          <Icon class="size-7 shrink-0 text-brand-ink" aria-hidden="true" />
+          <div>
+            <h3 class="mb-1 text-2xl">{title}</h3>
+            <p class="text-sm text-muted-foreground">{text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* Two paths */}
+  <Section>
+    <SectionHeading
+      eyebrow="À chacun sa solution"
+      title="Professionnel ou particulier ?"
+      center
+    />
+    <div data-reveal="stagger" class="grid gap-6 md:grid-cols-2">
+      {[
+        {
+          slot: images.parcoursPro,
+          icon: Building2,
+          tag: 'Professionnels',
+          title: 'Syndics, bailleurs & gestionnaires',
+          text: 'Parties communes, rotation des locataires, logements vacants : un interlocuteur unique, des devis détaillés et un compte-rendu photo pour chaque ordre de service.',
+          to: '/professionnels',
+          cta: 'Découvrir l’offre professionnels',
+        },
+        {
+          slot: images.parcoursParticulier,
+          icon: HomeIcon,
+          tag: 'Particuliers',
+          title: 'Votre logement, en toute sécurité',
+          text: 'Porte claquée, clé perdue, remplacement de serrure ou blindage de porte : nous intervenons rapidement, avec un prix annoncé avant les travaux.',
+          to: '/competences',
+          cta: 'Voir nos compétences',
+        },
+      ].map(({ slot, icon: Icon, tag, title, text, to, cta }) => (
+        <Card class="gap-0 py-0">
+          <ImagePlaceholder
+            image={slot}
+            class="rounded-none"
+            sizes="(min-width: 1184px) 560px, (min-width: 768px) calc(50vw - 32px), calc(100vw - 40px)"
+          />
+          <CardContent class="p-7">
+            <Badge variant="secondary" class="mb-4 h-6 px-2.5 uppercase">
+              <Icon aria-hidden="true" />
+              {tag}
+            </Badge>
+            <h3 class="mb-3 text-3xl">{title}</h3>
+            <p class="mb-4 text-[0.95rem]">{text}</p>
+            <a href={to} class={linkArrow}>
+              {cta} <ArrowRight class="size-4" aria-hidden="true" />
+            </a>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* Skills */}
+  <Section tone="paper">
+    <SectionHeading
+      eyebrow="Nos compétences"
+      title="Du dépannage au blindage"
+      lead="Nous intervenons en urgence comme sur vos projets planifiés, avec du matériel sélectionné et certifié."
+    />
+    <div data-reveal="stagger" class="grid gap-6 md:grid-cols-3">
+      {services.map(({ id, icon: Icon, title, summary }) => (
+        <Card class="p-3">
+          <CardContent>
+            <IconBadge>
+              <Icon class="size-6" aria-hidden="true" />
+            </IconBadge>
+            <h3 class="mb-3 text-3xl">{title}</h3>
+            <p class="mb-4 text-[0.95rem]">{summary}</p>
+            <a href={`/competences#${id}`} class={linkArrow}>
+              En savoir plus <ArrowRight class="size-4" aria-hidden="true" />
+            </a>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* Opening prices */}
+  <Section tone="cream">
+    <SectionHeading
+      eyebrow="Tarifs"
+      title="Ouverture de porte : nos prix fixes"
+      lead="Pas de mauvaise surprise : le prix de l’ouverture est connu avant notre arrivée."
+    />
+    <OpeningPrices />
+  </Section>
+
+  {/* Why us: SEO-rich introduction */}
+  <Section>
+    <div data-reveal="stagger" class="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+      <div>
+        <Eyebrow>Pourquoi nous choisir</Eyebrow>
+        <h2 class="mb-4 text-4xl md:text-5xl">
+          Un serrurier de confiance pour les professionnels de l’immobilier
+        </h2>
+      </div>
+      <div class="space-y-4 text-[0.98rem] text-muted-foreground">
+        <p>
+          Les Serruriers Franciliens accompagnent les{' '}
+          <strong class="text-foreground">syndics de copropriété</strong>, les{' '}
+          <strong class="text-foreground">bailleurs</strong>, les{' '}
+          <strong class="text-foreground">agences immobilières</strong> et les{' '}
+          <strong class="text-foreground">administrateurs de biens</strong> dans la gestion
+          quotidienne des accès de leurs immeubles : portes de hall, caves, locaux techniques,
+          boîtes aux lettres, logements entre deux locataires.
+        </p>
+        <p>
+          Nos serruriers interviennent à Paris et dans toute l’Île-de-France pour l’
+          <strong class="text-foreground">ouverture de porte</strong> sans dégât, le{' '}
+          <strong class="text-foreground">changement de serrure</strong> ou de cylindre, la
+          pose de serrures multipoints certifiées A2P et le{' '}
+          <strong class="text-foreground">blindage de porte</strong>. Chaque intervention
+          fait l’objet d’un devis gratuit et détaillé, puis d’une attestation de fin de travaux
+          avec photos.
+        </p>
+        <p>
+          Les particuliers profitent de la même rigueur : prix annoncé avant les travaux,
+          matériel de qualité et conseils adaptés à leur logement et à leur assurance.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  {/* Process */}
+  <Section tone="dark">
+    <SectionHeading
+      eyebrow="Notre méthode"
+      title="Une intervention tracée de A à Z"
+      lead="Une démarche simple et transparente, pensée pour les gestionnaires qui doivent rendre des comptes."
+    />
+    <ProcessSteps />
+  </Section>
+
+  {/* Zone */}
+  <Section tone="cream">
+    <div data-reveal="stagger" class="grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <Eyebrow>Zone d’intervention</Eyebrow>
+        <h2 class="mb-4 text-4xl md:text-5xl">Partout en Île-de-France</h2>
+        <p class="mb-5 text-lg text-muted-foreground">
+          Nos artisans interviennent à Paris et dans les sept départements franciliens, du lundi
+          au dimanche de 8h à 22h.
+        </p>
+        <a href="/zones-intervention" class={linkArrow}>
+          Voir les villes desservies <ArrowRight class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+      <ul data-reveal="stagger" class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {company.departments.map((d) => (
+          <li
+           
+            class="flex flex-col rounded-r-lg border-l-4 border-brand bg-background p-4"
+          >
+            <strong class="font-heading text-4xl leading-none">{d.code}</strong>
+            <span class="text-sm text-muted-foreground">{d.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  {/* FAQ */}
+  <Section tone="paper">
+    <SectionHeading eyebrow="Questions fréquentes" title="Vos questions, nos réponses" />
+    <Faq items={generalFaq} />
+  </Section>
+
+  <CtaBand />
+</>

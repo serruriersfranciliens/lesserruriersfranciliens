@@ -1,9 +1,9 @@
-import { Building2, KeySquare, type LucideIcon } from 'lucide-react';
+import { Building2, KeySquare, type AstroComponent } from '@lucide/astro';
 import { images, type ImageSlot } from './images';
 
 export type Audience = {
   id: string;
-  icon: LucideIcon;
+  icon: AstroComponent;
   title: string;
   lead: string;
   items: string[];

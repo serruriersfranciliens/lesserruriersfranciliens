@@ -1,0 +1,13 @@
+---
+import { cn } from '@/lib/utils';
+
+type Props = { class?: string };
+const { class: className } = Astro.props;
+---
+
+<span
+  class={cn(
+    'mb-4 inline-grid size-13 place-items-center rounded-full bg-cream text-brand-ink',
+    className,
+  )}><slot /></span
+>

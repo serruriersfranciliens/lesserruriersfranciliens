@@ -1,0 +1,101 @@
+---
+import { Camera, Clock, Mail, MapPin, Phone } from '@lucide/astro';
+import { company } from '@/content/company';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+---
+
+<>
+  <PageHeader eyebrow="Contact" title="Demandez votre devis gratuit">
+    Nous répondons au plus vite et vous apportons toujours une solution adaptée. Pour une
+    urgence, appelez-nous directement.
+  </PageHeader>
+
+  <Section>
+    <div data-reveal="stagger" class="grid items-start gap-10 lg:grid-cols-2">
+      <aside class="grid gap-7">
+        <div class="grid gap-3 sm:grid-cols-2">
+          <a
+            href={company.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            class="group/button flex items-center gap-4 rounded-lg bg-brand px-5 py-4 text-ink transition-colors hover:bg-brand/90"
+          >
+            <WhatsAppIcon variant="black" class="size-7" />
+            <span class="font-heading text-4xl leading-none whitespace-nowrap lg:text-[2rem] xl:text-4xl">
+              <small class="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                Photos & messages
+              </small>
+              WhatsApp
+            </span>
+          </a>
+          <a
+            href={company.phoneHref}
+            class="flex items-center gap-4 rounded-lg border-2 border-brand px-5 py-4 transition-colors hover:bg-brand/10"
+          >
+            <Phone class="size-7 shrink-0 text-brand-ink" aria-hidden="true" />
+            <span class="font-heading text-4xl leading-none whitespace-nowrap lg:text-[2rem] xl:text-4xl">
+              <small class="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                Urgence & devis
+              </small>
+              {company.phone}
+            </span>
+          </a>
+        </div>
+
+        <ul class="grid gap-3.5">
+          <li class="flex items-center gap-3 break-all">
+            <Mail class="size-5 shrink-0 text-brand-ink" aria-hidden="true" />
+            <a href={`mailto:${company.email}`} class="font-medium hover:underline">
+              {company.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-3">
+            <Clock class="size-5 shrink-0 text-brand-ink" aria-hidden="true" />
+            {company.hours}
+          </li>
+          <li class="flex items-center gap-3">
+            <MapPin class="size-5 shrink-0 text-brand-ink" aria-hidden="true" />
+            <a href="/zones-intervention" class="hover:underline">
+              {company.zone} ({company.departments.map((d) => d.code).join(', ')})
+            </a>
+          </li>
+        </ul>
+
+        <div>
+          <h2 class="mb-1 text-2xl">Suivez nos chantiers</h2>
+          <p class="mb-3 text-sm text-muted-foreground">
+            Nos interventions en photos, au fil des semaines.
+          </p>
+          <SocialLinks withWhatsApp={false} />
+        </div>
+
+        <Card class="bg-cream ring-0">
+          <CardContent class="flex gap-4">
+            <Camera class="size-7 shrink-0 text-brand-ink" aria-hidden="true" />
+            <div>
+              <h2 class="mb-2 text-2xl">Envoyez-nous des photos</h2>
+              <p class="text-sm">
+                Pour un échange rapide et un devis précis, envoyez des photos de votre serrure
+                ou de votre porte par e-mail ou sur WhatsApp, en indiquant l’adresse
+                d’intervention.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </aside>
+
+      <Card class="bg-paper p-2 md:p-5">
+        <CardContent>
+          <h2 class="mb-5 text-3xl">Formulaire de contact</h2>
+          <ContactForm />
+        </CardContent>
+      </Card>
+    </div>
+  </Section>
+</>

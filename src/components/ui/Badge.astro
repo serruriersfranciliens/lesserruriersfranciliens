@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/utils';
+import { badgeVariants } from './badge';
+
+type Props = HTMLAttributes<'span'> & {
+  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link';
+};
+const { class: className, variant = 'default', ...rest } = Astro.props;
+---
+
+<span
+  data-slot="badge"
+  data-variant={variant}
+  class={cn(badgeVariants({ variant }), className)}
+  {...rest}><slot /></span
+>

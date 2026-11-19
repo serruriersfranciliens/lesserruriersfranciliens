@@ -1,0 +1,21 @@
+---
+import { openingPrices, openingPricesNote } from '@/content/pricing';
+---
+
+<div>
+  <ul data-reveal="stagger" class="grid gap-5 md:grid-cols-3">
+    {openingPrices.map((p) => (
+      <li
+       
+        class="flex flex-col rounded-lg border-t-4 border-brand bg-card p-6 shadow-sm"
+      >
+        <h3 class="mb-2 text-2xl">{p.title}</h3>
+        <p class="mb-5 text-sm text-muted-foreground">{p.text}</p>
+        <strong class="mt-auto font-heading text-6xl leading-none text-brand-ink">
+          {p.price} €<span class="ml-1.5 text-xl">TTC</span>
+        </strong>
+      </li>
+    ))}
+  </ul>
+  <p class="mt-5 text-sm text-muted-foreground">{openingPricesNote}</p>
+</div>

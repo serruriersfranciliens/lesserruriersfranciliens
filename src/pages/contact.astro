@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Contact from '@/views/Contact.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/contact')}>
+  <Contact />
+</Layout>

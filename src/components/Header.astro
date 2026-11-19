@@ -1,0 +1,158 @@
+---
+import { Menu, Phone, XIcon } from '@lucide/astro';
+import { company } from '@/content/company';
+import { navItems } from '@/content/navigation';
+import { buttonVariants } from '@/components/ui/button';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+import { cn } from '@/lib/utils';
+
+// Every page is a full load, so the active item is simply the current path.
+type Props = { pathname: string };
+const { pathname } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
+  <div class="container-site flex h-19 items-center gap-6">
+    <a href="/" class="mr-auto flex items-center">
+      <span
+        class="flex flex-col font-heading text-[1.45rem] leading-[0.85] font-semibold uppercase"
+      >
+        <span>Les Serruriers</span>
+        <span class="text-brand-ink">Franciliens</span>
+        <span class="sr-only">, accueil</span>
+      </span>
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden lg:block">
+      <ul class="flex gap-1">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.to}
+                aria-current={item.to === pathname ? 'page' : undefined}
+                class={cn(
+                  'relative block rounded-md px-3 py-2 text-[0.92rem] font-medium transition-colors hover:text-brand-ink',
+                  item.to === pathname &&
+                    'text-brand-ink after:absolute after:inset-x-1.5 after:bottom-0 after:h-[3px] after:bg-brand',
+                )}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a
+      href={company.whatsappHref}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="WhatsApp"
+      class={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'hidden px-3 xl:inline-flex')}
+    >
+      <WhatsAppIcon variant="green" class="size-6" />
+    </a>
+    <a href={company.phoneHref} class={cn(buttonVariants({ size: 'xl' }), 'hidden xl:inline-flex')}>
+      <Phone aria-hidden="true" />
+      {company.phone}
+    </a>
+
+    <button
+      type="button"
+      data-slot="sheet-trigger"
+      aria-label="Ouvrir le menu"
+      aria-haspopup="dialog"
+      aria-expanded="false"
+      aria-controls="menu-mobile"
+      class={cn(buttonVariants({ variant: 'ghost', size: 'icon-lg' }), 'lg:hidden')}
+    >
+      <Menu class="size-6" aria-hidden="true" />
+    </button>
+
+    <!--
+      Native modal dialog: focus trap, Escape and the backdrop come from the browser.
+      Slide-in animation via @starting-style (starting: variant); scroll lock in index.css.
+    -->
+    <dialog
+      id="menu-mobile"
+      aria-labelledby="menu-mobile-title"
+      data-slot="sheet-content"
+      class="fixed inset-y-0 right-0 left-auto m-0 h-full max-h-none w-[85%] max-w-sm flex-col gap-4 border-l bg-popover bg-clip-padding p-0 text-sm text-popover-foreground shadow-lg transition-all transition-discrete duration-200 ease-in-out not-open:translate-x-[2.5rem] not-open:opacity-0 open:flex starting:open:translate-x-[2.5rem] starting:open:opacity-0 backdrop:bg-black/10 backdrop:backdrop-blur-xs"
+    >
+      <div data-slot="sheet-header" class="flex flex-col gap-0.5 p-4">
+        <h2
+          id="menu-mobile-title"
+          data-slot="sheet-title"
+          class="font-heading text-2xl font-medium text-foreground uppercase"
+        >
+          Menu
+        </h2>
+      </div>
+      <nav aria-label="Navigation mobile" class="px-4">
+        <ul>
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.to}
+                  aria-current={item.to === pathname ? 'page' : undefined}
+                  class={cn(
+                    'block border-b py-3.5 text-base font-medium',
+                    item.to === pathname && 'border-l-4 border-l-brand pl-3 text-brand-ink',
+                  )}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="mt-auto grid gap-3 p-4">
+        <a
+          href={company.whatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          class={cn(buttonVariants({ size: 'xl' }), 'w-full')}
+        >
+          <WhatsAppIcon variant="black" />
+          WhatsApp
+        </a>
+        <a
+          href={company.phoneHref}
+          class={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'w-full')}
+        >
+          <Phone aria-hidden="true" />
+          {company.phone}
+        </a>
+      </div>
+      <button
+        type="button"
+        data-slot="sheet-close"
+        data-close
+        class={cn(buttonVariants({ variant: 'ghost', size: 'icon-sm' }), 'absolute top-3 right-3')}
+      >
+        <XIcon aria-hidden="true" />
+        <span class="sr-only">Fermer</span>
+      </button>
+    </dialog>
+  </div>
+</header>
+
+<script>
+  const dialog = document.getElementById('menu-mobile') as HTMLDialogElement;
+  const trigger = document.querySelector<HTMLButtonElement>('[aria-controls="menu-mobile"]')!;
+
+  trigger.addEventListener('click', () => {
+    dialog.showModal();
+    trigger.setAttribute('aria-expanded', 'true');
+  });
+  dialog.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  dialog.querySelector('[data-close]')!.addEventListener('click', () => dialog.close());
+  // A click on the backdrop lands on the <dialog> itself.
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>

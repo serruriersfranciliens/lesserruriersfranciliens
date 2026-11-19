@@ -182,7 +182,7 @@
 }
 
 /*
- * Scroll reveal, driven by src/components/ScrollReveal.tsx:
+ * Scroll reveal, driven by src/lib/scroll-reveal.ts:
  *   data-reveal="up"      the element fades up
  *   data-reveal="stagger" its children fade up one after another
  *   data-reveal="image"   the photo fades in and grows slightly
@@ -229,5 +229,28 @@
   }
   [data-slot='card']:hover > img {
     scale: 1.04;
+  }
+}
+
+/* Mobile menu (<dialog> in Header.astro): no page scroll behind it while open. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* FAQ (<details> in Faq.astro): animate the answer's height where the browser supports it.
+   Elsewhere it simply opens and closes. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  [data-slot='accordion-item']::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.2s ease-out,
+      content-visibility 0.2s allow-discrete;
+  }
+  [data-slot='accordion-item'][open]::details-content {
+    block-size: auto;
   }
 }

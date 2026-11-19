@@ -1,0 +1,110 @@
+---
+import { Clock, Mail, MapPin, Phone } from '@lucide/astro';
+import { company } from '@/content/company';
+import { navItems } from '@/content/navigation';
+import { services } from '@/content/services';
+import SocialLinks from '@/components/SocialLinks.astro';
+import WhatsAppGlyph from '@/components/WhatsAppGlyph.astro';
+
+const linkClass = 'transition-colors hover:text-brand';
+---
+
+<footer class="border-t-[6px] border-brand bg-ink pt-16 pb-28 text-white/85 md:pb-6">
+  <div class="container-site grid gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4">
+    <div>
+      <div class="mb-4 font-heading text-[1.7rem] leading-none text-white uppercase">
+        {company.name}
+      </div>
+      <p class="text-sm text-white/65">
+        Serrurier en Île-de-France : dépannage, remplacement de serrures et blindage de portes
+        pour les syndics, bailleurs, agences immobilières et particuliers.
+      </p>
+      <SocialLinks class="mt-5 justify-center sm:justify-start" />
+    </div>
+
+    <div>
+      <h2 class="mb-4 text-2xl text-brand">Contact</h2>
+      <ul class="grid gap-2.5 text-sm">
+        <li class="flex items-center justify-center gap-2.5 sm:justify-start">
+          <WhatsAppGlyph class="size-4 shrink-0 text-brand" />
+          <a href={company.whatsappHref} target="_blank" rel="noreferrer" class={linkClass}>
+            WhatsApp
+          </a>
+        </li>
+        <li class="flex items-center justify-center gap-2.5 sm:justify-start">
+          <Phone class="size-4 shrink-0 text-brand" aria-hidden="true" />
+          <a href={company.phoneHref} class={linkClass}>
+            {company.phone}
+          </a>
+        </li>
+        <li class="flex items-center justify-center gap-2.5 break-all sm:justify-start">
+          <Mail class="size-4 shrink-0 text-brand" aria-hidden="true" />
+          <a href={`mailto:${company.email}`} class={linkClass}>
+            {company.email}
+          </a>
+        </li>
+        <li class="flex items-center justify-center gap-2.5 sm:justify-start">
+          <Clock class="size-4 shrink-0 text-brand" aria-hidden="true" />
+          {company.hours}
+        </li>
+        <li class="flex items-center justify-center gap-2.5 sm:justify-start">
+          <MapPin class="size-4 shrink-0 text-brand" aria-hidden="true" />
+          <a href="/zones-intervention" class={linkClass}>
+            Paris et toute l’Île-de-France
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-4 text-2xl text-brand">Compétences</h2>
+      <ul class="grid gap-2.5 text-sm">
+        {services.map((s) => (
+          <li>
+            <a href={`/competences#${s.id}`} class={linkClass}>
+              {s.title}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/marques" class={linkClass}>
+            Serrurier toutes marques
+          </a>
+        </li>
+        <li>
+          <a href="/professionnels#syndics" class={linkClass}>
+            Serrurier pour syndics
+          </a>
+        </li>
+        <li>
+          <a href="/professionnels#bailleurs" class={linkClass}>
+            Serrurier pour bailleurs
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-4 text-2xl text-brand">Navigation</h2>
+      <ul class="grid gap-2.5 text-sm">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.to} class={linkClass}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container-site mt-12 flex flex-col items-center gap-3 border-t border-white/12 pt-5 text-center text-xs text-white/55 sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
+    <span>
+      © {new Date().getFullYear()} {company.name} · SAS ·{' '}
+      <span class="whitespace-nowrap">SIRET {company.legal.siret}</span>
+    </span>
+    <a href="/mentions-legales" class={linkClass}>
+      Mentions légales
+    </a>
+  </div>
+</footer>

@@ -1,9 +1,9 @@
-import { DoorOpen, KeyRound, ShieldCheck, type LucideIcon } from 'lucide-react';
+import { DoorOpen, KeyRound, ShieldCheck, type AstroComponent } from '@lucide/astro';
 import { images, type ImageSlot } from './images';
 
 export type Service = {
   id: string;
-  icon: LucideIcon;
+  icon: AstroComponent;
   title: string;
   summary: string;
   intro: string;

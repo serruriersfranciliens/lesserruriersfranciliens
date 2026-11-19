@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { CheckIcon } from '@lucide/astro';
+import { cn } from '@/lib/utils';
+
+// Native checkbox styled like the shadcn one; the tick is drawn over it when checked.
+type Props = Omit<HTMLAttributes<'input'>, 'type'>;
+const { class: className, ...rest } = Astro.props;
+---
+
+<span class={cn('relative flex size-4 shrink-0', className)}>
+  <input
+    type="checkbox"
+    data-slot="checkbox"
+    class="peer size-4 shrink-0 cursor-pointer appearance-none rounded-[4px] border border-input transition-colors outline-none checked:border-primary checked:bg-primary focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:bg-input/30 dark:checked:bg-primary"
+    {...rest}
+  />
+  <CheckIcon
+    class="pointer-events-none absolute inset-0 m-auto hidden size-3.5 text-primary-foreground peer-checked:block"
+    aria-hidden="true"
+  />
+</span>

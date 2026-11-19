@@ -23,12 +23,12 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24 # prerender script relies on native TypeScript type stripping
+          node-version: 24
           cache: npm
 
       - run: npm ci
 
-      # Type-check, client + SSR build, prerender (HTML pages, sitemap, robots.txt, 404).
+      # Type-check, then build every page to static HTML (plus sitemap, robots.txt, 404).
       - run: npm run build
         env:
           VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}

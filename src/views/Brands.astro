@@ -1,0 +1,48 @@
+---
+import { brandPath, brands, brandServices } from '@/content/brands';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<>
+  <PageHeader eyebrow="Marques de serrures" title="Serrurier toutes marques">
+    Fichet, Vachette, Bricard, Mul-T-Lock, Kaba… Nous dépannons, remplaçons et faisons évoluer
+    les serrures et cylindres des principales marques, à Paris et en Île-de-France.
+  </PageHeader>
+
+  <Section>
+    <div data-reveal="stagger" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {brands.map((b) => (
+        <a href={brandPath(b.slug)} class="group">
+          <Card class="h-full p-2 transition-colors group-hover:ring-brand">
+            <CardContent>
+              <h2 class="mb-1 text-3xl group-hover:text-brand-ink">{b.name}</h2>
+              <p class="mb-3 text-xs tracking-wide text-muted-foreground uppercase">
+                {b.origin}
+              </p>
+              <p class="text-muted-foreground">{b.summary}</p>
+            </CardContent>
+          </Card>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="paper">
+    <SectionHeading eyebrow="Sur toutes les marques" title="Nos interventions" />
+    <div data-reveal="stagger" class="grid gap-x-10 gap-y-6 md:grid-cols-2">
+      {brandServices.map((s) => (
+        <div class="border-t-2 pt-6">
+          <h3 class="mb-2 text-3xl">{s.title}</h3>
+          <p class="text-muted-foreground">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <CtaBand />
+</>

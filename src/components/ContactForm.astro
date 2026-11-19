@@ -1,0 +1,173 @@
+---
+import { CheckCircle2, Send } from '@lucide/astro';
+import { company } from '@/content/company';
+import { buttonVariants } from '@/components/ui/button';
+import Checkbox from '@/components/ui/Checkbox.astro';
+import Input from '@/components/ui/Input.astro';
+import Label from '@/components/ui/Label.astro';
+import NativeSelect from '@/components/ui/NativeSelect.astro';
+import Textarea from '@/components/ui/Textarea.astro';
+import { cn } from '@/lib/utils';
+
+const control = 'h-11 bg-background text-base md:text-base';
+const field = 'grid gap-1.5';
+const option = 'bg-[Canvas] text-[CanvasText]';
+---
+
+<form class="grid gap-5" data-contact-form data-email={company.email} data-name={company.name}>
+  <div class={field}>
+    <Label for="email">E-mail *</Label>
+    <Input
+      id="email"
+      type="email"
+      name="email"
+      required
+      autocomplete="email"
+      class={control}
+    />
+  </div>
+
+  <div class={field}>
+    <Label for="telephone">Téléphone *</Label>
+    <Input
+      id="telephone"
+      type="tel"
+      name="telephone"
+      required
+      autocomplete="tel"
+      class={control}
+    />
+  </div>
+
+  <div class={field}>
+    <Label for="departement">Département d’intervention *</Label>
+    <NativeSelect
+      id="departement"
+      name="departement"
+      required
+      class="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
+    >
+      <option value="" disabled selected class={option}>Choisir…</option>
+      {
+        company.departments.map((d) => (
+          <option value={`${d.code} – ${d.name}`} class={option}>
+            {d.code} – {d.name}
+          </option>
+        ))
+      }
+    </NativeSelect>
+  </div>
+
+  <div class={field}>
+    <Label for="message">Votre message *</Label>
+    <Textarea
+      id="message"
+      name="message"
+      rows={6}
+      required
+      class="min-h-36 bg-background text-base md:text-base"
+      placeholder="Type de porte, de serrure, nombre de logements ou de portes concernés, délai souhaité…"
+    />
+  </div>
+
+  {/* Honeypot field for bots. */}
+  <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" aria-hidden="true" />
+
+  <div class="flex items-start gap-3">
+    <Checkbox id="consentement" name="consentement" value="oui" required class="mt-0.5" />
+    <Label for="consentement" class="text-sm leading-snug font-normal text-muted-foreground">
+      J’accepte que mes données soient utilisées pour traiter ma demande. Elles ne sont ni
+      revendues ni utilisées à d’autres fins.
+    </Label>
+  </div>
+
+  <p class="text-sm text-destructive" role="alert" hidden data-error>
+    L’envoi a échoué. Réessayez ou écrivez-nous à{' '}
+    <a href={`mailto:${company.email}`} class="underline">{company.email}</a>.
+  </p>
+
+  <button
+    type="submit"
+    data-slot="button"
+    class={cn(buttonVariants({ size: 'xl' }), 'justify-self-start')}
+  >
+    <Send aria-hidden="true" />
+    <span data-label>Envoyer ma demande</span>
+  </button>
+</form>
+
+<div class="px-5 py-10 text-center" role="status" hidden data-sent>
+  <CheckCircle2 class="mx-auto mb-3 size-10 text-brand" aria-hidden="true" />
+  <h3 class="mb-2 text-3xl">Message envoyé</h3>
+  <p>
+    Merci, nous revenons vers vous très rapidement. Pour une urgence, écrivez-nous sur{' '}
+    <a href={company.whatsappHref} target="_blank" rel="noreferrer" class="font-semibold text-brand-ink"
+      >WhatsApp</a
+    >{' '}
+    ou appelez-nous au{' '}
+    <a href={company.phoneHref} class="font-semibold text-brand-ink">{company.phone}</a>.
+  </p>
+</div>
+
+<script>
+  // Web3Forms public access key (safe to expose). Without it, the form opens the
+  // visitor's mail client instead.
+  const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
+
+  const labels: Record<string, string> = {
+    email: 'E-mail',
+    telephone: 'Téléphone',
+    departement: 'Département',
+    message: 'Message',
+  };
+
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]')!;
+  const company = { email: form.dataset.email!, name: form.dataset.name! };
+
+  function toMailto(data: FormData) {
+    const body = Object.keys(labels)
+      .map((key) => `${labels[key]} : ${data.get(key) ?? ''}`)
+      .join('\n');
+    const subject = `Demande de contact (${data.get('departement')})`;
+    return `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  const sent = document.querySelector<HTMLElement>('[data-sent]')!;
+  const error = form.querySelector<HTMLElement>('[data-error]')!;
+  const submit = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+  const label = submit.querySelector<HTMLElement>('[data-label]')!;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+
+    if (!ACCESS_KEY) {
+      window.location.href = toMailto(data);
+      return;
+    }
+
+    error.hidden = true;
+    submit.disabled = true;
+    label.textContent = 'Envoi…';
+    data.append('access_key', ACCESS_KEY);
+    data.append('subject', `Site web – demande de contact (${data.get('departement')})`);
+    data.append('from_name', company.name);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const result = (await response.json()) as { success: boolean };
+      if (!result.success) throw new Error('Submission rejected');
+      form.reset();
+      form.hidden = true;
+      sent.hidden = false;
+    } catch {
+      error.hidden = false;
+    } finally {
+      submit.disabled = false;
+      label.textContent = 'Envoyer ma demande';
+    }
+  });
+</script>

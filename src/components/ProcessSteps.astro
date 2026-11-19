@@ -1,0 +1,15 @@
+---
+import { processSteps } from '@/content/company';
+---
+
+<ol data-reveal="stagger" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+  {processSteps.map((step, i) => (
+    <li class="border-t-[3px] border-brand pt-5">
+      <span class="mb-2 block font-heading text-5xl leading-none text-brand" aria-hidden="true">
+        {String(i + 1).padStart(2, '0')}
+      </span>
+      <h3 class="mb-2 text-2xl">{step.title}</h3>
+      <p class="text-sm text-muted-foreground">{step.text}</p>
+    </li>
+  ))}
+</ol>

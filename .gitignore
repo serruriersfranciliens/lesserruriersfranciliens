@@ -8,3 +8,4 @@ build_docs/
 .DS_Store
 *.tsbuildinfo
 dist-server/
+.astro/

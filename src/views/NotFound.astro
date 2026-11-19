@@ -1,0 +1,21 @@
+---
+import { buttonVariants } from '@/components/ui/button';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+---
+
+<>
+  <PageHeader eyebrow="Erreur 404" title="Page introuvable">
+    La page que vous cherchez n’existe pas ou a été déplacée.
+  </PageHeader>
+  <Section>
+    <div class="flex flex-wrap gap-3">
+      <a href="/" class={buttonVariants({ size: 'xl' })}>
+        Retour à l’accueil
+      </a>
+      <a href="/contact" class={buttonVariants({ size: 'xl', variant: 'outline' })}>
+        Nous contacter
+      </a>
+    </div>
+  </Section>
+</>

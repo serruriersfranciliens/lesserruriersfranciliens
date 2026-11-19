@@ -1,0 +1,23 @@
+---
+import { cn } from '@/lib/utils';
+
+const tones = {
+  default: 'bg-background',
+  paper: 'bg-paper',
+  cream: 'bg-cream',
+  dark: 'dark bg-background text-foreground',
+} as const;
+
+type Props = {
+  id?: string;
+  tone?: keyof typeof tones;
+  class?: string;
+  containerClass?: string;
+  'aria-label'?: string;
+};
+const { id, tone = 'default', class: className, containerClass, ...rest } = Astro.props;
+---
+
+<section id={id} class={cn('py-14 md:py-24', tones[tone], className)} {...rest}>
+  <div class={cn('container-site', containerClass)}><slot /></div>
+</section>

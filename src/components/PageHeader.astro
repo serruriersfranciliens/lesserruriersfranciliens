@@ -1,0 +1,26 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+type Props = { eyebrow: string; title: string };
+const { eyebrow, title } = Astro.props;
+---
+
+<section
+  class="dark relative overflow-hidden border-b-[6px] border-brand bg-background pt-14 pb-10 text-foreground md:pt-28 md:pb-18"
+>
+  <div class="container-site">
+    <Eyebrow class="motion-safe:animate-rise">{eyebrow}</Eyebrow>
+    <h1
+      class="mb-4 text-5xl motion-safe:animate-rise motion-safe:[animation-delay:80ms] md:text-7xl"
+    >
+      {title}
+    </h1>
+    {
+      Astro.slots.has('default') && (
+        <p class="max-w-2xl text-lg text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:180ms]">
+          <slot />
+        </p>
+      )
+    }
+  </div>
+</section>

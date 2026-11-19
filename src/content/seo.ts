@@ -5,10 +5,10 @@ import { generalFaq } from './faq';
 import { openingPrices } from './pricing';
 import { proFaq } from './professionals';
 import { services } from './services';
+import { siteUrl } from './site';
 import { zones } from './zones';
 
-// Canonical origin. Must match public/CNAME.
-export const siteUrl = 'https://lesserruriersfranciliens.fr';
+export { siteUrl };
 
 export type PageMeta = {
   path: string;
@@ -272,7 +272,7 @@ export function buildJsonLd(meta: PageMeta) {
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
-// ---------- Head tags (used by the prerender script) ----------
+// ---------- Head tags (used by src/layouts/Layout.astro) ----------
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

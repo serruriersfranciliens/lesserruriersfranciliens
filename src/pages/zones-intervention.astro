@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Zones from '@/views/Zones.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/zones-intervention')}>
+  <Zones />
+</Layout>

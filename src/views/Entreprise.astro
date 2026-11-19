@@ -1,0 +1,130 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import { charter, commitments } from '@/content/company';
+import { images } from '@/content/images';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import ImagePlaceholder from '@/components/ImagePlaceholder.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
+import CheckList from '@/components/CheckList.astro';
+import Eyebrow from '@/components/Eyebrow.astro';
+import IconBadge from '@/components/IconBadge.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+
+const figures = [
+  { value: '10', label: 'années d’expérience' },
+  { value: '+ de 200', label: 'interventions par an' },
+  { value: '8', label: 'départements couverts' },
+];
+---
+
+<>
+  <PageHeader eyebrow="L’entreprise" title="Des artisans serruriers engagés à votre service">
+    Une équipe de professionnels spécialisée dans le dépannage d’urgence et les travaux de
+    serrurerie, au service des acteurs de l’immobilier francilien.
+  </PageHeader>
+
+  <Section>
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div data-reveal="up">
+        <Eyebrow>Qui sommes-nous</Eyebrow>
+        <h2 class="mb-5 text-4xl md:text-5xl">
+          Un service qualifié, un accompagnement complet
+        </h2>
+        <div class="space-y-4 text-muted-foreground">
+          <p>
+            Les Serruriers Franciliens interviennent pour tous types de travaux de serrurerie et
+            de blindage. Nous traitons vos demandes d’intervention en urgence dans les plus
+            brefs délais, et vos projets d’installation ou de rénovation avec la plus grande
+            attention.
+          </p>
+          <p>
+            Notre clientèle est majoritairement composée de professionnels de l’immobilier :
+            syndics de copropriété, bailleurs, agences immobilières, administrateurs de biens.
+            Leurs exigences (réactivité, traçabilité, devis détaillés) font notre méthode, et en
+            font aussi profiter nos clients particuliers.
+          </p>
+          <p>Retrouvez nos chantiers récents sur nos réseaux :</p>
+        </div>
+        <SocialLinks class="mt-3" />
+        <blockquote class="mt-7 rounded-r-lg border-l-4 border-brand bg-cream px-6 py-5 font-heading text-3xl leading-tight">
+          « Un service qualifié, des produits sélectionnés, un accompagnement complet, adapté et
+          des tarifs garantis. »
+        </blockquote>
+      </div>
+      <ImagePlaceholder image={images.entreprise} />
+    </div>
+  </Section>
+
+  <Section tone="dark">
+    <h2 class="sr-only">Chiffres clés</h2>
+    <ul data-reveal="stagger" class="grid gap-6 sm:grid-cols-3">
+      {figures.map((f) => (
+        <li class="flex flex-col items-center text-center">
+          <strong class="font-heading text-7xl leading-none text-brand">{f.value}</strong>
+          <span class="text-muted-foreground">{f.label}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section tone="paper">
+    <SectionHeading eyebrow="Notre charte" title="5 engagements, à chaque intervention" />
+    <ol data-reveal="stagger" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+      {charter.map((item, i) => (
+        <li>
+          <Card class="h-full border-t-4 border-t-brand p-2">
+            <CardContent>
+              <span class="mb-2 block font-heading text-4xl leading-none text-brand-ink">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mb-2 text-2xl">{item.title}</h3>
+              <p class="text-sm text-muted-foreground">{item.text}</p>
+            </CardContent>
+          </Card>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <Section>
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div data-reveal="up">
+        <Eyebrow>Garanties</Eyebrow>
+        <h2 class="mb-5 text-4xl md:text-5xl">Travailler avec nous en toute sérénité</h2>
+        <CheckList
+          items={[
+            'Devis gratuit, écrit et détaillé avant tout engagement',
+            'Attestation de fin de travaux signée à chaque intervention',
+            'Matériel garanti par le fabricant, pose garantie',
+            'Assurance RC professionnelle et décennale',
+          ]}
+        />
+        <a
+          href="/professionnels"
+          class="inline-flex items-center gap-1.5 font-semibold text-brand-ink hover:underline"
+        >
+          Nos conditions pour les professionnels <ArrowRight class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+      <div data-reveal="stagger" class="grid gap-5 sm:grid-cols-2">
+        {commitments.map(({ icon: Icon, title, text }) => (
+          <Card class="p-2">
+            <CardContent>
+              <IconBadge>
+                <Icon class="size-6" aria-hidden="true" />
+              </IconBadge>
+              <h3 class="mb-2 text-2xl">{title}</h3>
+              <p class="text-sm text-muted-foreground">{text}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <CtaBand />
+</>

@@ -1,4 +1,4 @@
-import { Award, BadgeEuro, Clock, FileCheck } from 'lucide-react';
+import { Award, BadgeEuro, Clock, FileCheck } from '@lucide/astro';
 
 // Company facts. Values marked TODO must be confirmed by the client
 // (see QUESTIONS.md).

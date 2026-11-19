@@ -1,0 +1,127 @@
+---
+import { a2pLevels, lockPoints, services } from '@/content/services';
+import Table from '@/components/ui/Table.astro';
+import TableBody from '@/components/ui/TableBody.astro';
+import TableCell from '@/components/ui/TableCell.astro';
+import TableHead from '@/components/ui/TableHead.astro';
+import TableHeader from '@/components/ui/TableHeader.astro';
+import TableRow from '@/components/ui/TableRow.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import ImagePlaceholder from '@/components/ImagePlaceholder.astro';
+import OpeningPrices from '@/components/OpeningPrices.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import IconBadge from '@/components/IconBadge.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { cn } from '@/lib/utils';
+
+const subnavLink =
+  'inline-flex shrink-0 items-center gap-2 rounded-full bg-muted px-3.5 py-2 text-sm font-medium transition-colors hover:bg-cream hover:text-brand-ink';
+---
+
+<>
+  <PageHeader eyebrow="Compétences" title="Dépannage, serrures & blindage">
+    Du simple changement de cylindre à la porte blindée, tous vos travaux d’ouverture, de
+    remplacement, de réparation et de blindage, à Paris et en Île-de-France.
+  </PageHeader>
+
+  <nav aria-label="Compétences" class="sticky top-19 z-40 border-b bg-background">
+    <div class="container-site flex gap-2 overflow-x-auto py-2.5 [scrollbar-width:none]">
+      {services.map(({ icon: Icon, ...s }) => (
+        <a href={`#${s.id}`} class={subnavLink}>
+          <Icon class="size-4" aria-hidden="true" />
+          {s.title}
+        </a>
+      ))}
+      <a href="#bien-choisir" class={subnavLink}>
+        Bien choisir sa serrure
+      </a>
+    </div>
+  </nav>
+
+  {services.map(({ icon: Icon, ...service }, i) => (
+    <Section id={service.id} tone={i % 2 ? 'paper' : 'default'}>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div data-reveal="up" class={cn(i % 2 && 'lg:order-2')}>
+          <IconBadge>
+            <Icon class="size-6" aria-hidden="true" />
+          </IconBadge>
+          <h2 class="mb-4 text-4xl md:text-5xl">{service.title}</h2>
+          <p class="text-lg text-muted-foreground">{service.intro}</p>
+        </div>
+        <ImagePlaceholder image={service.image} />
+      </div>
+      <div data-reveal="stagger" class="mt-12 grid gap-x-10 gap-y-6 md:grid-cols-2">
+        {service.items.map((item) => (
+          <div class="border-t-2 pt-6">
+            <h3 class="mb-2 text-3xl">{item.title}</h3>
+            <p class="text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
+      {service.id === 'depannage' && (
+        <div class="mt-14">
+          <h3 data-reveal="up" class="mb-6 text-3xl md:text-4xl">
+            Nos tarifs d’ouverture de porte
+          </h3>
+          <OpeningPrices />
+        </div>
+      )}
+    </Section>
+  ))}
+
+  <Section tone="dark" id="bien-choisir">
+    <SectionHeading
+      eyebrow="Bien choisir"
+      title="Comprendre la certification A2P"
+      lead="Délivrée après des tests de résistance à l’effraction, la certification A2P classe serrures et cylindres en trois niveaux. Elle est souvent exigée par les assureurs : nous vous aidons à choisir le niveau adapté."
+    />
+    <Table data-reveal="up" class="min-w-xl text-base">
+      <TableHeader>
+        <TableRow class="hover:bg-transparent">
+          <TableHead class="text-xs tracking-widest text-muted-foreground uppercase">
+            Niveau
+          </TableHead>
+          <TableHead class="text-xs tracking-widest text-muted-foreground uppercase">
+            Résistance à l’effraction
+          </TableHead>
+          <TableHead class="text-xs tracking-widest text-muted-foreground uppercase">
+            Usage conseillé
+          </TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {a2pLevels.map((row) => (
+          <TableRow class="hover:bg-transparent">
+            <TableHead scope="row" class="py-4 font-heading text-3xl text-brand">
+              {row.level}
+            </TableHead>
+            <TableCell class="py-4">{row.resistance}</TableCell>
+            <TableCell class="py-4 whitespace-normal">{row.usage}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+    <p class="mt-6 text-sm text-muted-foreground">
+      Les blocs-portes blindés sont, eux, classés de BP1 à BP3 selon le même principe. Vérifiez
+      toujours les exigences de votre contrat d’assurance.
+    </p>
+
+    <h2 data-reveal="up" class="mt-16 mb-6 text-4xl md:text-5xl">
+      3, 5 ou 7 points : quelle serrure multipoints ?
+    </h2>
+    <div data-reveal="stagger" class="grid gap-5 md:grid-cols-3">
+      {lockPoints.map((p) => (
+        <div class="rounded-lg border bg-card p-6">
+          <strong class="mb-1 block font-heading text-5xl leading-none text-brand">
+            {p.points}
+          </strong>
+          <h3 class="mb-2 text-2xl">{p.title}</h3>
+          <p class="text-sm text-muted-foreground">{p.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <CtaBand title="Besoin d’un conseil ?" />
+</>

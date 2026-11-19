@@ -1,0 +1,87 @@
+---
+import { audiences, proFaq, proTerms } from '@/content/professionals';
+import { buttonVariants } from '@/components/ui/button';
+import CtaBand from '@/components/CtaBand.astro';
+import Faq from '@/components/Faq.astro';
+import ImagePlaceholder from '@/components/ImagePlaceholder.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import ProcessSteps from '@/components/ProcessSteps.astro';
+import CheckList from '@/components/CheckList.astro';
+import IconBadge from '@/components/IconBadge.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { cn } from '@/lib/utils';
+
+const subnavLink =
+  'inline-flex shrink-0 items-center gap-2 rounded-full bg-muted px-3.5 py-2 text-sm font-medium transition-colors hover:bg-cream hover:text-brand-ink';
+---
+
+<>
+  <PageHeader eyebrow="Professionnels" title="Serrurier partenaire des syndics et bailleurs">
+    Syndics de copropriété, bailleurs, agences immobilières, administrateurs de biens : nous
+    connaissons vos contraintes et vos procédures. Une offre conçue pour simplifier la gestion
+    des accès de votre patrimoine en Île-de-France.
+  </PageHeader>
+
+  <nav aria-label="Publics" class="sticky top-19 z-40 border-b bg-background">
+    <div class="container-site flex gap-2 overflow-x-auto py-2.5 [scrollbar-width:none]">
+      {audiences.map(({ icon: Icon, ...a }) => (
+        <a href={`#${a.id}`} class={subnavLink}>
+          <Icon class="size-4" aria-hidden="true" />
+          {a.title}
+        </a>
+      ))}
+      <a href="#modalites" class={subnavLink}>
+        Modalités
+      </a>
+      <a href="#faq" class={subnavLink}>
+        Questions fréquentes
+      </a>
+    </div>
+  </nav>
+
+  {audiences.map(({ icon: Icon, ...a }, i) => (
+    <Section id={a.id} tone={i % 2 ? 'paper' : 'default'}>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div data-reveal="up" class={cn(i % 2 && 'lg:order-2')}>
+          <IconBadge>
+            <Icon class="size-6" aria-hidden="true" />
+          </IconBadge>
+          <h2 class="mb-4 text-4xl md:text-5xl">{a.title}</h2>
+          <p class="mb-6 text-lg text-muted-foreground">{a.lead}</p>
+          <CheckList items={a.items} />
+          <a href="/contact" class={buttonVariants({ size: 'xl' })}>
+            Demander un devis
+          </a>
+        </div>
+        <ImagePlaceholder image={a.image} />
+      </div>
+    </Section>
+  ))}
+
+  <Section tone="dark" id="modalites">
+    <SectionHeading eyebrow="Modalités" title="Pensé pour les gestionnaires" />
+    <div data-reveal="stagger" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {proTerms.map((t) => (
+        <div class="border-t-[3px] border-brand pt-5">
+          <h3 class="mb-2 text-2xl">{t.title}</h3>
+          <p class="text-sm text-muted-foreground">{t.text}</p>
+        </div>
+      ))}
+    </div>
+    <h3 data-reveal="up" class="mt-16 mb-7 text-3xl">
+      Le déroulé d’un ordre de service
+    </h3>
+    <ProcessSteps />
+  </Section>
+
+  <Section tone="paper" id="faq">
+    <SectionHeading eyebrow="FAQ" title="Questions fréquentes des professionnels" />
+    <Faq items={proFaq} />
+  </Section>
+
+  <CtaBand
+    title="Parlons de votre parc"
+    text="Présentez-nous vos immeubles ou vos logements : nous vous proposons une organisation et des conditions adaptées."
+  />
+</>

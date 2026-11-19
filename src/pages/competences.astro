@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Competences from '@/views/Competences.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/competences')}>
+  <Competences />
+</Layout>

@@ -1,0 +1,60 @@
+---
+import { Camera, Phone } from '@lucide/astro';
+import { company } from '@/content/company';
+import { buttonVariants } from '@/components/ui/button';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+import { cn } from '@/lib/utils';
+
+type Props = {
+  title?: string;
+  text?: string;
+};
+
+const {
+  title = 'Un projet, une urgence ?',
+  text = 'Envoyez-nous des photos de votre porte ou de votre serrure : nous vous répondons rapidement avec une solution adaptée et un devis gratuit.',
+} = Astro.props;
+---
+
+<section class="bg-brand py-12 text-ink md:py-18">
+  <div
+    data-reveal="stagger"
+    class="container-site grid items-center gap-x-12 gap-y-6 lg:grid-cols-[1fr_auto]"
+  >
+    <div>
+      <h2 class="mb-2 text-4xl md:text-5xl">{title}</h2>
+      <p class="max-w-xl">{text}</p>
+    </div>
+    <div class="flex flex-wrap gap-3 lg:justify-end">
+      <a
+        href="/contact"
+        class={cn(buttonVariants({ size: 'xl' }), 'bg-ink text-white hover:bg-anthracite')}
+      >
+        <Camera aria-hidden="true" />
+        Demander un devis
+      </a>
+      <a
+        href={company.whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        class={cn(
+          buttonVariants({ size: 'xl', variant: 'outline' }),
+          'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
+        )}
+      >
+        <WhatsAppIcon variant="black" />
+        WhatsApp
+      </a>
+      <a
+        href={company.phoneHref}
+        class={cn(
+          buttonVariants({ size: 'xl', variant: 'outline' }),
+          'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
+        )}
+      >
+        <Phone aria-hidden="true" />
+        {company.phone}
+      </a>
+    </div>
+  </div>
+</section>

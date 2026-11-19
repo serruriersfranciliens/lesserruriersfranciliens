@@ -1,0 +1,135 @@
+---
+import { Clock, MapPin, Phone } from '@lucide/astro';
+import { company } from '@/content/company';
+import { zones } from '@/content/zones';
+import { cities } from '@/content/cities';
+import { buttonVariants } from '@/components/ui/button';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+---
+
+<>
+  <PageHeader
+    eyebrow="Zones d’intervention"
+    title="Serrurier à Paris et dans toute l’Île-de-France"
+  >
+    Nos serruriers interviennent 7 jours sur 7, de 8h à 22h, à Paris et dans les sept
+    départements franciliens, pour les syndics, les bailleurs et les particuliers.
+  </PageHeader>
+
+  <Section>
+    <div data-reveal="stagger" class="mb-12 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+      <div class="space-y-4 text-muted-foreground">
+        <p>
+          Que vous gériez une copropriété à Paris, un parc locatif dans les Hauts-de-Seine ou en
+          Seine-Saint-Denis, ou que vous ayez besoin d’un serrurier pour votre logement dans le
+          Val-de-Marne, les Yvelines, l’Essonne, le Val-d’Oise ou la Seine-et-Marne, nous
+          organisons l’intervention au plus vite.
+        </p>
+        <p>
+          Les délais dépendent de la distance et de la nature de la demande : les urgences
+          (porte claquée, effraction) sont traitées en priorité, les travaux planifiés sont
+          programmés avec vous selon vos disponibilités et celles des occupants.
+        </p>
+      </div>
+      <Card class="bg-cream ring-0">
+        <CardContent class="grid gap-3">
+          <p class="flex items-center gap-3 font-medium">
+            <Clock class="size-5 text-brand-ink" aria-hidden="true" /> {company.hours}
+          </p>
+          <p class="flex items-center gap-3 font-medium">
+            <MapPin class="size-5 text-brand-ink" aria-hidden="true" /> 75, 77, 78, 91, 92, 93, 94,
+            95
+          </p>
+          <div class="mt-2 flex flex-wrap gap-3">
+            <a
+              href={company.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              class={buttonVariants({ size: 'xl' })}
+            >
+              <WhatsAppIcon variant="black" />
+              WhatsApp
+            </a>
+            <a
+              href={company.phoneHref}
+              class={buttonVariants({ size: 'xl', variant: 'outline' })}
+            >
+              <Phone aria-hidden="true" />
+              {company.phone}
+            </a>
+            <a href="/contact" class={buttonVariants({ size: 'xl', variant: 'outline' })}>
+              Devis gratuit
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+
+    <SectionHeading
+      eyebrow="Intervention en moins d’1 h"
+      title="Nos villes d’intervention prioritaires"
+      lead="Dans ces villes et arrondissements de l’est parisien, nous intervenons en moins d’une heure."
+    />
+    <ul data-reveal="stagger" class="mb-16 flex flex-wrap gap-2">
+      {cities.map((c) => (
+        <li>
+          <a
+            href={c.path}
+            class="inline-block rounded-full bg-muted px-3 py-1.5 text-sm hover:text-brand-ink"
+          >
+            {c.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <SectionHeading eyebrow="Départements & villes" title="Où intervenons-nous ?" />
+    <div data-reveal="stagger" class="grid gap-6 md:grid-cols-2">
+      {zones.map((zone) => (
+        <Card class="p-2">
+          <CardContent>
+            <h3 class="mb-2 flex items-baseline gap-3 text-3xl">
+              <span class="font-heading text-5xl leading-none text-brand">{zone.code}</span>
+              Serrurier {zone.locative}
+            </h3>
+            <p class="mb-4 text-sm text-muted-foreground">{zone.intro}</p>
+            <ul
+              class="flex flex-wrap gap-1.5"
+              aria-label={`Villes desservies : ${zone.name}`}
+            >
+              {zone.cities.map((name) => {
+                const page = cities.find((c) => c.name === name);
+                return (
+                  <li class="rounded-full bg-muted px-2.5 py-1 text-xs">
+                    {page ? (
+                      <a href={page.path} class="font-semibold hover:text-brand-ink">
+                        {name}
+                      </a>
+                    ) : (
+                      name
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+    <p class="mt-6 text-sm text-muted-foreground">
+      Votre commune n’apparaît pas ? Nous intervenons dans toute l’Île-de-France :{' '}
+      <a href="/contact" class="font-semibold text-brand-ink hover:underline">
+        contactez-nous
+      </a>
+      .
+    </p>
+  </Section>
+
+  <CtaBand />
+</>

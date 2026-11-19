@@ -1,0 +1,156 @@
+---
+import { Clock, MapPin, Phone, Timer } from '@lucide/astro';
+import { company } from '@/content/company';
+import { departmentNames, nearbyCities, type City } from '@/content/cities';
+import { housingAdvice } from '@/content/city-texts';
+import { services } from '@/content/services';
+import { buttonVariants } from '@/components/ui/button';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import IconBadge from '@/components/IconBadge.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import WhatsAppIcon from '@/components/WhatsAppIcon.astro';
+
+const chip = 'rounded-full bg-muted px-3 py-1.5 text-sm';
+
+type Props = { city: City };
+const { city } = Astro.props;
+
+const department = departmentNames[city.department];
+const nearby = nearbyCities(city);
+---
+
+<>
+  <PageHeader
+    eyebrow={`${department} (${city.department})`}
+    title={`Serrurier ${city.locative}`}
+  >
+    {city.intro}
+  </PageHeader>
+
+  <Section>
+    <div data-reveal="stagger" class="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
+      <div>
+        <h2 class="mb-4 text-4xl md:text-5xl">Vos demandes {city.locative}</h2>
+        <p class="mb-8 text-lg text-muted-foreground">{city.focus}</p>
+        <h3 class="mb-3 text-2xl">Bon à savoir</h3>
+        <p class="mb-8 text-muted-foreground">{city.details}</p>
+        <h3 class="mb-3 text-2xl">Quartiers et repères</h3>
+        <ul
+          class="flex flex-wrap gap-2"
+          aria-label={`Quartiers desservis ${city.locative}`}
+        >
+          {city.districts.map((d) => (
+            <li class={chip}>
+              {d}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Card class="self-start bg-cream ring-0">
+        <CardContent class="grid gap-3">
+          <p class="flex items-center gap-3 font-medium">
+            <Timer class="size-5 shrink-0 text-brand-ink" aria-hidden="true" />
+            Intervention en moins d’1 h {city.locative}
+          </p>
+          <p class="flex items-center gap-3 font-medium">
+            <Clock class="size-5 shrink-0 text-brand-ink" aria-hidden="true" /> {company.hours}
+          </p>
+          <p class="flex items-center gap-3 font-medium">
+            <MapPin class="size-5 shrink-0 text-brand-ink" aria-hidden="true" /> {city.name} (
+            {city.postalCode})
+          </p>
+          <div class="mt-2 flex flex-wrap gap-3">
+            <a
+              href={company.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              class={buttonVariants({ size: 'xl' })}
+            >
+              <WhatsAppIcon variant="black" />
+              WhatsApp
+            </a>
+            <a
+              href={company.phoneHref}
+              class={buttonVariants({ size: 'xl', variant: 'outline' })}
+            >
+              <Phone aria-hidden="true" />
+              {company.phone}
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="paper">
+    <SectionHeading
+      eyebrow="Nos interventions"
+      title={`Ce que nous faisons ${city.locative}`}
+      lead="Devis gratuit et détaillé avant toute intervention. Aucun travail n’est engagé sans votre accord."
+    />
+    <div data-reveal="stagger" class="grid gap-6 md:grid-cols-3">
+      {services.map(({ icon: Icon, ...s }) => (
+        <Card class="p-2">
+          <CardContent>
+            <IconBadge>
+              <Icon class="size-6" aria-hidden="true" />
+            </IconBadge>
+            <h3 class="mb-3 text-3xl">
+              <a href={`/competences#${s.id}`} class="hover:text-brand-ink">
+                {s.title}
+              </a>
+            </h3>
+            <ul class="grid gap-1.5 text-sm text-muted-foreground">
+              {s.items.map((item) => (
+                <li>{item.title}</li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHeading eyebrow="Nos conseils" title={`Le bâti ${city.locative}`} />
+    <div data-reveal="stagger" class="grid gap-x-10 gap-y-6 md:grid-cols-2">
+      {city.housing.map((h) => (
+        <div class="border-t-2 pt-6">
+          <h3 class="mb-2 text-3xl">{housingAdvice[h].title}</h3>
+          <p class="text-muted-foreground">{housingAdvice[h].text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="paper">
+    <SectionHeading eyebrow="À proximité" title="Nous intervenons aussi à côté" />
+    <ul data-reveal="stagger" class="flex flex-wrap gap-2">
+      {nearby.map((c) => (
+        <li>
+          <a
+            href={c.path}
+            class={`${chip} inline-block bg-background hover:text-brand-ink`}
+          >
+            Serrurier {c.locative}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="/zones-intervention"
+          class={`${chip} inline-block bg-background font-semibold text-brand-ink hover:underline`}
+        >
+          Toutes nos zones d’intervention
+        </a>
+      </li>
+    </ul>
+  </Section>
+
+  <CtaBand title={`Un serrurier ${city.locative} ?`} />
+</>

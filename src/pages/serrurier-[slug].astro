@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '@/layouts/Layout.astro';
+import CityPage from '@/views/City.astro';
+import { cities, type City } from '@/content/cities';
+import { getPageMeta } from '@/content/seo';
+
+export const getStaticPaths = (() =>
+  cities.map((city) => ({ params: { slug: city.slug }, props: { city } }))) satisfies GetStaticPaths;
+
+const { city } = Astro.props as { city: City };
+---
+
+<Layout meta={getPageMeta(city.path)}>
+  <CityPage city={city} />
+</Layout>

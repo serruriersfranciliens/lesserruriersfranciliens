@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Brands from '@/views/Brands.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/marques')}>
+  <Brands />
+</Layout>

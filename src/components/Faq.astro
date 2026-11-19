@@ -1,0 +1,41 @@
+---
+import { ChevronDownIcon, ChevronUpIcon } from '@lucide/astro';
+
+type Props = {
+  items: { question: string; answer: string }[];
+};
+const { items } = Astro.props;
+---
+
+<!--
+  Native <details> accordion: works without JavaScript, and the answers stay in the DOM
+  when closed so they remain indexable. Same `name` = only one answer open at a time.
+  Open/close animation in index.css.
+-->
+<div data-reveal="up" class="flex w-full max-w-3xl flex-col rounded-lg border bg-card px-6">
+  {
+    items.map((item) => (
+      <details name="faq" data-slot="accordion-item" class="group not-last:border-b">
+        <summary
+          data-slot="accordion-trigger"
+          class="relative flex cursor-pointer list-none items-start justify-between rounded-lg border border-transparent py-5 text-left transition-all outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [&::-webkit-details-marker]:hidden"
+        >
+          <h3 class="text-base leading-normal font-semibold normal-case">
+            {item.question}
+          </h3>
+          <ChevronDownIcon
+            class="pointer-events-none ml-auto size-4 shrink-0 text-muted-foreground group-open:hidden"
+            aria-hidden="true"
+          />
+          <ChevronUpIcon
+            class="pointer-events-none ml-auto hidden size-4 shrink-0 text-muted-foreground group-open:inline"
+            aria-hidden="true"
+          />
+        </summary>
+        <div class="pb-5 text-[0.95rem] text-muted-foreground">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))
+  }
+</div>

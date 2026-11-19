@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Professionnels from '@/views/Professionnels.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/professionnels')}>
+  <Professionnels />
+</Layout>

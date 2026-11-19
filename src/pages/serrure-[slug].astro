@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '@/layouts/Layout.astro';
+import BrandPage from '@/views/Brand.astro';
+import { brandPath, brands, type Brand } from '@/content/brands';
+import { getPageMeta } from '@/content/seo';
+
+export const getStaticPaths = (() =>
+  brands.map((brand) => ({ params: { slug: brand.slug }, props: { brand } }))) satisfies GetStaticPaths;
+
+const { brand } = Astro.props as { brand: Brand };
+---
+
+<Layout meta={getPageMeta(brandPath(brand.slug))}>
+  <BrandPage brand={brand} />
+</Layout>

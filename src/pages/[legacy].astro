@@ -1,0 +1,25 @@
+---
+// Legacy URLs of the previous site. GitHub Pages cannot send 301s: meta refresh +
+// canonical is the closest equivalent.
+import type { GetStaticPaths } from 'astro';
+import { absoluteUrl, legacyRedirects } from '@/content/seo';
+
+export const getStaticPaths = (() =>
+  Object.entries(legacyRedirects).map(([from, to]) => ({
+    params: { legacy: from.slice(1) },
+    props: { to },
+  }))) satisfies GetStaticPaths;
+
+const { to } = Astro.props as { to: string };
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirection</title>
+    <link rel="canonical" href={absoluteUrl(to)} />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+  </head>
+  <body><a href={to}>Cette page a été déplacée.</a></body>
+</html>

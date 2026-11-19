@@ -1,0 +1,89 @@
+---
+import { KeyRound } from '@lucide/astro';
+import { brandPath, brands, brandServices, type Brand } from '@/content/brands';
+import { company } from '@/content/company';
+import Card from '@/components/ui/Card.astro';
+import CardContent from '@/components/ui/CardContent.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+
+type Props = { brand: Brand };
+const { brand } = Astro.props;
+
+const others = brands.filter((b) => b.slug !== brand.slug);
+---
+
+<>
+  <PageHeader eyebrow={`Marques · ${brand.origin}`} title={`Serrurier ${brand.name}`}>
+    {brand.intro}
+  </PageHeader>
+
+  <Section>
+    <SectionHeading
+      eyebrow="Produits"
+      title={`Les produits ${brand.name} que nous rencontrons`}
+      lead={brand.context}
+    />
+    <div data-reveal="stagger" class="grid gap-6 md:grid-cols-3">
+      {brand.products.map((p) => (
+        <Card class="p-2">
+          <CardContent>
+            <h3 class="mb-2 text-3xl">{p.title}</h3>
+            <p class="text-muted-foreground">{p.text}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="paper">
+    <SectionHeading
+      eyebrow="Nos interventions"
+      title={`Ce que nous faisons sur ${brand.name}`}
+    />
+    <div data-reveal="stagger" class="grid gap-x-10 gap-y-6 md:grid-cols-2">
+      {brandServices.map((s) => (
+        <div class="border-t-2 pt-6">
+          <h3 class="mb-2 text-3xl">{s.title}</h3>
+          <p class="text-muted-foreground">{s.text}</p>
+        </div>
+      ))}
+    </div>
+    <Card data-reveal="up" class="mt-10 bg-cream ring-0">
+      <CardContent class="flex gap-4">
+        <KeyRound class="mt-1 size-6 shrink-0 text-brand-ink" aria-hidden="true" />
+        <p>
+          <strong>Clés protégées :</strong> pour un cylindre {brand.name} à clés protégées, une
+          copie ne peut être faite que sur présentation de la carte de propriété livrée avec le
+          cylindre. Sans cette carte, nous remplaçons le cylindre et vous remettons une nouvelle
+          carte.
+        </p>
+      </CardContent>
+    </Card>
+  </Section>
+
+  <Section>
+    <SectionHeading eyebrow="Toutes marques" title="Nous intervenons aussi sur" />
+    <ul data-reveal="stagger" class="mb-8 flex flex-wrap gap-2">
+      {others.map((b) => (
+        <li>
+          <a
+            href={brandPath(b.slug)}
+            class="inline-block rounded-full bg-muted px-3 py-1.5 text-sm hover:text-brand-ink"
+          >
+            {b.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="text-xs text-muted-foreground">
+      {company.name} n’est ni distributeur officiel ni affilié à {brand.name}. Les marques
+      citées appartiennent à leurs propriétaires respectifs et ne sont mentionnées que pour
+      indiquer les équipements sur lesquels nous intervenons.
+    </p>
+  </Section>
+
+  <CtaBand title={`Une serrure ${brand.name} à dépanner ?`} />
+</>

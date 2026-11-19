@@ -1,0 +1,57 @@
+---
+import '@/index.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import MobileCallBar from '@/components/MobileCallBar.astro';
+import { renderHeadTags, type PageMeta } from '@/content/seo';
+// Fonts used above the fold, preloaded: otherwise only discovered once the CSS is parsed.
+import teko from '@fontsource/teko/files/teko-latin-600-normal.woff2?url';
+import poppins from '@fontsource/poppins/files/poppins-latin-400-normal.woff2?url';
+
+type Props = { meta: PageMeta };
+const { meta } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Fragment set:html={renderHeadTags(meta)} />
+    <meta name="theme-color" content="#ff6b00" />
+    <meta name="format-detection" content="telephone=yes" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Les Serruriers Franciliens" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content="https://lesserruriersfranciliens.fr/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Les Serruriers Franciliens, serrurerie et blindage en Île-de-France"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://lesserruriersfranciliens.fr/og-image.png" />
+    <link rel="preload" href={teko} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={poppins} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <div id="root">
+      <a
+        href="#contenu"
+        class="sr-only z-[60] rounded-md bg-brand px-4 py-2 font-semibold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        Aller au contenu
+      </a>
+      <Header pathname={meta.path} />
+      <main id="contenu"><slot /></main>
+      <Footer />
+      <MobileCallBar />
+    </div>
+    <script>
+      import '@/lib/scroll-reveal';
+    </script>
+  </body>
+</html>
