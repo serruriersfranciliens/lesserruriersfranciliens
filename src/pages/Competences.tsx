@@ -1,5 +1,12 @@
 import { a2pLevels, lockPoints, services } from '@/content/services';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { CtaBand } from '@/components/CtaBand';
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 import { PageHeader } from '@/components/PageHeader';
@@ -63,7 +70,9 @@ export default function Competences() {
         <Table data-reveal="up" className="min-w-xl text-base">
           <TableHeader>
             <TableRow className="hover:bg-transparent">
-              <TableHead className="text-xs tracking-widest text-muted-foreground uppercase">Niveau</TableHead>
+              <TableHead className="text-xs tracking-widest text-muted-foreground uppercase">
+                Niveau
+              </TableHead>
               <TableHead className="text-xs tracking-widest text-muted-foreground uppercase">
                 Résistance à l’effraction
               </TableHead>
@@ -89,11 +98,15 @@ export default function Competences() {
           toujours les exigences de votre contrat d’assurance.
         </p>
 
-        <h2 data-reveal="up" className="mt-16 mb-6 text-4xl md:text-5xl">3, 5 ou 7 points : quelle serrure multipoints ?</h2>
+        <h2 data-reveal="up" className="mt-16 mb-6 text-4xl md:text-5xl">
+          3, 5 ou 7 points : quelle serrure multipoints ?
+        </h2>
         <div data-reveal="stagger" className="grid gap-5 md:grid-cols-3">
           {lockPoints.map((p) => (
             <div key={p.points} className="rounded-lg border bg-card p-6">
-              <strong className="mb-1 block font-heading text-5xl leading-none text-brand">{p.points}</strong>
+              <strong className="mb-1 block font-heading text-5xl leading-none text-brand">
+                {p.points}
+              </strong>
               <h3 className="mb-2 text-2xl">{p.title}</h3>
               <p className="text-sm text-muted-foreground">{p.text}</p>
             </div>

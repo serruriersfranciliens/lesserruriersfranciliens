@@ -45,7 +45,8 @@ export const realisations: Realisation[] = [
     location: 'Vincennes (94)',
     context: 'Appartement au rez-de-chaussée, porte bois d’origine, demande de l’assureur.',
     work: 'Blindage de la porte existante, cornières anti-pince et serrure 5 points certifiée A2P.',
-    result: 'Porte sécurisée conforme aux exigences de l’assurance, aspect d’origine conservé côté palier.',
+    result:
+      'Porte sécurisée conforme aux exigences de l’assurance, aspect d’origine conservé côté palier.',
     image: images.realisation3,
   },
   {
@@ -65,7 +66,8 @@ export const realisations: Realisation[] = [
     location: 'Versailles (78)',
     context: 'Porte d’entrée forcée, cylindre arraché, logement ouvert.',
     work: 'Fermeture provisoire le soir même, puis pose d’un cylindre haute sécurité et renfort du bâti.',
-    result: 'Logement sécurisé en quelques heures, documents remis pour la déclaration d’assurance.',
+    result:
+      'Logement sécurisé en quelques heures, documents remis pour la déclaration d’assurance.',
     image: images.realisation5,
   },
   {

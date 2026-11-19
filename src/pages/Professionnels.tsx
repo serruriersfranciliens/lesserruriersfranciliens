@@ -67,7 +67,9 @@ export default function Professionnels() {
             </div>
           ))}
         </div>
-        <h3 data-reveal="up" className="mt-16 mb-7 text-3xl">Le déroulé d’un ordre de service</h3>
+        <h3 data-reveal="up" className="mt-16 mb-7 text-3xl">
+          Le déroulé d’un ordre de service
+        </h3>
         <ProcessSteps />
       </Section>
 

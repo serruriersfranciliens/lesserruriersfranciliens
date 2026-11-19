@@ -14,7 +14,10 @@ export function MobileCallBar() {
       </a>
       <Link
         to="/contact"
-        className={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'w-full border-white bg-white')}
+        className={cn(
+          buttonVariants({ size: 'xl', variant: 'outline' }),
+          'w-full border-white bg-white',
+        )}
       >
         <FileText aria-hidden />
         Devis gratuit

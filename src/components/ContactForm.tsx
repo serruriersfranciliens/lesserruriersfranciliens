@@ -12,7 +12,12 @@ import { Textarea } from '@/components/ui/textarea';
 // visitor's mail client instead.
 const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 
-const profiles = ['Syndic / copropriété', 'Bailleur / gestionnaire', 'Entreprise / commerce', 'Particulier'];
+const profiles = [
+  'Syndic / copropriété',
+  'Bailleur / gestionnaire',
+  'Entreprise / commerce',
+  'Particulier',
+];
 const requestTypes = ['Demande de devis', 'Intervention urgente', 'Contrat / partenariat', 'Autre'];
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
@@ -99,7 +104,13 @@ export function ContactForm() {
     <form className="grid gap-5" onSubmit={handleSubmit}>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="profil" label="Vous êtes *">
-          <NativeSelect id="profil" name="profil" required defaultValue="" className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base">
+          <NativeSelect
+            id="profil"
+            name="profil"
+            required
+            defaultValue=""
+            className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
+          >
             <NativeSelectOption value="" disabled>
               Choisir…
             </NativeSelectOption>
@@ -109,7 +120,13 @@ export function ContactForm() {
           </NativeSelect>
         </Field>
         <Field id="type" label="Votre demande *">
-          <NativeSelect id="type" name="type" required defaultValue={requestTypes[0]} className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base">
+          <NativeSelect
+            id="type"
+            name="type"
+            required
+            defaultValue={requestTypes[0]}
+            className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
+          >
             {requestTypes.map((t) => (
               <NativeSelectOption key={t}>{t}</NativeSelectOption>
             ))}
@@ -128,10 +145,24 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="email" label="E-mail *">
-          <Input id="email" type="email" name="email" required autoComplete="email" className={control} />
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            required
+            autoComplete="email"
+            className={control}
+          />
         </Field>
         <Field id="telephone" label="Téléphone *">
-          <Input id="telephone" type="tel" name="telephone" required autoComplete="tel" className={control} />
+          <Input
+            id="telephone"
+            type="tel"
+            name="telephone"
+            required
+            autoComplete="tel"
+            className={control}
+          />
         </Field>
       </div>
 
@@ -164,7 +195,10 @@ export function ContactForm() {
 
       <div className="flex items-start gap-3">
         <Checkbox id="consentement" name="consentement" value="oui" required className="mt-0.5" />
-        <Label htmlFor="consentement" className="text-sm leading-snug font-normal text-muted-foreground">
+        <Label
+          htmlFor="consentement"
+          className="text-sm leading-snug font-normal text-muted-foreground"
+        >
           J’accepte que mes données soient utilisées pour traiter ma demande. Elles ne sont ni
           revendues ni utilisées à d’autres fins.
         </Label>
@@ -180,7 +214,12 @@ export function ContactForm() {
         </p>
       )}
 
-      <Button type="submit" size="xl" className="justify-self-start" disabled={status === 'sending'}>
+      <Button
+        type="submit"
+        size="xl"
+        className="justify-self-start"
+        disabled={status === 'sending'}
+      >
         <Send aria-hidden />
         {status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
       </Button>

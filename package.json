@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write src scripts vite.config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -28,6 +29,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.3.0",
+    "prettier": "3.10.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.8"
   }

@@ -11,7 +11,10 @@ import { Section, SectionHeading } from '@/components/Section';
 export default function Zones() {
   return (
     <>
-      <PageHeader eyebrow="Zones d’intervention" title="Serrurier à Paris et dans toute l’Île-de-France">
+      <PageHeader
+        eyebrow="Zones d’intervention"
+        title="Serrurier à Paris et dans toute l’Île-de-France"
+      >
         Nos serruriers interviennent 7 jours sur 7, de 8h à 22h, à Paris et dans les sept
         départements franciliens, pour les syndics, les bailleurs et les particuliers.
       </PageHeader>
@@ -20,9 +23,9 @@ export default function Zones() {
         <div data-reveal="stagger" className="mb-12 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-4 text-muted-foreground">
             <p>
-              Que vous gériez une copropriété à Paris, un parc locatif dans les Hauts-de-Seine ou
-              en Seine-Saint-Denis, ou que vous ayez besoin d’un serrurier pour votre logement dans
-              le Val-de-Marne, les Yvelines, l’Essonne, le Val-d’Oise ou la Seine-et-Marne, nous
+              Que vous gériez une copropriété à Paris, un parc locatif dans les Hauts-de-Seine ou en
+              Seine-Saint-Denis, ou que vous ayez besoin d’un serrurier pour votre logement dans le
+              Val-de-Marne, les Yvelines, l’Essonne, le Val-d’Oise ou la Seine-et-Marne, nous
               organisons l’intervention au plus vite.
             </p>
             <p>
@@ -37,7 +40,8 @@ export default function Zones() {
                 <Clock className="size-5 text-brand-ink" aria-hidden /> {company.hours}
               </p>
               <p className="flex items-center gap-3 font-medium">
-                <MapPin className="size-5 text-brand-ink" aria-hidden /> 75, 77, 78, 91, 92, 93, 94, 95
+                <MapPin className="size-5 text-brand-ink" aria-hidden /> 75, 77, 78, 91, 92, 93, 94,
+                95
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <a href={company.phoneHref} className={buttonVariants({ size: 'xl' })}>
@@ -61,7 +65,10 @@ export default function Zones() {
                   Serrurier {zone.locative}
                 </h3>
                 <p className="mb-4 text-sm text-muted-foreground">{zone.intro}</p>
-                <ul className="flex flex-wrap gap-1.5" aria-label={`Villes desservies : ${zone.name}`}>
+                <ul
+                  className="flex flex-wrap gap-1.5"
+                  aria-label={`Villes desservies : ${zone.name}`}
+                >
                   {zone.cities.map((city) => (
                     <li key={city} className="rounded-full bg-muted px-2.5 py-1 text-xs">
                       {city}

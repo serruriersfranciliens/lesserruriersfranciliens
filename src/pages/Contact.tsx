@@ -39,7 +39,12 @@ export default function Contact() {
               </li>
               <li className="flex items-center gap-3">
                 <MessageCircle className="size-5 shrink-0 text-brand-ink" aria-hidden />
-                <a href={company.whatsappHref} target="_blank" rel="noreferrer" className="font-medium hover:underline">
+                <a
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium hover:underline"
+                >
                   Écrire sur WhatsApp
                 </a>
               </li>

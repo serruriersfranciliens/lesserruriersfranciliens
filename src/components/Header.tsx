@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 function Brand() {
   return (
-    <Link to="/" className="mr-auto flex items-center gap-2.5" >
+    <Link to="/" className="mr-auto flex items-center gap-2.5">
       <img src="/logo-96.png" alt="" width={44} height={44} className="size-11" />
       <span className="flex flex-col font-heading text-[1.45rem] leading-[0.85] font-semibold uppercase">
         <span>Les Serruriers</span>
@@ -53,7 +53,10 @@ export function Header() {
           </ul>
         </nav>
 
-        <a href={company.phoneHref} className={cn(buttonVariants({ size: 'xl' }), 'hidden xl:inline-flex')}>
+        <a
+          href={company.phoneHref}
+          className={cn(buttonVariants({ size: 'xl' }), 'hidden xl:inline-flex')}
+        >
           <Phone aria-hidden />
           {company.phone}
         </a>
