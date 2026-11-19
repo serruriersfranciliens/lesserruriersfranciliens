@@ -5,6 +5,7 @@ import { company } from '@/content/company';
 import { navItems } from '@/content/navigation';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { cn } from '@/lib/utils';
 
 function Brand() {
@@ -60,6 +61,18 @@ export function Header() {
           <Phone aria-hidden />
           {company.phone}
         </a>
+        <a
+          href={company.whatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="WhatsApp"
+          className={cn(
+            buttonVariants({ size: 'xl', variant: 'outline' }),
+            'hidden px-3 xl:inline-flex',
+          )}
+        >
+          <WhatsAppIcon className="size-6" />
+        </a>
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
@@ -92,10 +105,19 @@ export function Header() {
                 ))}
               </ul>
             </nav>
-            <div className="mt-auto p-4">
+            <div className="mt-auto grid gap-3 p-4">
               <a href={company.phoneHref} className={cn(buttonVariants({ size: 'xl' }), 'w-full')}>
                 <Phone aria-hidden />
                 {company.phone}
+              </a>
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'w-full')}
+              >
+                <WhatsAppIcon />
+                WhatsApp
               </a>
             </div>
           </SheetContent>

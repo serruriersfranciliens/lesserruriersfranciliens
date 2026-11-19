@@ -11,6 +11,7 @@ import { CtaBand } from '@/components/CtaBand';
 import { Faq } from '@/components/Faq';
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 import { ProcessSteps } from '@/components/ProcessSteps';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { Eyebrow, IconBadge, Section, SectionHeading } from '@/components/Section';
 import { cn } from '@/lib/utils';
 
@@ -37,18 +38,30 @@ export default function Home() {
               pour vos dépannages d’urgence et vos travaux de serrurerie.
             </p>
             <div className="flex flex-wrap gap-3 motion-safe:animate-rise motion-safe:[animation-delay:280ms]">
-              <Link to="/contact" className={buttonVariants({ size: 'xl' })}>
+              <Link to="/contact" className={cn(buttonVariants({ size: 'xl' }), 'px-5')}>
                 Demander un devis
               </Link>
               <a
                 href={company.phoneHref}
                 className={cn(
                   buttonVariants({ size: 'xl', variant: 'outline' }),
-                  'border-2 border-white bg-transparent hover:border-brand hover:bg-transparent hover:text-brand',
+                  'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
                 )}
               >
                 <Phone aria-hidden />
                 {company.phone}
+              </a>
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  buttonVariants({ size: 'xl', variant: 'outline' }),
+                  'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
+                )}
+              >
+                <WhatsAppIcon />
+                WhatsApp
               </a>
             </div>
             <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:380ms]">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Clock, MapPin } from 'lucide-react';
+import { Clock, MapPin, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { zones } from '@/content/zones';
 import { buttonVariants } from '@/components/ui/button';
@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CtaBand } from '@/components/CtaBand';
 import { PageHeader } from '@/components/PageHeader';
 import { Section, SectionHeading } from '@/components/Section';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 export default function Zones() {
   return (
@@ -45,7 +46,17 @@ export default function Zones() {
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <a href={company.phoneHref} className={buttonVariants({ size: 'xl' })}>
+                  <Phone aria-hidden />
                   {company.phone}
+                </a>
+                <a
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={buttonVariants({ size: 'xl', variant: 'outline' })}
+                >
+                  <WhatsAppIcon />
+                  WhatsApp
                 </a>
                 <Link to="/contact" className={buttonVariants({ size: 'xl', variant: 'outline' })}>
                   Devis gratuit

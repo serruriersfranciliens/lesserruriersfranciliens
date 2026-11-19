@@ -93,6 +93,15 @@ export function ContactForm() {
           Merci, nous revenons vers vous très rapidement. Pour une urgence, appelez-nous au{' '}
           <a href={company.phoneHref} className="font-semibold text-brand-ink">
             {company.phone}
+          </a>{' '}
+          ou écrivez-nous sur{' '}
+          <a
+            href={company.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-brand-ink"
+          >
+            WhatsApp
           </a>
           .
         </p>

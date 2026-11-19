@@ -1,10 +1,11 @@
-import { Camera, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Camera, Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router';
 import { company } from '@/content/company';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHeader } from '@/components/PageHeader';
 import { Section } from '@/components/Section';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 export default function Contact() {
   return (
@@ -29,23 +30,26 @@ export default function Contact() {
                 {company.phone}
               </span>
             </a>
+            <a
+              href={company.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="-mt-3 flex items-center gap-4 rounded-lg border-2 border-brand p-6 transition-colors hover:bg-brand/10"
+            >
+              <WhatsAppIcon className="size-7 shrink-0 text-brand-ink" />
+              <span className="font-heading text-[2.6rem] leading-none">
+                <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                  Photos & messages
+                </small>
+                WhatsApp
+              </span>
+            </a>
 
             <ul className="grid gap-3.5">
               <li className="flex items-center gap-3 break-all">
                 <Mail className="size-5 shrink-0 text-brand-ink" aria-hidden />
                 <a href={`mailto:${company.email}`} className="font-medium hover:underline">
                   {company.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <MessageCircle className="size-5 shrink-0 text-brand-ink" aria-hidden />
-                <a
-                  href={company.whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium hover:underline"
-                >
-                  Écrire sur WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-3">

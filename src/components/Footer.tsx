@@ -1,8 +1,9 @@
 import { Link } from 'react-router';
-import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { navItems } from '@/content/navigation';
 import { services } from '@/content/services';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
 const linkClass = 'transition-colors hover:text-brand';
 
@@ -36,7 +37,7 @@ export function Footer() {
               </a>
             </li>
             <li className="flex items-center gap-2.5">
-              <MessageCircle className="size-4 shrink-0 text-brand" aria-hidden />
+              <WhatsAppIcon className="size-4 shrink-0 text-brand" />
               <a href={company.whatsappHref} target="_blank" rel="noreferrer" className={linkClass}>
                 WhatsApp
               </a>

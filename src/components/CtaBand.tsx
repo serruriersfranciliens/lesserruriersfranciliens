@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Camera, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { buttonVariants } from '@/components/ui/button';
+import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -17,7 +18,7 @@ export function CtaBand({
     <section className="bg-brand py-12 text-ink md:py-18">
       <div
         data-reveal="stagger"
-        className="container-site grid items-center gap-x-12 gap-y-6 lg:grid-cols-2"
+        className="container-site grid items-center gap-x-12 gap-y-6 lg:grid-cols-[1fr_auto]"
       >
         <div>
           <h2 className="mb-2 text-4xl md:text-5xl">{title}</h2>
@@ -40,6 +41,18 @@ export function CtaBand({
           >
             <Phone aria-hidden />
             {company.phone}
+          </a>
+          <a
+            href={company.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ size: 'xl', variant: 'outline' }),
+              'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
+            )}
+          >
+            <WhatsAppIcon />
+            WhatsApp
           </a>
         </div>
       </div>
