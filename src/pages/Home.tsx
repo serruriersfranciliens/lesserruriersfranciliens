@@ -24,7 +24,7 @@ export default function Home() {
       <section className="dark relative overflow-hidden bg-background py-12 text-foreground md:py-26">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 left-[55%] bg-[linear-gradient(115deg,transparent_0_30%,--alpha(var(--color-brand)/7%)_30%_100%)]"
+          className="pointer-events-none absolute inset-y-0 right-0 left-[55%] hidden lg:block bg-[linear-gradient(115deg,transparent_0_30%,--alpha(var(--color-brand)/7%)_30%_100%)]"
         />
         <div className="container-site relative grid items-center gap-12 lg:grid-cols-2">
           <div>
