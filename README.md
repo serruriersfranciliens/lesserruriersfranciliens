@@ -18,14 +18,16 @@ npx serve dist    # preview with clean URLs, like GitHub Pages
 
 ## Structure
 
-- `src/content/` – all texts and data (company, services, pros, FAQ, zones, case studies, SEO).
+- `src/content/` – all texts and data (company, services, pros, FAQ, zones, cities, brands,
+  pricing, SEO).
 - `src/content/seo.ts` – per-page title/description, JSON-LD, legacy redirects.
 - `src/components/ui/` – base components ported from shadcn/ui (same classes). The shadcn CLI
   generates React components, so new ones are written by hand as `.astro` files.
 - `src/pages/` – Astro routes: one file per page, plus `sitemap.xml`, `robots.txt`, `llms.txt`
   and the redirects of the old site's URLs (`[legacy].astro`). They render the page bodies of
   `src/views/` inside `src/layouts/Layout.astro` (head tags, header, footer).
-- `src/content/images.ts` – image slots: drop a file in `public/images/` and set `src`.
+- `src/content/images.ts` – image slots: each slot reads `public/images/<id>.webp` (1600 px) and
+  `<id>-800.webp` (800 px, for `srcset`).
 
 ## Contact form
 

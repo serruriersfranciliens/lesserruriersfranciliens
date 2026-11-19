@@ -1,0 +1,473 @@
+---
+import { company } from '@/content/company';
+import { openingPrices, openingPricesNote } from '@/content/pricing';
+import PageHeader from '@/components/PageHeader.astro';
+import Section from '@/components/Section.astro';
+
+const { legal } = company;
+
+const versionDate = '19 novembre 2026';
+
+// Sommaire: keep in sync with the ids below.
+const toc = [
+  { id: 'prestataire', label: 'Le prestataire' },
+  { id: 'generalites', label: '1. Généralités' },
+  { id: 'devis', label: '2. Devis – Commande – Travaux supplémentaires' },
+  { id: 'prix', label: '3. Prix et méthode de facturation' },
+  { id: 'retractation', label: '4. Droit de rétractation' },
+  { id: 'execution', label: '5. Exécution et réception – Réclamation' },
+  { id: 'paiement', label: '6. Facture – Délai de paiement – Caution bancaire' },
+  { id: 'responsabilites', label: '7. Responsabilités, garanties et assurances' },
+  { id: 'reserve', label: '8. Clause de réserve de propriété' },
+  { id: 'informatique', label: '9. Informatique et libertés' },
+  { id: 'textes', label: '10. Textes du code de la consommation et du code civil' },
+  { id: 'annexe', label: 'Annexe – Formulaire type de rétractation' },
+];
+
+const h2 = 'mt-12 mb-4 scroll-mt-24 text-3xl first:mt-0';
+const h3 = 'mt-8 mb-2 scroll-mt-24 text-2xl';
+const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text-brand';
+---
+
+<>
+  <PageHeader eyebrow="Conditions générales" title="Conditions générales de vente">
+    Travaux de serrurerie, dépannage, réparation et entretien réalisés par {company.name} à Paris
+    et en Île-de-France. Version en vigueur au {versionDate}.
+  </PageHeader>
+
+  <Section>
+    <div class="max-w-3xl">
+      <nav aria-label="Sommaire" class="mb-12 rounded-lg border bg-paper p-6">
+        <h2 class="mb-4 text-2xl">Sommaire</h2>
+        <ol class="grid gap-2 text-sm sm:grid-cols-2">
+          {toc.map((item) => (
+            <li>
+              <a href={`#${item.id}`} class="transition-colors hover:text-brand">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="space-y-4">
+        <h2 id="prestataire" class={h2}>Le prestataire</h2>
+        <p>
+          {legal.legalName}
+          <br />
+          {legal.legalForm}
+          <br />
+          Siège social : {legal.address}
+          <br />
+          SIREN : {legal.siren} · SIRET : {legal.siret}
+          <br />
+          N° TVA intracommunautaire : {legal.vat}
+          <br />
+          {legal.registry}
+          <br />
+          Code NAF : {legal.naf}
+          <br />
+          Téléphone : {company.phone} · E-mail : {company.email}
+          <br />
+          Horaires : {company.hours}
+          <br />
+          Zone d’intervention : {company.zone}
+        </p>
+        <p>
+          Les présentes conditions générales de vente (ci-après « CGV ») sont applicables à
+          compter du {versionDate}. Elles sont accessibles à tout moment sur le site <a
+            href="/cgv"
+            class={link}>lesserruriersfranciliens.fr/cgv</a
+          > et sont remises au CLIENT sur simple demande, avant la conclusion du contrat. Les
+          coordonnées du médiateur de la consommation et les garanties légales figurent aux
+          paragraphes 5.2 et 7 des présentes.
+        </p>
+
+        <h2 id="generalites" class={h2}>1. Généralités</h2>
+        <p>
+          Les présentes conditions générales (« CGV ») s’appliquent aux travaux tous corps d’état,
+          dépannage, réparation et entretien dans le secteur du bâtiment et aux installations et
+          fournitures de matériels, réalisés par « {company.name} » auprès de ses clients
+          consommateurs ou professionnels (Assurances, syndics, bailleurs…), ci-après le CLIENT.
+        </p>
+        <p>
+          Les prestations sont réalisées à Paris et en Île-de-France (départements 75, 77, 78,
+          91, 92, 93, 94 et 95), 7 jours sur 7 de 8h à 22h, dans les zones d’intervention
+          publiées sur le site. Toute demande située en dehors de ces zones est étudiée au cas
+          par cas et fait l’objet d’un devis spécifique.
+        </p>
+        <p>
+          Toute commande, quelle qu’en soit la forme (devis signé, bon de commande, accord donné
+          par téléphone, par e-mail ou par WhatsApp), implique l’acceptation sans réserve des
+          présentes CGV, qui prévalent sur toute condition d’achat ou tout autre document du
+          CLIENT. Seules les CGV en vigueur à la date de la commande sont applicables.
+        </p>
+        <p>
+          Le CLIENT déclare avoir reçu, préalablement à sa commande, les informations prévues par
+          le code de la consommation, notamment les caractéristiques essentielles des prestations,
+          leur prix et leurs conditions d’exécution.
+        </p>
+
+        <h2 id="devis" class={h2}>2. Devis – Commande – Travaux supplémentaires</h2>
+
+        <h3 class={h3}>2.1. Devis</h3>
+        <p>
+          Les prestations de « {company.name} » sont réalisées sur la base d’un devis accepté et
+          signé par le CLIENT, reprenant les caractéristiques essentielles du bien ou du service
+          ainsi que son prix, qu’il soit déterminé ou déterminable avant l’exécution des travaux.
+          Lorsqu’il bénéficie d’une indemnisation en nature, son assureur arrêtant les travaux de
+          réparation réalisés par « {company.name} » et finançant leur prix, le CLIENT,
+          bénéficiaire des travaux, signera un bon d’intervention/commande de travaux détaillant
+          la nature des prestations réalisées sans précision de leur prix, hormis le montant
+          éventuel de la franchise à sa charge.
+        </p>
+        <p>
+          Le devis accepté et signé par le CLIENT vaut commande pour l’exécution des travaux et
+          lie les parties. Il est valable 2 mois à compter de son émission, l’acceptation devant
+          toutefois intervenir dans les 30 jours de son émission. Passé ce délai, les prix
+          pourront être modifiés par « {company.name} ». Les devis sont gratuits. À défaut de
+          délai convenu, les travaux seront exécutés dans un délai maximum de 12 mois après
+          signature.
+        </p>
+        <p>
+          Conformément à l’arrêté du 24 janvier 2017 relatif à la publicité des prix des
+          prestations de dépannage, de réparation et d’entretien dans le secteur du bâtiment et de
+          l’équipement de la maison, les prix des prestations proposées, leurs unités de
+          facturation et les frais de déplacement sont communiqués au CLIENT avant toute
+          intervention et figurent sur le devis.
+        </p>
+
+        <h3 class={h3}>2.2. Travaux supplémentaires</h3>
+        <p>
+          En cas de sujétion imprévue, malfaçon, vice de construction ou non-conformité, découverts
+          en cours de chantier et non visibles lors de l’établissement du devis ou en cas de
+          demande de travaux supplémentaires du CLIENT, celui-ci ne pourra demander à « {
+            company.name
+          } » une nouvelle intervention que sur la base de travaux supplémentaires commandés avec
+          un nouveau devis dûment accepté et signé par lui.
+        </p>
+
+        <h2 id="prix" class={h2}>3. Prix et méthode de facturation</h2>
+        <p>
+          Le devis indique le prix des travaux réalisés, en valeur HT et TTC en distinguant coût de
+          la main d’œuvre, fournitures, prix unitaires, unités (m² ou linéaire), quantités et/ou
+          forfaits. Quand la durée de la main d’œuvre ne peut être chiffrée dès l’établissement du
+          devis, « {company.name} » la facturera au temps passé, sur la base du tarif indiqué au
+          devis. Ce tarif horaire n’inclut pas le prix des fournitures qui seront facturées en
+          sus. Un forfait minimum d’une heure de main d’œuvre et un déplacement seront facturés.
+          S’ajouteront ensuite chaque heure entamée. La main d’œuvre nécessaire à
+          l’approvisionnement de certaines pièces sera également facturée.
+        </p>
+        <p>
+          La TVA applicable est celle en vigueur au jour de la facturation. Le taux réduit est
+          appliqué aux travaux d’amélioration, de transformation, d’aménagement et d’entretien des
+          locaux d’habitation achevés depuis plus de deux ans, lorsque les conditions légales sont
+          réunies.
+        </p>
+        <p>
+          Les prix des ouvertures de porte affichés sur le site sont des prix fixes TTC,
+          déplacement et main-d’œuvre inclus, les pièces éventuelles étant facturées en supplément
+          après accord du CLIENT :
+        </p>
+        <ul class="list-disc space-y-1 pl-6">
+          {openingPrices.map((p) => <li>{p.title} : {p.price} € TTC</li>)}
+        </ul>
+        <p class="text-sm text-muted-foreground">{openingPricesNote}</p>
+
+        <h2 id="retractation" class={h2}>4. Droit de rétractation</h2>
+        <p>
+          Le CLIENT consommateur peut se rétracter dans un délai de quatorze (14) jours à compter
+          du jour de la signature de la commande, sans avoir à justifier de motif ni à payer de
+          pénalité (article L221-5 du code de la consommation). En cas d’exercice du droit de
+          rétractation dans ce délai, les prestations déjà effectuées seront néanmoins dues.
+        </p>
+        <p>
+          Ce droit ne s’applique pas aux travaux d’entretien ou de réparation urgents, expressément
+          sollicités par le CLIENT à son domicile, dans la limite des pièces de rechange et des
+          travaux strictement nécessaires pour répondre à l’urgence. Le CLIENT en est informé
+          avant l’intervention.
+        </p>
+        <p>
+          Lorsque le CLIENT demande expressément l’exécution de la prestation avant la fin du
+          délai de rétractation, il est informé qu’il devra payer les sommes correspondant aux
+          prestations déjà exécutées (article L221-25 du code de la consommation), calculées au
+          prorata de la prestation réalisée.
+        </p>
+        <p>
+          Pour exercer ce droit, le CLIENT notifie sa décision par courrier à {legal.address} ou
+          par e-mail à <a href={`mailto:${company.email}`} class={link}>{company.email}</a>,
+          éventuellement au moyen du formulaire type reproduit en <a href="#annexe" class={link}
+            >annexe</a
+          >. Le remboursement des sommes versées, déduction faite des prestations déjà exécutées,
+          intervient au plus tard quatorze jours après la réception de la notification.
+        </p>
+
+        <h2 id="execution" class={h2}>5. Exécution et réception des travaux – Réclamation</h2>
+
+        <h3 class={h3}>5.1. Exécution</h3>
+        <p>
+          « {company.name} » réalisera les travaux conformes à la commande et dans le respect des
+          règles de l’art, avec toute la diligence à laquelle on peut normalement s’attendre de la
+          part d’un professionnel, compte tenu de l’état d’avancement de la technique. « {
+            company.name
+          } » pourra refuser l’utilisation de matériaux et produits qui lui seraient fournis par
+          le CLIENT. « {company.name} » pourra, le cas échéant, recourir à la sous-traitance.
+        </p>
+        <p>
+          Les délais d’intervention communiqués par « {company.name} », y compris l’objectif d’une
+          intervention en moins d’une heure en Île-de-France, sont donnés à titre indicatif et
+          tiennent compte des conditions de circulation et des urgences en cours. Ils ne
+          constituent un délai de rigueur qu’en cas d’engagement écrit contraire.
+        </p>
+        <p>
+          La réception des travaux est constatée par la signature du procès-verbal de réception ou,
+          à défaut, par la prise de possession des ouvrages par le CLIENT. Les réserves éventuelles
+          sont formulées dans les conditions prévues au paragraphe 5.2.
+        </p>
+
+        <h3 class={h3}>5.2. Réclamation</h3>
+        <p>
+          Toute réclamation devra préalablement être faite par le CLIENT auprès de « {
+            company.name
+          } ». En cas de litige ou de désaccord dans l’application du présent contrat, le
+          consommateur adressera une lettre en RAR à l’entreprise qui aura deux mois pour la prise
+          en compte de la demande, passé ce délai le consommateur peut saisir le médiateur pour
+          trouver un accord amiable et gratuit. Le consommateur a la possibilité de recourir à la
+          procédure de Médiation de la Consommation, Articles L611-1 et suivants Code Consommation
+          : BATIRMEDIATION CONSO contact@batirmediation-conso.fr Tel : 07 68 46 59 09 par courrier
+          : 22 corniche du soleil 83430 St Mandrier. Et en cas de contestation de quelque nature
+          que ce soit, en référence des lois françaises applicables, l’attribution de juridiction
+          est du ressort du Tribunal Judiciaire ou des instances compétentes.
+        </p>
+        <p>
+          L’envoi d’une réclamation à « {company.name} » n’autorise pas le CLIENT à suspendre ou
+          différer le paiement de la facture des travaux réalisés. A défaut de résolution amiable,
+          tout différend sera attribué exclusivement au Tribunal de Commerce de Tours. Toutefois,
+          si le CLIENT est un particulier/consommateur, les règles de compétence légales
+          s’appliquent. Les présentes CGV sont soumises au Droit Français.
+        </p>
+
+        <h2 id="paiement" class={h2}>6. Facture – Délai de paiement – Caution bancaire</h2>
+
+        <h3 class={h3}>6.1. Délai de paiement</h3>
+        <p>
+          Sans escompte et à 7 jours, date de la commande. En cas d’urgence : paiement comptant
+          sauf accord contraire. Si les travaux sont commandés par son assureur, l’assuré devra
+          régler directement à « {company.name} », sur présentation d’un document « commande de
+          travaux » avant démarrage des travaux, le montant de la franchise et/ou d’autres frais
+          qui lui sont opposables.
+        </p>
+        <p>
+          Pour le CLIENT professionnel, tout défaut de paiement à l’échéance entraînera de plein
+          droit, sans mise en demeure préalable et sans préjudice de dommages et intérêts
+          éventuels, le jour suivant la date de règlement figurant sur la facture, exigibilité
+          d’une part de la totalité des sommes dues par le CLIENT et d’autre part d’une pénalité
+          de retard égale à 3 fois le taux d’intérêt légal. Tout CLIENT professionnel en situation
+          de retard de paiement sera en outre de plein droit débiteur d’une indemnité forfaitaire
+          pour frais de recouvrement, dont le montant est fixé à 40 euros, augmentée de tous les
+          frais éventuellement exposés en vue d’obtenir leur recouvrement.
+        </p>
+        <p>
+          Pour le CLIENT consommateur, les sommes dues portent intérêt au taux d’intérêt légal à
+          compter d’une mise en demeure restée sans effet, et les frais de recouvrement ne sont
+          dus que dans les conditions prévues par la loi.
+        </p>
+        <p>
+          Pour tout chantier supérieur à deux mois, une situation d’avancement des travaux sera
+          réalisée toutes les fins de mois et ce, dès le premier mois ; le % déterminé s’appliquera
+          au montant total du devis et fera l’objet d’une facture, dont le paiement est
+          immédiatement exigible.
+        </p>
+
+        <h3 class={h3}>6.2. Acompte</h3>
+        <p>
+          Un acompte de 40 % du total du devis peut être exigé par « {company.name} » avant
+          démarrage des travaux. Lorsque le contrat est conclu hors établissement avec un CLIENT
+          consommateur, cet acompte n’est exigible que dans les conditions prévues par l’article
+          L221-10 du code de la consommation.
+        </p>
+
+        <h3 class={h3}>6.3. Caution bancaire</h3>
+        <p>
+          Lorsqu’il est un professionnel et que le montant des travaux commandés dépasse le seuil
+          fixé par la loi, le CLIENT garantira à « {company.name} » le paiement des sommes dues au
+          titre du marché par la constitution d’une caution bancaire, sans bénéfice de discussion,
+          conformément à l’article 1799-1 du code civil.
+        </p>
+
+        <h2 id="responsabilites" class={h2}>
+          7. Responsabilités, garanties légales et assurances
+        </h2>
+
+        <h3 class={h3}>7.1. Responsabilité de « {company.name} »</h3>
+        <p>
+          Avant réception des travaux, « {company.name} » est tenu à l’égard du CLIENT de la bonne
+          exécution des travaux, dans le respect des règles de l’art ainsi que de leur conformité,
+          au titre de sa responsabilité contractuelle, conformément à l’article 1231-1 du code
+          civil. La responsabilité de « {company.name} » ne pourra être engagée si l’inexécution
+          de ses obligations contractuelles résulte d’un événement de force majeure. Postérieurement
+          à la réception des travaux, le CLIENT bénéficie sur les ouvrages réalisés de l’ensemble
+          des garanties légales, applicables selon la nature des désordres allégués, à savoir de la
+          garantie de parfait achèvement, de la garantie de bon fonctionnement ou de la garantie
+          décennale, telles que prévues par les articles 1792-6, 1792-3 et 1792 du code civil. Ces
+          garanties s’appliquent dans les conditions et limites prévues par la loi, selon la nature
+          des travaux réalisés.
+        </p>
+
+        <h3 class={h3}>7.2. Défauts de conformité et défauts cachés</h3>
+        <p>
+          « {company.name} » garantit les défauts de conformité et les défauts cachés des Matériels
+          vendus dans les conditions des articles L217-4 et suivants du Code de la consommation et
+          1641 et suivants du Code civil. Sous peine d’irrecevabilité, la mise en œuvre des
+          garanties suppose la présentation de la facture.
+        </p>
+
+        <h3 class={h3}>7.3. Garantie légale</h3>
+        <p>
+          Le CLIENT dispose d’un délai de deux ans à compter de la délivrance du Matériel pour agir
+          en garantie légale de conformité et peut choisir entre sa réparation ou son remplacement,
+          sous réserve des conditions de coût prévues par l’article L217-9 du code de la
+          consommation. Il est dispensé de rapporter la preuve de l’existence du défaut de
+          conformité du Matériel durant les vingt-quatre mois suivant sa délivrance (douze mois
+          pour un bien d’occasion), conformément à l’article L217-7 du code de la consommation.
+          S’il décide de mettre en œuvre la garantie contre les défauts cachés de la chose vendue
+          au sens de l’article 1641 du code civil, le CLIENT choisit entre la résolution de la
+          vente ou une réduction de son prix, conformément à l’article 1644 du code civil.
+        </p>
+
+        <h3 class={h3}>7.4. Responsabilité du client</h3>
+        <p>
+          Le CLIENT est tenu d’obtenir les autorisations nécessaires et de fournir toutes les
+          informations utiles à « {company.name} » et/ou ses intervenants pour l’organisation et la
+          bonne exécution des prestations demandées. Il est également tenu de mettre à la
+          disposition de « {company.name} » en quantités suffisantes, gratuitement et à proximité :
+          l’eau, les accès, les aires de stockage et d’installation nécessaires à la réalisation
+          des travaux (ex : retirer les meubles et autres objets…). La responsabilité de « {
+            company.name
+          } » ne pourra être retenue pour tout retard occasionné du fait du CLIENT ou immixtion de
+          sa part, ou tous faits d’un tiers qui entraîneraient pour « {company.name} »
+          l’impossibilité de respecter les délais convenus.
+        </p>
+
+        <h3 class={h3}>7.5. Assurances</h3>
+        <p>
+          « {company.name} » est assurée en responsabilité civile professionnelle et décennale
+          auprès de la compagnie April - Partenaires (ERGO) immatriculée à l’ORIAS sous le numéro
+          07 024 083, sur le territoire de la France métropolitaine.
+        </p>
+
+        <h2 id="reserve" class={h2}>8. Clause de réserve de propriété</h2>
+        <p>
+          « {company.name} » reste propriétaire des matériaux et produits fournis jusqu’au jour de
+          leur parfait paiement, étant précisé qu’au sens de la présente clause, seul
+          l’encaissement effectif des sommes TTC dues vaudra parfait paiement. Il est cependant
+          précisé que le transfert des risques intervient dès que le CLIENT prend physiquement
+          possession du bien.
+        </p>
+
+        <h2 id="informatique" class={h2}>9. Informatique et libertés</h2>
+        <p>
+          Les informations concernant le CLIENT sont destinées à « {company.name} », ainsi qu’à
+          leurs prestataires et partenaires situés dans ou en dehors de l’Union européenne, aux
+          fins de lui proposer ou de lui fournir les services « {company.name} » adaptés à ses
+          intérêts ou à sa situation. Ces informations seront conservées par « {company.name} »
+          pendant les durées nécessaires aux finalités. Afin d’améliorer la qualité de nos services
+          et de faciliter leur prise en charge par nos partenaires, les appels peuvent être
+          enregistrés. « {company.name} » pourra ainsi recontacter le CLIENT. Sous réserve de son
+          choix, il pourra recevoir des offres ou participer à des enquêtes concernant « {
+            company.name
+          } » ou ses partenaires. Le CLIENT peut à tout moment s’opposer à recevoir des offres de
+          notre part ou s’inscrire sur www.bloctel.gouv.fr, la liste d’opposition au démarchage
+          téléphonique. Il peut aussi demander à accéder, à faire porter auprès d’un tiers, à faire
+          rectifier ou à faire supprimer les informations le concernant. Enfin, le CLIENT peut nous
+          préciser le sort des informations le concernant en cas de décès. Pour exercer ses droits
+          auprès de « {company.name} », le CLIENT peut écrire à <a
+            href={`mailto:${company.email}`}
+            class={link}>{company.email}</a
+          >.
+        </p>
+        <p>
+          Conformément au règlement général sur la protection des données (RGPD) et à la loi
+          informatique et libertés, le CLIENT dispose d’un droit d’accès, de rectification,
+          d’effacement, de limitation, d’opposition et de portabilité de ses données. Il peut
+          introduire une réclamation auprès de la Commission nationale de l’informatique et des
+          libertés (CNIL). Les données transmises via le formulaire de contact du site sont
+          utilisées uniquement pour répondre à la demande et établir un devis ; elles sont
+          adressées par e-mail au moyen du service Web3Forms, ne sont jamais cédées à des tiers et
+          sont conservées le temps nécessaire à la relation commerciale. Le détail des traitements
+          figure dans les <a href="/mentions-legales" class={link}>mentions légales</a>.
+        </p>
+
+        <h2 id="textes" class={h2}>
+          10. Textes du code de la consommation et du code civil
+        </h2>
+        <p class="rounded-lg border-l-4 border-brand bg-paper p-4">
+          <strong>L217-4 :</strong> Le vendeur livre un bien conforme au contrat et répond des
+          défauts de conformité existant lors de la délivrance. Il répond également des défauts de
+          conformité résultant de l’emballage, des instructions de montage ou de l’installation
+          lorsque celle-ci a été mise à sa charge par le contrat ou a été réalisée sous sa
+          responsabilité.
+        </p>
+        <p class="rounded-lg border-l-4 border-brand bg-paper p-4">
+          <strong>L217-5 :</strong> Le bien est conforme au contrat : 1° S’il est propre à l’usage
+          habituellement attendu d’un bien semblable et, le cas échéant : – s’il correspond à la
+          description donnée par le vendeur et possède les qualités que celui-ci a présentées à
+          l’acheteur sous forme d’échantillon ou de modèle ; – s’il présente les qualités qu’un
+          acheteur peut légitimement attendre eu égard aux déclarations publiques faites par le
+          vendeur, par le producteur ou par son représentant, notamment dans la publicité ou
+          l’étiquetage ; 2° Ou s’il présente les caractéristiques définies d’un commun accord par
+          les parties ou est propre à tout usage spécial recherché par l’acheteur, porté à la
+          connaissance du vendeur et que ce dernier a accepté.
+        </p>
+        <p class="rounded-lg border-l-4 border-brand bg-paper p-4">
+          <strong>L217-12 :</strong> L’action résultant du défaut de conformité se prescrit par
+          deux ans à compter de la délivrance du bien.
+        </p>
+        <p class="rounded-lg border-l-4 border-brand bg-paper p-4">
+          <strong>Code civil, 1641 :</strong> Le vendeur est tenu de la garantie à raison des
+          défauts cachés de la chose vendue qui la rendent impropre à l’usage auquel on la destine,
+          ou qui diminuent tellement cet usage que l’acheteur ne l’aurait pas acquise, ou n’en
+          aurait donné qu’un moindre prix, s’il les avait connus.
+        </p>
+        <p class="rounded-lg border-l-4 border-brand bg-paper p-4">
+          <strong>Code civil, 1648 :</strong> L’action résultant des vices rédhibitoires doit être
+          intentée par l’acquéreur dans un délai de deux ans à compter de la découverte du vice.
+        </p>
+
+        <h2 id="annexe" class={h2}>Annexe – Formulaire type de rétractation</h2>
+        <p>
+          Formulaire à compléter et à renvoyer uniquement si vous souhaitez vous rétracter du
+          contrat.
+        </p>
+        <div class="space-y-4 rounded-lg border bg-paper p-6">
+          <p>
+            À l’attention de {legal.legalName}, {legal.address}, <a
+              href={`mailto:${company.email}`}
+              class={link}>{company.email}</a
+            > :
+          </p>
+          <p>
+            Je/nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du
+            contrat portant sur la vente du bien (*)/pour la prestation de service (*) ci-dessous :
+          </p>
+          <p>Commandé le (*) / reçu le (*) :</p>
+          <p>Nom du (des) consommateur(s) :</p>
+          <p>Adresse du (des) consommateur(s) :</p>
+          <p>
+            Signature du (des) consommateur(s) (uniquement en cas de notification du présent
+            formulaire sur papier) :
+          </p>
+          <p>Date :</p>
+          <p class="text-sm text-muted-foreground">(*) Rayez la mention inutile.</p>
+        </div>
+
+        <p class="pt-6 text-sm text-muted-foreground">
+          Dernière mise à jour : {versionDate}. Voir aussi les <a
+            href="/mentions-legales"
+            class={link}>mentions légales</a
+          >.
+        </p>
+      </div>
+    </div>
+  </Section>
+</>

@@ -3,70 +3,511 @@ import { company } from '@/content/company';
 import PageHeader from '@/components/PageHeader.astro';
 import Section from '@/components/Section.astro';
 
-const h2 = 'mt-10 mb-3 text-3xl first:mt-0';
-
 const { legal } = company;
+
+const versionDate = '19 novembre 2026';
+
+// Sommaire: keep in sync with the ids below.
+const toc = [
+  { id: 'editeur', label: '1. Éditeur' },
+  { id: 'acceptation', label: '2.1. Acceptation des conditions' },
+  { id: 'description', label: '2.2. Description du Service' },
+  { id: 'rendez-vous', label: '2.3. Prise de rendez-vous et devis' },
+  { id: 'acces', label: '2.4. Accès au Service' },
+  { id: 'informations', label: '2.5. Communication d’informations' },
+  { id: 'propriete-intellectuelle', label: '2.6. Propriété intellectuelle' },
+  { id: 'utilisations', label: '2.7. Utilisations non autorisées' },
+  { id: 'liens-sortants', label: '2.8. Liens vers des sites tiers' },
+  { id: 'liens-entrants', label: '2.9. Liens vers le Service' },
+  { id: 'responsabilite', label: '2.10. Garantie et responsabilité' },
+  { id: 'donnees', label: '2.11. Données personnelles' },
+  { id: 'modifications', label: '2.12. Modifications du Service' },
+  { id: 'loi', label: '2.13. Loi applicable et juridiction' },
+  { id: 'contact', label: '2.14. Contact' },
+  { id: 'cookies', label: '2.15. Cookies et mesure d’audience' },
+  { id: 'mediation', label: '2.16. Médiation de la consommation' },
+];
+
+const h2 = 'mt-12 mb-4 scroll-mt-24 text-3xl first:mt-0';
+const h3 = 'mt-8 mb-2 scroll-mt-24 text-2xl';
+const link = 'font-medium text-brand-ink underline underline-offset-2 hover:text-brand';
+const list = 'list-disc space-y-1 pl-6';
 ---
 
 <>
-  <PageHeader eyebrow="Informations" title="Mentions légales" />
+  <PageHeader eyebrow="Informations" title="Mentions légales">
+    Éditeur du site, hébergement, conditions d’utilisation et données personnelles. Version en
+    vigueur au {versionDate}.
+  </PageHeader>
 
   <Section>
-    <div class="max-w-3xl space-y-4">
-      <h2 class={h2}>Éditeur du site</h2>
-      <p>
-        {legal.legalName}
-        <br />
-        {legal.legalForm}
-        <br />
-        {legal.address}
-        <br />
-        SIREN : {legal.siren} · SIRET : {legal.siret}
-        <br />
-        N° TVA intracommunautaire : {legal.vat}
-        <br />
-        {legal.registry}
-        <br />
-        Code NAF : {legal.naf}
-        <br />
-        Téléphone : {company.phone} · E-mail : {company.email}
-      </p>
-      <p>Directeur de la publication : {legal.director}</p>
+    <div class="max-w-3xl">
+      <nav aria-label="Sommaire" class="mb-12 rounded-lg border bg-paper p-6">
+        <h2 class="mb-4 text-2xl">Sommaire</h2>
+        <ol class="grid gap-2 text-sm sm:grid-cols-2">
+          {toc.map((item) => (
+            <li>
+              <a href={`#${item.id}`} class="transition-colors hover:text-brand">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-      <h2 class={h2}>Hébergement</h2>
-      <p>
-        GitHub Pages – GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107,
-        États-Unis.
-      </p>
+      <div class="space-y-4">
+        <h2 id="editeur" class={h2}>1. Éditeur</h2>
+        <p>
+          Bienvenue sur le site <a href="/" class={link}>lesserruriersfranciliens.fr</a> de « {
+            company.name
+          } » (ci-après le(s) « Service(s) »).
+        </p>
+        <p>
+          L’éditeur de ce site est la société « {company.name} », SAS, société par actions
+          simplifiée, au capital de 1 200 €.
+        </p>
+        <p>
+          SIREN : {legal.siren} · SIRET : {legal.siret}
+          <br />
+          N° de TVA intracommunautaire : {legal.vat}
+          <br />
+          Code APE : 43.32B – Travaux de menuiserie métallique et serrurerie
+          <br />
+          Domiciliée au {legal.address}
+          <br />
+          {legal.registry}
+          <br />
+          Mail : <a href={`mailto:${company.email}`} class={link}>{company.email}</a> ·
+          Téléphone : <a href={company.phoneHref} class={link}>{company.phone}</a>
+        </p>
+        <p>
+          (ci-après, « {company.name} », « Nous », « Notre », « Nos »).
+        </p>
+        <p>
+          Publication et rédaction : {company.name}. Directeur de la publication : {legal.director}.
+        </p>
+        <p>
+          Le Service est disponible sur <a href="/" class={link}>lesserruriersfranciliens.fr</a> ou
+          à toute autre adresse qui pourrait lui être substituée. Le nom de domaine
+          lesserruriersfranciliens.com redirige vers ce site.
+        </p>
 
-      <h2 class={h2}>Assurance professionnelle</h2>
-      <p>{legal.insurance}</p>
+        <h3 class={h3}>Hébergement</h3>
+        <p>
+          GitHub Pages – GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107,
+          États-Unis.
+        </p>
 
-      <h2 class={h2}>Données personnelles</h2>
-      <p>
-        Les informations transmises via le formulaire de contact (nom, coordonnées, message)
-        sont utilisées uniquement pour répondre à votre demande et établir un devis. Elles sont
-        transmises par e-mail via le service Web3Forms, conservées le temps nécessaire au
-        traitement de la demande et à la relation commerciale, et ne sont jamais cédées à des
-        tiers.
-      </p>
-      <p>
-        Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’opposition
-        et de suppression de vos données, en écrivant à {company.email}. Vous pouvez également
-        introduire une réclamation auprès de la CNIL.
-      </p>
+        <h3 class={h3}>Assurance professionnelle</h3>
+        <p>{legal.insurance}</p>
 
-      <h2 class={h2}>Cookies</h2>
-      <p>
-        Ce site n’utilise aucun cookie de suivi ni de mesure d’audience. Les polices de
-        caractères sont hébergées sur le site lui-même.
-      </p>
+        <h3 class={h3}>Marques et documents à consulter</h3>
+        <p>{company.name} et son logo sont des marques déposées.</p>
+        <p>
+          Documents à consulter : <a href="/cgv" class={link}>Conditions générales de vente</a>.
+        </p>
 
-      <h2 class={h2}>Propriété intellectuelle</h2>
-      <p>
-        L’ensemble des contenus de ce site (textes, logo, images) est la propriété de{' '}
-        {company.name}. Toute reproduction sans autorisation est interdite.
-      </p>
+        <h2 id="conditions" class={h2}>2. Conditions d’utilisation du Service</h2>
+        <p>
+          Les présentes conditions générales d’utilisation contiennent les stipulations applicables
+          à l’utilisation du présent Service par toute personne (ci-après, « Vous », « Votre »,
+          « Vos »). Veuillez les lire attentivement.
+        </p>
+
+        <h3 id="acceptation" class={h3}>2.1. Acceptation des conditions d’utilisation</h3>
+        <p>
+          Si vous décidez de visiter, de télécharger ou d’utiliser le Service, pour quelque raison
+          que ce soit, les présentes conditions générales d’utilisation (ci-après, les
+          « Conditions ») s’appliqueront automatiquement à Votre utilisation du Service. Vous Vous
+          engagez donc à les consulter avant toute utilisation du Service. Si Vous ne souhaitez pas
+          être lié par les stipulations des présentes Conditions, veuillez ne pas visiter,
+          télécharger ou utiliser le Service.
+        </p>
+        <p>
+          En utilisant tout ou partie du Service, Vous êtes considéré(e) comme ayant lu et accepté
+          les présentes Conditions.
+        </p>
+
+        <h3 id="description" class={h3}>2.2. Description du Service</h3>
+        <p>
+          Le Service « {company.name} » Vous fournit des informations sur les méthodes utilisées
+          par « {company.name} » pour effectuer des travaux tous corps d’état, dépannage, réparation
+          et entretien dans le secteur du bâtiment, ainsi que des installations et fournitures de
+          matériels de serrurerie et de blindage (ci-après ensemble et indifféremment les
+          « Prestations ») réalisées par « {company.name} » et plus généralement sur les services et
+          les offres de « {company.name} ». Vous pouvez utiliser le Service « {company.name} »
+          pour obtenir des informations concernant les services et les offres de « {
+            company.name
+          } », sans nécessairement solliciter une prise de rendez-vous avec « {company.name} »
+          pour la réalisation de Prestations.
+        </p>
+        <p>
+          Le Service Vous propose également un service de rappel en vue d’une prise de contact par
+          lequel Vous pouvez être rappelé par « {company.name} » et/ou Nous adresser une demande de
+          devis, par téléphone, par e-mail, par WhatsApp ou au moyen du formulaire de contact du
+          site. Si Vous n’êtes pas en mesure de déterminer la nature de la Prestation envisagée,
+          Vous pourrez demander à être rappelé par un conseiller « {company.name} » au numéro de
+          téléphone que Vous Nous aurez fourni, afin qu’il puisse Vous aider à identifier la nature
+          de la Prestation à réaliser et Vous assister dans la démarche à suivre pour l’exécution de
+          ladite Prestation.
+        </p>
+
+        <h3 id="rendez-vous" class={h3}>2.3. Prise de rendez-vous et devis</h3>
+        <p>
+          La prise de rendez-vous dépend du lieu d’exécution des Prestations, de la disponibilité
+          des pièces et de « {company.name} ».
+        </p>
+        <p>
+          Les informations communiquées par « {company.name} » dans le cadre de Votre prise de
+          rendez-vous ou de Votre estimation lors de l’établissement du devis, que ce soit par le
+          biais du Service (Internet) ou par téléphone, sont basées sur Vos réponses aux questions
+          que Nous Vous aurons posées. « {company.name} » n’étant pas en mesure de vérifier la
+          fiabilité de Vos réponses, les informations qui Vous sont communiquées par « {
+            company.name
+          } » à l’occasion de Votre demande de rendez-vous ou de Votre estimation peuvent donc
+          s’avérer inexactes ou inadaptées. Vous reconnaissez, en conséquence, que les informations
+          qui Vous sont fournies par « {company.name} » ne le sont qu’à titre indicatif et qu’elles
+          ne revêtent aucune valeur contractuelle. Les informations que Vous aurez fournies à « {
+            company.name
+          } » lors de votre prise de rendez-vous seront vérifiées lors de la réalisation des
+          Prestations.
+        </p>
+        <p>
+          « {company.name} » fera ses meilleurs efforts pour Vous rappeler dans le délai qui Vous
+          aura été indiqué. Néanmoins, le délai de rappel mentionné sur nos Services n’est fourni
+          qu’à titre indicatif et Vous reconnaissez que la responsabilité de « {company.name} » ne
+          saurait être engagée à ce titre.
+        </p>
+        <p>
+          Seul le devis établi préalablement par un intervenant de « {company.name} » à son
+          intervention et accepté par Vous pourra lier « {company.name} ». Les devis sont gratuits ;
+          leurs conditions de validité, d’exécution et de paiement figurent dans les <a
+            href="/cgv"
+            class={link}>conditions générales de vente</a
+          >.
+        </p>
+        <p>
+          En tout état de cause, aucune demande de rendez-vous ne pourra aboutir à une intervention
+          effective si Vous fournissez à « {company.name} » des éléments incomplets ou comprenant
+          des informations inexactes ou erronées.
+        </p>
+        <p>
+          « {company.name} » ne saurait être tenu pour responsable de l’annulation d’un rendez-vous
+          si Votre dossier est incomplet, si des informations sont inexactes.
+        </p>
+        <p>
+          À l’issue de Votre demande de rendez-vous, Nous Vous signalerons ultérieurement par
+          téléphone ou par mail, la date et le lieu d’exécution des Prestations.
+        </p>
+        <p>
+          Les conditions générales du Service ne couvrent que l’utilisation du Service et n’ont pas
+          vocation à s’appliquer aux Prestations réalisées, pour lesquelles seules les <a
+            href="/cgv"
+            class={link}>conditions générales de vente</a
+          >, disponibles sur nos Services, s’appliqueront.
+        </p>
+
+        <h3 id="acces" class={h3}>2.4. Accès au Service</h3>
+        <p>
+          Vous êtes et demeurez responsable des modalités et des conséquences de Votre accès au
+          Service. Cet accès peut impliquer le paiement de frais de connexion à des prestataires
+          techniques tels que notamment des fournisseurs d’accès à l’Internet ou des opérateurs de
+          communications électroniques ou de téléphonie. Ces frais demeurent à Votre charge. En
+          outre, Vous êtes et demeurez entièrement responsable de la fourniture et de l’utilisation
+          des équipements nécessaires pour Vous connecter au Service.
+        </p>
+
+        <h3 id="informations" class={h3}>2.5. Communication d’informations</h3>
+        <p>
+          En cas de communication d’informations à « {company.name} » par l’intermédiaire du
+          Service, Vous êtes responsable du contenu et de l’exactitude des informations transmises.
+          Vous Vous engagez à Nous communiquer des informations exactes, à jour et complètes afin de
+          permettre à « {company.name} » de Vous offrir le meilleur service et serez entièrement
+          responsable de toutes conséquences liées à la fourniture d’informations erronées Vous
+          concernant et/ou concernant Votre assurance.
+        </p>
+
+        <h3 id="propriete-intellectuelle" class={h3}>
+          2.6. Propriété intellectuelle et licence d’utilisation du Service
+        </h3>
+        <p>
+          Tous les éléments constituant le Service et mis à Votre disposition par « {
+            company.name
+          } », notamment et sans limitation, toutes données, informations, textes, fichiers, images
+          animées ou non, présentations, légendes, graphiques, photographies, vidéos, logos, signes
+          distinctifs, dessins, modèles, logiciels et marques (ci-après, les « Éléments »),
+          constituent la propriété exclusive de « {company.name} » et/ou de ses concédants et sont
+          protégés notamment par le Code de la propriété intellectuelle français et par les lois et
+          traités internationaux relatifs à la protection du droit d’auteur et à la propriété
+          intellectuelle.
+        </p>
+        <p>
+          Tous les droits relatifs à la propriété intellectuelle, industrielle, aux marques, aux
+          noms de domaines et autres signes distinctifs figurant sur le Service sont la propriété de
+          « {company.name} » et/ou de leurs titulaires respectifs ayant autorisé « {company.name} »
+          à les utiliser et Vous êtes seul responsable en cas d’utilisation et/ou d’exploitation non
+          autorisée.
+        </p>
+        <p>« {company.name} » et son logo sont des marques déposées.</p>
+        <p>
+          Vous ne pouvez utiliser le Service et les éléments qu’il contient qu’à des fins
+          strictement personnelles et non commerciales, sous réserve de respecter les droits de « {
+            company.name
+          } ». La licence ainsi concédée par « {company.name} » est non exclusive, non cessible et
+          non transférable. Vous Vous interdisez d’effectuer tout agissement ou tout acte portant
+          atteinte à la présente licence limitée qui Vous est concédée par « {company.name} ».
+        </p>
+        <p>
+          Les présentes Conditions ne sauraient en aucun cas être interprétées comme conférant un
+          quelconque droit de propriété à Vous-même ou à un tiers. Tout droit non expressément
+          concédé en vertu des présentes demeure la propriété exclusive de « {company.name} ».
+        </p>
+        <p>
+          Aucun des Éléments ou de tout ou partie de ceux-ci ne pourra être modifié, reproduit,
+          copié, dupliqué, vendu, revendu, publié, communiqué, distribué, diffusé, représenté,
+          stocké, utilisé, loué ou exploité de toute autre manière, à titre gratuit ou onéreux, par
+          Vous-même ou par un tiers, quels que soient les moyens et/ou les supports utilisés, qu’ils
+          soient connus ou inconnus à ce jour, sans l’autorisation préalable, expresse et écrite de
+          « {company.name} ».
+        </p>
+
+        <h3 id="utilisations" class={h3}>2.7. Utilisations non autorisées du Service</h3>
+        <p>Vous Vous interdisez d’utiliser le Service afin de :</p>
+        <ol class={list}>
+          <li>
+            (i) Vous livrer à des activités commerciales de toutes sortes sans l’autorisation
+            préalable écrite de « {company.name} » ;
+          </li>
+          <li>
+            (ii) Modifier, hacker, adapter ou autrement modifier le Service ou tout site ou service
+            de tiers de sorte à faussement sous-entendre qu’il est associé au Service ;
+          </li>
+          <li>
+            (iii) Obscurcir, masquer, altérer ou autrement modifier les mentions de propriété
+            intellectuelle, les titres et autres informations publiées sur le Service ;
+          </li>
+          <li>
+            (iv) Collecter, traiter et/ou conserver des données à caractère personnel relatives à
+            des tiers dans des conditions contraires aux Conditions ou aux lois applicables ;
+          </li>
+          <li>
+            (v) Vous livrer à des activités commerciales et/ou des ventes telles que des concours,
+            échanges, loteries, annonces publicitaires, sans l’accord écrit préalable de « {
+              company.name
+            } » ;
+          </li>
+          <li>
+            (vi) Perturber ou surcharger de manière excessive le Service ainsi que les réseaux,
+            serveurs ou services connectés au Service ;
+          </li>
+          <li>(vii) Usurper ou tenter d’usurper l’identité d’un tiers ;</li>
+          <li>
+            (viii) Manquer à toute procédure, requête judiciaire ou administrative ou
+            réglementations applicables aux réseaux connectés au Service ;
+          </li>
+          <li>(ix) Effectuer tout acte violant les lois ou règlementations en vigueur ;</li>
+          <li>(x) Enfreindre de toute autre manière la législation applicable.</li>
+        </ol>
+
+        <h3 id="liens-sortants" class={h3}>2.8. Liens hypertextes disponibles sur le Service</h3>
+        <p>
+          Les liens hypertextes disponibles sur le Service peuvent renvoyer vers des sites ou des
+          services de tiers non édités par « {company.name} ». Ils sont fournis uniquement pour
+          Votre convenance, afin de Vous faciliter l’utilisation des ressources disponibles sur
+          l’Internet ou à partir de Votre terminal de communication. Si Vous utilisez ces liens,
+          Vous quitterez le Service et acceptez alors d’utiliser les services de ces tiers à Vos
+          risques et périls ou le cas échéant conformément aux conditions qui les régissent.
+        </p>
+        <p>
+          Vous reconnaissez que « {company.name} » ne contrôle ni ne contribue en aucune manière à
+          l’élaboration du contenu et/ou de tout élément figurant dans tout ou partie de ces
+          services de tiers. En conséquence, « {company.name} » ne saurait être tenue responsable de
+          quelque façon que ce soit du fait de ces liens hypertextes.
+        </p>
+        <p>
+          En outre, Vous reconnaissez que « {company.name} » ne saurait cautionner, garantir ou
+          reprendre à son compte tout ou partie du contenu et/ou de tout élément figurant dans tout
+          ou partie de ces services de tiers.
+        </p>
+
+        <h3 id="liens-entrants" class={h3}>2.9. Liens hypertextes vers le Service</h3>
+        <p>
+          Vous ne pouvez utiliser et/ou insérer de lien hypertexte pointant vers le Service sans
+          l’accord écrit et préalable de « {company.name} », et sous réserve de pointer vers la page
+          d’accueil ou de téléchargement du Service sans dupliquer la page d’accueil ou toute autre
+          page ou élément du Service, et de :
+        </p>
+        <ol class={list}>
+          <li>
+            (a) Ne pas insérer de lien vers le Service depuis un service dont Vous n’êtes pas
+            l’éditeur ;
+          </li>
+          <li>
+            (b) Ne pas supprimer, modifier ou altérer, de quelque manière que ce soit, la taille ou
+            l’apparence des logos ou autres signes distinctifs de « {company.name} » ;
+          </li>
+          <li>
+            (c) Ne pas créer une fenêtre, un cadre ou tout autre navigateur autour du Service ;
+          </li>
+          <li>
+            (d) Ne pas insinuer de quelque façon que ce soit que « {company.name} » cautionne ou
+            garantit les produits et services disponibles sur le site ou du service en cause ;
+          </li>
+          <li>
+            (e) Ne pas induire tout utilisateur ou tout tiers en erreur ou créer une confusion quant
+            à Votre relation à « {company.name} » et ne pas présenter des informations fausses,
+            trompeuses, dénigrantes ou mensongères sur « {company.name} » ;
+          </li>
+          <li>
+            (f) Ne pas utiliser les marques, logos ou autres signes distinctifs de « {
+              company.name
+            } » sans l’accord préalable exprès et écrit de « {company.name} » ;
+          </li>
+          <li>
+            (g) Ne pas inclure sur Votre site ou Votre service un ou des Éléments diffamants,
+            offensants, injurieux ou violant les dispositions applicables en matière de liberté
+            d’expression, susceptibles de violer les droits des tiers ou de la personnalité ou
+            contrevenant de quelque manière que ce soit à la législation et la réglementation
+            applicables.
+          </li>
+        </ol>
+        <p>
+          « {company.name} » se réserve expressément le droit de révoquer l’autorisation accordée
+          aux présentes et de prendre toute mesure appropriée dans l’hypothèse d’un manquement aux
+          stipulations du présent article. Vous pourrez être tenu(e) responsable de tout dommage
+          lié ou résultant dudit manquement.
+        </p>
+
+        <h3 id="responsabilite" class={h3}>
+          2.10. Garantie – Responsabilité de « {company.name} »
+        </h3>
+        <p>
+          « {company.name} » ne garantit en aucun cas que l’accès au Service sera ininterrompu,
+          aisé, fiable, correct, complet, satisfaisant ou rapide.
+        </p>
+        <p>
+          Par ailleurs, « {company.name} » ne garantit pas la pérennité et la stabilité du Service,
+          ni que les informations contenues sur le Service répondent à Vos besoins particuliers.
+        </p>
+        <p>
+          « {company.name} » fait ses meilleurs efforts pour Vous communiquer des informations et
+          autres données fiables, à jour et exactes, et s’efforce de mettre à jour les informations
+          dans des délais raisonnables. Cependant, « {company.name} » ne saurait garantir que
+          l’intégralité des informations et des contenus présents sur le Service sont entièrement
+          fiables, exacts ou à jour.
+        </p>
+        <p>
+          « {company.name} » ne garantit pas la sécurité des échanges par le biais des
+          communications électroniques et n’est en aucun cas responsable des dommages qui
+          résulteraient d’une utilisation du réseau de Votre part ou de menaces telles que notamment
+          les virus, bogues, codes malicieux, chevaux de Troie, bombes logiques, vers et autres
+          anomalies qui interviendraient sur le réseau Internet.
+        </p>
+        <p>
+          « {company.name} » ne saurait être tenue responsable de tous dommages directs ou indirects
+          ainsi que notamment de toutes pertes de profits, de revenus, de chiffre d’affaires, de
+          données, de clientèle, de temps, tout dommage causé à Vos biens et/ou équipements, tous
+          coûts de substitution des biens et/ou des services, qui pourraient résulter de l’accès ou
+          de l’impossibilité d’accéder à tout ou partie du Service, de l’utilisation ou de
+          l’incapacité à utiliser l’information et tout autre élément du Service.
+        </p>
+
+        <h3 id="donnees" class={h3}>2.11. Données personnelles</h3>
+        <p>
+          La collecte et le traitement par « {company.name} » des données à caractère personnel Vous
+          concernant et des données relatives à Votre utilisation du Service sont régis par le
+          présent article et par l’article 2.15 relatif aux cookies, qui font partie intégrante des
+          présentes Conditions. Conformément au Règlement (UE) 2016/679 du 27 avril 2016 relatif à
+          la protection des données à caractère personnel (RGPD) et à la loi française
+          « Informatique
+          et Libertés » n° 78-17 du 6 janvier 1978 modifiée, Vous disposez d’un droit d’accès, de
+          rectification, d’effacement, de limitation, d’opposition et de portabilité au traitement
+          des données personnelles Vous concernant. Vous pouvez également Nous préciser des
+          directives concernant le sort de Vos données personnelles en cas de décès et Nous demander
+          de Vous communiquer les données personnelles Vous concernant que Nous traitons
+          (portabilité). Le cas échéant, Nous Vous communiquerons les données personnelles que Vous
+          Nous avez fournies directement ainsi que les factures comportant des données personnelles
+          Vous concernant.
+        </p>
+        <p>
+          Les informations transmises au moyen du formulaire de contact (nom, coordonnées, message)
+          sont utilisées uniquement pour répondre à votre demande et établir un devis. Elles sont
+          adressées par e-mail à « {company.name} » au moyen du service Web3Forms, conservées le
+          temps nécessaire au traitement de la demande et à la relation commerciale, et ne sont
+          jamais cédées à des tiers.
+        </p>
+        <p>
+          Vous pouvez Vous adresser au Service Consommateurs de « {company.name} » à l’adresse
+          suivante : « {company.name} », {legal.address}, ou par courriel : <a
+            href={`mailto:${company.email}`}
+            class={link}>{company.email}</a
+          >. Vous pouvez également introduire une réclamation auprès de la Commission nationale de
+          l’informatique et des libertés (CNIL), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex
+          07, ou sur <a href="https://www.cnil.fr" class={link}>www.cnil.fr</a>.
+        </p>
+
+        <h3 id="modifications" class={h3}>2.12. Modifications du site et des Conditions</h3>
+        <p>
+          « {company.name} » se réserve le droit de modifier à tout moment le contenu du Service ou
+          des Conditions et/ou de cesser de manière temporaire ou définitive d’exploiter tout ou
+          partie du Service.
+        </p>
+        <p>
+          Nous Vous conseillons par conséquent de Vous reporter aux Conditions applicables au
+          Service avant toute utilisation de celui-ci.
+        </p>
+        <p>
+          Vous reconnaissez que « {company.name} » ne saurait être tenue responsable de quelque
+          manière que ce soit envers Vous-même ou tout tiers du fait de ces modifications,
+          suspensions ou cessations.
+        </p>
+
+        <h3 id="loi" class={h3}>2.13. Loi applicable et juridiction compétente</h3>
+        <p>
+          Les présentes Conditions sont régies et interprétées conformément au droit français. Tout
+          différend lié ou résultant de la validité, de l’exécution, de l’interprétation ou de la
+          formation des présentes Conditions sera soumis à la juridiction exclusive des tribunaux
+          français compétents.
+        </p>
+
+        <h3 id="contact" class={h3}>2.14. Contact</h3>
+        <p>
+          Pour obtenir davantage d’informations ou pour toute question concernant les présentes
+          Conditions, Vous pouvez Nous adresser un mail à l’adresse suivante : <a
+            href={`mailto:${company.email}`}
+            class={link}>{company.email}</a
+          >, ou Nous appeler au <a href={company.phoneHref} class={link}>{company.phone}</a>.
+        </p>
+
+        <h3 id="cookies" class={h3}>2.15. Cookies et mesure d’audience</h3>
+        <p>
+          Ce site n’utilise aucun cookie de suivi ni de mesure d’audience. Les polices de caractères
+          sont hébergées sur le site lui-même. Le formulaire de contact transmet les données
+          saisies au service Web3Forms par une requête sécurisée, sans dépôt de cookie publicitaire
+          de notre part.
+        </p>
+        <p>
+          Si un outil de mesure d’audience était ajouté au site, le présent article serait mis à
+          jour et, le cas échéant, votre consentement serait recueilli avant tout dépôt de cookie
+          non strictement nécessaire.
+        </p>
+
+        <h3 id="mediation" class={h3}>2.16. Médiation de la consommation</h3>
+        <p>
+          Conformément aux articles L611-1 et suivants du code de la consommation, le client
+          consommateur peut recourir gratuitement à un médiateur de la consommation en vue de la
+          résolution amiable d’un litige : BATIRMEDIATION CONSO, contact@batirmediation-conso.fr,
+          tél. 07 68 46 59 09, par courrier : 22 corniche du Soleil, 83430 Saint-Mandrier. La
+          procédure de réclamation préalable et les coordonnées du médiateur sont détaillées à
+          l’article 5.2 des <a href="/cgv" class={link}>conditions générales de vente</a>.
+        </p>
+
+        <p class="pt-6 text-sm text-muted-foreground">
+          Dernière mise à jour : {versionDate}. Voir aussi les <a href="/cgv" class={link}
+            >conditions générales de vente</a
+          >.
+        </p>
+      </div>
     </div>
   </Section>
 </>

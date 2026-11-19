@@ -4,36 +4,25 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
 
 ## Before going live
 - [ ] Fill the two remaining legal fields in `company.legal` (`src/content/company.ts`):
-      publication director and insurer. Company identity, address, SIRET and VAT are done.
-- [ ] Create a Web3Forms key (https://web3forms.com, with serruriersfranciliens@gmail.com):
-  - [ ] locally: `.env` → `VITE_WEB3FORMS_KEY=...`
-  - [ ] GitHub: Settings → Secrets and variables → Actions → `VITE_WEB3FORMS_KEY`
-  - [ ] send a test message from `/contact`.
-  - Photo upload in the form is a Web3Forms **Pro (paid)** feature: not done for now.
-    Customers send photos by WhatsApp or e-mail instead.
-- [ ] Replace the placeholders:
-  - [ ] key figures `XX` on `/entreprise` (`src/pages/Entreprise.tsx`).
-- [x] Images: all 15 slots generated with fal (Nano Banana 2.1, prompts in
-      `build_docs/images-prompts.md`), in `public/images/<slot-id>.webp`.
-- [ ] Replace the AI image of the workshop (`entreprise-atelier.webp`) with a real photo.
+      publication director and insurer. They are still placeholders on `/mentions-legales` and
+      `/cgv`. Open legal points: [CGV-NOTES.md](build_docs/CGV-NOTES.md),
+      [MENTIONS-LEGALES-NOTES.md](build_docs/MENTIONS-LEGALES-NOTES.md).
+- [ ] Replace the AI image of the workshop (`public/images/entreprise-atelier.webp` and its
+      `-800` variant) with a real photo.
 - [ ] Proofread all texts in `src/content/` and the pages (especially FAQ legal statements).
 - [ ] **Validate the promise "intervention en moins d’1 h"** shown on the 61 city pages, their
       meta descriptions and `/zones-intervention`. Check it holds at rush hour for the
       farthest towns (Villeparisis, Pontault-Combault, Gonesse, Paris 3e…); if not, change the
-      wording in `src/pages/City.tsx`, `src/content/seo.ts` and `src/pages/Zones.tsx`.
+      wording in `src/views/City.astro`, `src/content/seo.ts` and `src/views/Zones.astro`.
 - [ ] Proofread the 61 city pages (`src/content/city-texts.ts`): neighbourhood names, local
       facts, building types. Remove anything you are not sure of.
 - [ ] Proofread the 12 brand pages (`src/content/brands.ts`): product ranges (F3D/F5S, Radial NT,
       VIP+, Chifral, Interactive+/MT5+, Bravus, R6/R9, Gemini/expert, TX80) against the makers'
       catalogues. Remove a brand you do not actually service.
 
-## Deployment (GitHub Pages)
-- [x] Create the GitHub repository and push `main`.
-- [x] Settings → Pages → Source: **GitHub Actions**.
-- [ ] Settings → Pages → Custom domain: `lesserruriersfranciliens.fr` (done, DNS check OK);
-      **enable "Enforce HTTPS"** once GitHub has issued the certificate.
-- [x] OVH DNS zone: apex → 4 `A` (185.199.108–111.153) + 4 `AAAA` (2606:50c0:8000–8003::153),
-      `www` → `CNAME` → `erikaouizerate.github.io.` (MX/SPF kept).
+## Domains
+- [ ] **OVH**: update the contact information (phone 01 70 07 20 00, e-mail, address
+      60 rue François Ier, 75008 Paris) on the OVH account / domain contacts.
 - [ ] `lesserruriersfranciliens.com` (transferred from Squarespace to OVH, active from 2026-11-25;
       never published, so no search ranking to carry over):
   - [ ] check the domain's DNS servers are OVH's (`dnsXX.ovh.net` / `nsXX.ovh.net`);
@@ -47,37 +36,28 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
   - [ ] `http://www.lesserruriersfranciliens.com/` → `https://lesserruriersfranciliens.fr/`;
   - [ ] `https://www.lesserruriersfranciliens.fr/` → `https://lesserruriersfranciliens.fr/`;
   - [ ] `http://lesserruriersfranciliens.fr/` → `https://lesserruriersfranciliens.fr/`;
-  - [ ] old paths still redirect on the `.fr` (`/depannage`, `/installation`, `/contacts`).
-- [ ] Move the site to the `serruriersfranciliens` GitHub account:
-  - [x] transfer the repository (now `serruriersfranciliens/lesserruriersfranciliens`);
-  - [ ] on the new repo: Settings → Pages → Source **GitHub Actions**, custom domain
-        `lesserruriersfranciliens.fr`, then Enforce HTTPS;
-  - [ ] re-add the Actions secret `VITE_WEB3FORMS_KEY` (check it survived the transfer);
-  - [ ] OVH DNS zone: change `www` → `CNAME` → `serruriersfranciliens.github.io.`
-        (the apex `A` / `AAAA` records stay the same);
-  - [ ] optional: verify the domain on the `serruriersfranciliens` account (Settings → Pages → Add a domain,
-        TXT record `_github-pages-challenge-serruriersfranciliens` in the OVH zone);
-  - [x] update the local remote: `git remote set-url origin git@github.com:serruriersfranciliens/lesserruriersfranciliens.git`.
-- [ ] **OVH**: update the contact information (phone 01 70 07 20 00, e-mail, address
-      60 rue François Ier, 75008 Paris) on the OVH account / domain contacts.
+  - [ ] old paths `/depannage`, `/installation`, `/contacts` on the `.fr` (meta refresh, not
+        301: GitHub Pages cannot send redirects) land on the new pages.
 
 ## SEO after launch
+Step-by-step reminders for Search Console, Business Profile and Cloudflare Web Analytics:
+[ANALYTICS.md](build_docs/ANALYTICS.md).
 - [ ] Google Search Console: add the domain, submit `https://lesserruriersfranciliens.fr/sitemap.xml`.
 - [ ] Bing Webmaster Tools: import from Search Console.
+- [ ] Cloudflare Web Analytics (cookieless): send the token, then add the script to
+      `src/layouts/Layout.astro` and update §2.15 of `/mentions-legales`.
 - [ ] Google Business Profile: create/claim it, same name / phone / hours as the site, link to
       the site. Biggest lever for local search. If 60 rue François Ier is a domiciliation
       address (no premises receiving clients), declare a **service-area business** and hide the
       address: Google suspends profiles showing a domiciliation address.
-- [ ] Ask satisfied clients (syndics, bailleurs) for Google reviews.
 - [ ] Make reviews systematic (the competitor at serrurier-levalloisperret.com has 210+ reviews
-      at 5.0, its main local lever): send the direct review link (`g.page/r/.../review`, from
-      the Business Profile) by SMS/WhatsApp after every job, print it as a QR code on invoices,
-      put a "Laissez-nous un avis" link on the site, answer every review.
+      at 5.0, its main local lever): ask satisfied clients (syndics, bailleurs) first, send the
+      direct review link (`g.page/r/.../review`, from the Business Profile) by SMS/WhatsApp after
+      every job, print it as a QR code on invoices, put a "Laissez-nous un avis" link on the
+      site, answer every review.
 - [ ] Directories with the exact same name / address / phone as the site and the Business
       Profile: PagesJaunes, Cylex, mesdepanneurs.fr, Justacoté, Bing Places, Apple Business Connect.
 - [ ] Test structured data: https://search.google.com/test/rich-results
-- [ ] Old URLs `/depannage`, `/installation`, `/contacts` redirect to the new pages
-      (meta refresh). Check them once live.
 - [ ] Optional: a blog / advice section (topics listed in `build_docs/recherche-*.md`).
 
 ## Insurers & assistance networks (getting jobs referred)
@@ -94,6 +74,12 @@ certificates, URSSAF certificate, RIB, covered area, hours, response time, price
       permission, and only for networks that really send jobs.
 
 ## Maintenance
+- Contact form: Web3Forms, key in `.env` locally and in the `VITE_WEB3FORMS_KEY` Actions secret.
+  Photo upload is a Web3Forms **Pro (paid)** feature: not done, customers send photos by
+  WhatsApp or e-mail instead.
+- Images: 9 slots in `src/content/images.ts`, each served from `public/images/<slot-id>.webp`
+  (1600 px) plus `<slot-id>-800.webp` (800 px, used by `srcset`). Generated with fal
+  (Nano Banana 2.1, prompts in `build_docs/images-prompts.md`).
 - City pages: `src/content/city-facts.ts` is generated (driving time from Montreuil, OSRM +
   geo.api.gouv.fr, ≤ 23 min); local texts in `src/content/city-texts.ts` (one entry per city,
   the build fails if one is missing). Keep each text specific: near-duplicate city pages are
@@ -101,7 +87,7 @@ certificates, URSSAF certificate, RIB, covered area, hours, response time, price
   available: it is the best way to make each page unique.
 - Brand pages: `src/content/brands.ts`, URLs `/serrure-<brand>`, index `/marques`.
 - Texts: `src/content/*.ts`. Page titles/descriptions for SEO: `src/content/seo.ts`.
-- New page: add the route in `src/App.tsx` **and** its entry in `pages` (`src/content/seo.ts`),
-  otherwise it is not prerendered nor in the sitemap.
+- New page: add `src/pages/<name>.astro` (body in `src/views/`) **and** its entry in `pages`
+  (`src/content/seo.ts`), otherwise it has no title/meta and is not in the sitemap.
 - `npm audit` reports moderate issues in dependencies of the `shadcn` CLI (deepmerge,
   minimatch): build-time only, not shipped to visitors.

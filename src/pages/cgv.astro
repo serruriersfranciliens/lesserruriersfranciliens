@@ -1,0 +1,9 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Cgv from '@/views/Cgv.astro';
+import { getPageMeta } from '@/content/seo';
+---
+
+<Layout meta={getPageMeta('/cgv')}>
+  <Cgv />
+</Layout>

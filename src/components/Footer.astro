@@ -103,8 +103,9 @@ const linkClass = 'transition-colors hover:text-brand';
       © {new Date().getFullYear()} {company.name} · SAS ·{' '}
       <span class="whitespace-nowrap">SIRET {company.legal.siret}</span>
     </span>
-    <a href="/mentions-legales" class={linkClass}>
-      Mentions légales
-    </a>
+    <div class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+      <a href="/mentions-legales" class={linkClass}>Mentions légales</a>
+      <a href="/cgv" class={linkClass}>CGV</a>
+    </div>
   </div>
 </footer>

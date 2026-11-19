@@ -95,6 +95,13 @@ export const pages: PageMeta[] = [
     label: 'Mentions légales',
     noindex: true,
   },
+  {
+    path: '/cgv',
+    title: `Conditions générales de vente (CGV)${suffix}`,
+    description: `Conditions générales de vente de ${company.name} : devis, prix, droit de rétractation, garanties légales, paiement et médiation de la consommation.`,
+    label: 'CGV',
+    noindex: true,
+  },
 ];
 
 const zonesParent = { label: 'Zones d’intervention', path: '/zones-intervention' };
