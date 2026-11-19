@@ -40,7 +40,7 @@ When you answer an open question, move it to "Answered" with the answer.
 |---|---|
 | Hosting | GitHub Pages, custom domain `lesserruriersfranciliens.fr` (OVH, no www); `www` redirects to the bare domain |
 | Contact form | Web3Forms (key to create), `mailto:` fallback without a key |
-| Show prices? | No: free quote and guaranteed prices only |
+| Show prices? | Door opening only, fixed prices TTC (travel + labour included, parts extra): 99 € slammed door, 149 € locked without label, 199 € locked with label (A2P) or faulty lock. Everything else on free quote |
 | B2B targets | Syndics / copropriétés and bailleurs / gestionnaires |
 | Skills scope | Locksmithing and armoring only (alarms, video, glass breakage removed) |
 | Réalisations | Page and home section removed until there are real projects to show (restore from git history) |

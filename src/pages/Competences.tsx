@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/table';
 import { CtaBand } from '@/components/CtaBand';
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
+import { OpeningPrices } from '@/components/OpeningPrices';
 import { PageHeader } from '@/components/PageHeader';
 import { IconBadge, Section, SectionHeading } from '@/components/Section';
 import { cn } from '@/lib/utils';
@@ -58,6 +59,14 @@ export default function Competences() {
               </div>
             ))}
           </div>
+          {service.id === 'depannage' && (
+            <div className="mt-14">
+              <h3 data-reveal="up" className="mb-6 text-3xl md:text-4xl">
+                Nos tarifs d’ouverture de porte
+              </h3>
+              <OpeningPrices />
+            </div>
+          )}
         </Section>
       ))}
 

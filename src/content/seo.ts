@@ -1,5 +1,6 @@
 import { company } from './company';
 import { generalFaq } from './faq';
+import { openingPrices } from './pricing';
 import { proFaq } from './professionals';
 import { services } from './services';
 import { zones } from './zones';
@@ -146,12 +147,24 @@ function localBusiness() {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Prestations de serrurerie',
-      itemListElement: services.flatMap((s) =>
-        s.items.map((item) => ({
+      itemListElement: [
+        ...openingPrices.map((p) => ({
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: item.title, description: item.text },
+          itemOffered: {
+            '@type': 'Service',
+            name: `Ouverture de porte : ${p.title}`,
+            description: p.text,
+          },
+          price: p.price,
+          priceCurrency: 'EUR',
         })),
-      ),
+        ...services.flatMap((s) =>
+          s.items.map((item) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: item.title, description: item.text },
+          })),
+        ),
+      ],
     },
   };
 }

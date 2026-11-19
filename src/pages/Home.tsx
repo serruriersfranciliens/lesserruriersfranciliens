@@ -10,6 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CtaBand } from '@/components/CtaBand';
 import { Faq } from '@/components/Faq';
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
+import { OpeningPrices } from '@/components/OpeningPrices';
 import { ProcessSteps } from '@/components/ProcessSteps';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { Eyebrow, IconBadge, Section, SectionHeading } from '@/components/Section';
@@ -177,6 +178,16 @@ export default function Home() {
             </Card>
           ))}
         </div>
+      </Section>
+
+      {/* Opening prices */}
+      <Section tone="cream">
+        <SectionHeading
+          eyebrow="Tarifs"
+          title="Ouverture de porte : nos prix fixes"
+          lead="Pas de mauvaise surprise : le prix de l’ouverture est connu avant notre arrivée."
+        />
+        <OpeningPrices />
       </Section>
 
       {/* Why us: SEO-rich introduction */}
