@@ -5,7 +5,7 @@ import { services } from './services';
 import { zones } from './zones';
 
 // Canonical origin. Must match public/CNAME.
-export const siteUrl = 'https://www.lesserruriersfranciliens.fr';
+export const siteUrl = 'https://lesserruriersfranciliens.fr';
 
 export type PageMeta = {
   path: string;

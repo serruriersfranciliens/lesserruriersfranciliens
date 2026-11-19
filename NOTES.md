@@ -19,18 +19,18 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
 ## Deployment (GitHub Pages)
 - [x] Create the GitHub repository and push `main`.
 - [x] Settings → Pages → Source: **GitHub Actions**.
-- [ ] Settings → Pages → Custom domain: `www.lesserruriersfranciliens.fr` (done, DNS check OK);
+- [ ] Settings → Pages → Custom domain: `lesserruriersfranciliens.fr` (done, DNS check OK);
       **enable "Enforce HTTPS"** once GitHub has issued the certificate.
 - [x] OVH DNS zone: apex → 4 `A` (185.199.108–111.153) + 4 `AAAA` (2606:50c0:8000–8003::153),
       `www` → `CNAME` → `erikaouizerate.github.io.` (MX/SPF kept).
 - [ ] `lesserruriersfranciliens.com` (Squarespace): keep it there for 3 years, then:
-  - [ ] set up a permanent (301) redirect to `https://www.lesserruriersfranciliens.fr`,
+  - [ ] set up a permanent (301) redirect to `https://lesserruriersfranciliens.fr`,
         so the old search ranking carries over;
   - [ ] enable the transfer lock (disable outbound transfer) so it cannot be moved away.
 - [ ] Move the site to the `serruriersfranciliens` GitHub account:
   - [x] transfer the repository (now `serruriersfranciliens/lesserruriersfranciliens`);
   - [ ] on the new repo: Settings → Pages → Source **GitHub Actions**, custom domain
-        `www.lesserruriersfranciliens.fr`, then Enforce HTTPS;
+        `lesserruriersfranciliens.fr`, then Enforce HTTPS;
   - [ ] re-add the Actions secret `VITE_WEB3FORMS_KEY` (check it survived the transfer);
   - [ ] OVH DNS zone: change `www` → `CNAME` → `serruriersfranciliens.github.io.`
         (the apex `A` / `AAAA` records stay the same);
@@ -41,7 +41,7 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
       60 rue François Ier, 75008 Paris) on the OVH account / domain contacts.
 
 ## SEO after launch
-- [ ] Google Search Console: add the domain, submit `https://www.lesserruriersfranciliens.fr/sitemap.xml`.
+- [ ] Google Search Console: add the domain, submit `https://lesserruriersfranciliens.fr/sitemap.xml`.
 - [ ] Bing Webmaster Tools: import from Search Console.
 - [ ] Google Business Profile: create/claim it, same name / phone / hours as the site, link to
       the site. Biggest lever for local search. If 60 rue François Ier is a domiciliation

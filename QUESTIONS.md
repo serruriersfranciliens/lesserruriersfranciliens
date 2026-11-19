@@ -38,7 +38,7 @@ When you answer an open question, move it to "Answered" with the answer.
 
 | Question | Answer |
 |---|---|
-| Hosting | GitHub Pages, custom domain `www.lesserruriersfranciliens.fr` (OVH); bare domain redirects to www |
+| Hosting | GitHub Pages, custom domain `lesserruriersfranciliens.fr` (OVH, no www); `www` redirects to the bare domain |
 | Contact form | Web3Forms (key to create), `mailto:` fallback without a key |
 | Show prices? | No: free quote and guaranteed prices only |
 | B2B targets | Syndics / copropriétés and bailleurs / gestionnaires |
