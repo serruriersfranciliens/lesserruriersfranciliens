@@ -18,7 +18,6 @@ When you answer an open question, move it to "Answered" with the answer.
 - [ ] Short history: founding year, founders, team size?
 
 ### Skills (`/competences`)
-- [ ] Brands installed (Fichet, Vachette, Bricard, Picard, Mul-T-Lock, Héraclès…)?
 - [ ] Certifications held (installer approvals, Qualibat…)?
 - [ ] A2P table (5 / 10 / 15 minutes): validated against CNPP sources?
 
@@ -46,6 +45,8 @@ When you answer an open question, move it to "Answered" with the answer.
 | Design stack | Tailwind CSS + shadcn/ui |
 | Legal identity | LES SERRURIERS FRANCILIENS, SAS au capital de 1 200 €, created 12/11/2025, RNE 04/12/2025 |
 | Phone & WhatsApp | Landline 01 70 07 20 00 shown on the site for calls; WhatsApp CTA on +33 6 30 93 52 88 |
+| Brands serviced | All the main ones: Fichet, Vachette, Bricard, Picard, Héraclès, Mul-T-Lock, ABUS, ISEO, Kaba, DOM, TESA, CISA (one page each) |
+| City pages | ~60 towns/arrondissements by driving time from Montreuil (where the locksmith lives), one unique page each |
 | Head office | 60 rue François Ier, 75008 Paris |
 | SIREN / SIRET / VAT | 994 060 275 / 994 060 275 00017 / FR33 994 060 275 |
 | NAF | 43.32B – Travaux de menuiserie métallique et serrurerie |

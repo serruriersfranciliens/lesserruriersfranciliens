@@ -1,3 +1,5 @@
+import { brandPath, brands } from './brands';
+import { cities, departmentNames } from './cities';
 import { company } from './company';
 import { generalFaq } from './faq';
 import { openingPrices } from './pricing';
@@ -19,6 +21,10 @@ export type PageMeta = {
   priority?: number;
   noindex?: boolean;
   faq?: { question: string; answer: string }[];
+  /** Intermediate breadcrumb level (city pages → zones, brand pages → brands). */
+  parent?: { label: string; path: string };
+  /** City name, for a Service JSON-LD scoped to that city. */
+  areaServed?: string;
 };
 
 const suffix = ` | ${company.name}`;
@@ -67,6 +73,14 @@ export const pages: PageMeta[] = [
     priority: 0.8,
   },
   {
+    path: '/marques',
+    title: `Serrurier toutes marques : Fichet, Vachette, Bricard, Mul-T-Lock…${suffix}`,
+    description:
+      'Dépannage, remplacement de cylindres et de serrures, clés sur carte de propriété : nous intervenons sur les principales marques de serrures en Île-de-France.',
+    label: 'Marques de serrures',
+    priority: 0.7,
+  },
+  {
     path: '/contact',
     title: `Contact et devis gratuit${suffix}`,
     description:
@@ -82,6 +96,36 @@ export const pages: PageMeta[] = [
     noindex: true,
   },
 ];
+
+const zonesParent = { label: 'Zones d’intervention', path: '/zones-intervention' };
+const brandsParent = { label: 'Marques de serrures', path: '/marques' };
+
+for (const city of cities) {
+  pages.push({
+    path: city.path,
+    title: `Serrurier ${city.locative} (${city.postalCode}) : dépannage, serrures, blindage${suffix}`,
+    description: `Serrurier ${city.locative} (${departmentNames[city.department]}) : ${city.districts
+      .slice(0, 3)
+      .join(
+        ', ',
+      )}… Ouverture de porte, changement de serrure et blindage, intervention en moins d’1 h. Devis gratuit, 7j/7 de 8h à 22h.`,
+    label: `Serrurier ${city.locative}`,
+    priority: 0.6,
+    parent: zonesParent,
+    areaServed: city.name,
+  });
+}
+
+for (const brand of brands) {
+  pages.push({
+    path: brandPath(brand.slug),
+    title: `Serrurier ${brand.name} : dépannage, cylindres et clés${suffix}`,
+    description: `Serrures et cylindres ${brand.name} en Île-de-France : ${brand.summary.charAt(0).toLowerCase()}${brand.summary.slice(1, -1)}. Dépannage, remplacement à l’identique, clés sur carte de propriété. Devis gratuit.`,
+    label: brand.name,
+    priority: 0.5,
+    parent: brandsParent,
+  });
+}
 
 export const notFoundMeta: PageMeta = {
   path: '/404',
@@ -181,12 +225,29 @@ function website() {
 }
 
 function breadcrumb(meta: PageMeta) {
+  const trail = [
+    { name: 'Accueil', path: '/' },
+    ...(meta.parent ? [{ name: meta.parent.label, path: meta.parent.path }] : []),
+    { name: meta.label, path: meta.path },
+  ];
   return {
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: absoluteUrl('/') },
-      { '@type': 'ListItem', position: 2, name: meta.label, item: absoluteUrl(meta.path) },
-    ],
+    itemListElement: trail.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      item: absoluteUrl(t.path),
+    })),
+  };
+}
+
+function localService(meta: PageMeta) {
+  return {
+    '@type': 'Service',
+    serviceType: 'Serrurerie',
+    name: meta.label,
+    provider: { '@id': businessId },
+    areaServed: { '@type': 'City', name: meta.areaServed },
   };
 }
 
@@ -207,6 +268,7 @@ export function buildJsonLd(meta: PageMeta) {
   if (meta.path === '/') graph.push(website());
   else graph.push(breadcrumb(meta));
   if (meta.faq?.length) graph.push(faqPage(meta));
+  if (meta.areaServed) graph.push(localService(meta));
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
@@ -242,7 +304,11 @@ export function renderHeadTags(meta: PageMeta): string {
 
 export function renderLlmsTxt(): string {
   const link = (p: PageMeta) => `- [${p.label}](${absoluteUrl(p.path)}): ${p.description}`;
-  const indexed = pages.filter((p) => !p.noindex);
+  const indexed = pages.filter((p) => !p.noindex && !p.parent);
+  const children = (parent: string) =>
+    pages
+      .filter((p) => p.parent?.path === parent)
+      .map((p) => `- [${p.label}](${absoluteUrl(p.path)})`);
   const legal = pages.filter((p) => p.noindex);
   const { legal: l } = company;
   return [
@@ -266,6 +332,14 @@ export function renderLlmsTxt(): string {
     ...services.flatMap((s) =>
       s.items.map((i) => `- [${i.title}](${absoluteUrl('/competences')}#${s.id}): ${i.text}`),
     ),
+    '',
+    '## Villes',
+    '',
+    ...children('/zones-intervention'),
+    '',
+    '## Marques',
+    '',
+    ...children('/marques'),
     '',
     '## Optional',
     '',

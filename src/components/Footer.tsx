@@ -68,6 +68,11 @@ export function Footer() {
               </li>
             ))}
             <li>
+              <Link to="/marques" className={linkClass}>
+                Serrurier toutes marques
+              </Link>
+            </li>
+            <li>
               <Link to="/professionnels#syndics" className={linkClass}>
                 Serrurier pour syndics
               </Link>

@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Clock, MapPin, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { zones } from '@/content/zones';
+import { cities } from '@/content/cities';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CtaBand } from '@/components/CtaBand';
@@ -69,6 +70,24 @@ export default function Zones() {
           </Card>
         </div>
 
+        <SectionHeading
+          eyebrow="Intervention en moins d’1 h"
+          title="Nos villes d’intervention prioritaires"
+          lead="Dans ces villes et arrondissements de l’est parisien, nous intervenons en moins d’une heure."
+        />
+        <ul data-reveal="stagger" className="mb-16 flex flex-wrap gap-2">
+          {cities.map((c) => (
+            <li key={c.slug}>
+              <Link
+                to={c.path}
+                className="inline-block rounded-full bg-muted px-3 py-1.5 text-sm hover:text-brand-ink"
+              >
+                {c.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <SectionHeading eyebrow="Départements & villes" title="Où intervenons-nous ?" />
         <div data-reveal="stagger" className="grid gap-6 md:grid-cols-2">
           {zones.map((zone) => (
@@ -83,11 +102,20 @@ export default function Zones() {
                   className="flex flex-wrap gap-1.5"
                   aria-label={`Villes desservies : ${zone.name}`}
                 >
-                  {zone.cities.map((city) => (
-                    <li key={city} className="rounded-full bg-muted px-2.5 py-1 text-xs">
-                      {city}
-                    </li>
-                  ))}
+                  {zone.cities.map((name) => {
+                    const page = cities.find((c) => c.name === name);
+                    return (
+                      <li key={name} className="rounded-full bg-muted px-2.5 py-1 text-xs">
+                        {page ? (
+                          <Link to={page.path} className="font-semibold hover:text-brand-ink">
+                            {name}
+                          </Link>
+                        ) : (
+                          name
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </CardContent>
             </Card>

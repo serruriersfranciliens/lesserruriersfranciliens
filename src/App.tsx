@@ -13,6 +13,11 @@ import Zones from '@/pages/Zones';
 import Contact from '@/pages/Contact';
 import MentionsLegales from '@/pages/MentionsLegales';
 import NotFound from '@/pages/NotFound';
+import CityPage from '@/pages/City';
+import BrandPage from '@/pages/Brand';
+import Brands from '@/pages/Brands';
+import { cities } from '@/content/cities';
+import { brandPath, brands } from '@/content/brands';
 
 export default function App() {
   return (
@@ -34,6 +39,17 @@ export default function App() {
           <Route path="/competences" element={<Competences />} />
           <Route path="/professionnels" element={<Professionnels />} />
           <Route path="/zones-intervention" element={<Zones />} />
+          <Route path="/marques" element={<Brands />} />
+          {cities.map((city) => (
+            <Route key={city.slug} path={city.path} element={<CityPage city={city} />} />
+          ))}
+          {brands.map((brand) => (
+            <Route
+              key={brand.slug}
+              path={brandPath(brand.slug)}
+              element={<BrandPage brand={brand} />}
+            />
+          ))}
           <Route path="/contact" element={<Contact />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="*" element={<NotFound />} />
