@@ -3,7 +3,7 @@ import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/content/company';
 import { navItems } from '@/content/navigation';
 import { services } from '@/content/services';
-import { WhatsAppIcon } from '@/components/WhatsAppIcon';
+import { WhatsAppGlyph } from '@/components/WhatsAppIcon';
 
 const linkClass = 'transition-colors hover:text-brand';
 
@@ -25,7 +25,7 @@ export function Footer() {
           <h2 className="mb-4 text-2xl text-brand">Contact</h2>
           <ul className="grid gap-2.5 text-sm">
             <li className="flex items-center gap-2.5">
-              <WhatsAppIcon className="size-4" />
+              <WhatsAppGlyph className="size-4 shrink-0 text-brand" />
               <a href={company.whatsappHref} target="_blank" rel="noreferrer" className={linkClass}>
                 WhatsApp
               </a>
