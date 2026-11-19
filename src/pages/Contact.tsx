@@ -19,29 +19,29 @@ export default function Contact() {
         <div data-reveal="stagger" className="grid items-start gap-10 lg:grid-cols-[2fr_3fr]">
           <aside className="grid gap-7">
             <a
-              href={company.phoneHref}
-              className="flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
-            >
-              <Phone className="size-7 shrink-0" aria-hidden />
-              <span className="font-heading text-[2.6rem] leading-none">
-                <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
-                  Urgence & devis
-                </small>
-                {company.phone}
-              </span>
-            </a>
-            <a
               href={company.whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="-mt-3 flex items-center gap-4 rounded-lg border-2 border-brand p-6 transition-colors hover:bg-brand/10"
+              className="flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
             >
-              <WhatsAppIcon className="size-7 shrink-0 text-brand-ink" />
+              <WhatsAppIcon className="size-7" />
               <span className="font-heading text-[2.6rem] leading-none">
                 <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
                   Photos & messages
                 </small>
                 WhatsApp
+              </span>
+            </a>
+            <a
+              href={company.phoneHref}
+              className="-mt-3 flex items-center gap-4 rounded-lg border-2 border-brand p-6 transition-colors hover:bg-brand/10"
+            >
+              <Phone className="size-7 shrink-0 text-brand-ink" aria-hidden />
+              <span className="font-heading text-[2.6rem] leading-none">
+                <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                  Urgence & devis
+                </small>
+                {company.phone}
               </span>
             </a>
 

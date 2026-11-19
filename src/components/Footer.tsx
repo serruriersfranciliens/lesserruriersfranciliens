@@ -25,6 +25,12 @@ export function Footer() {
           <h2 className="mb-4 text-2xl text-brand">Contact</h2>
           <ul className="grid gap-2.5 text-sm">
             <li className="flex items-center gap-2.5">
+              <WhatsAppIcon className="size-4" />
+              <a href={company.whatsappHref} target="_blank" rel="noreferrer" className={linkClass}>
+                WhatsApp
+              </a>
+            </li>
+            <li className="flex items-center gap-2.5">
               <Phone className="size-4 shrink-0 text-brand" aria-hidden />
               <a href={company.phoneHref} className={linkClass}>
                 {company.phone}
@@ -34,12 +40,6 @@ export function Footer() {
               <Mail className="size-4 shrink-0 text-brand" aria-hidden />
               <a href={`mailto:${company.email}`} className={linkClass}>
                 {company.email}
-              </a>
-            </li>
-            <li className="flex items-center gap-2.5">
-              <WhatsAppIcon className="size-4 shrink-0 text-brand" />
-              <a href={company.whatsappHref} target="_blank" rel="noreferrer" className={linkClass}>
-                WhatsApp
               </a>
             </li>
             <li className="flex items-center gap-2.5">

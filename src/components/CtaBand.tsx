@@ -33,16 +33,6 @@ export function CtaBand({
             Demander un devis
           </Link>
           <a
-            href={company.phoneHref}
-            className={cn(
-              buttonVariants({ size: 'xl', variant: 'outline' }),
-              'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
-            )}
-          >
-            <Phone aria-hidden />
-            {company.phone}
-          </a>
-          <a
             href={company.whatsappHref}
             target="_blank"
             rel="noreferrer"
@@ -53,6 +43,16 @@ export function CtaBand({
           >
             <WhatsAppIcon />
             WhatsApp
+          </a>
+          <a
+            href={company.phoneHref}
+            className={cn(
+              buttonVariants({ size: 'xl', variant: 'outline' }),
+              'border-2 border-ink bg-transparent hover:bg-ink hover:text-white',
+            )}
+          >
+            <Phone aria-hidden />
+            {company.phone}
           </a>
         </div>
       </div>

@@ -42,16 +42,6 @@ export default function Home() {
                 Demander un devis
               </Link>
               <a
-                href={company.phoneHref}
-                className={cn(
-                  buttonVariants({ size: 'xl', variant: 'outline' }),
-                  'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
-                )}
-              >
-                <Phone aria-hidden />
-                {company.phone}
-              </a>
-              <a
                 href={company.whatsappHref}
                 target="_blank"
                 rel="noreferrer"
@@ -62,6 +52,16 @@ export default function Home() {
               >
                 <WhatsAppIcon />
                 WhatsApp
+              </a>
+              <a
+                href={company.phoneHref}
+                className={cn(
+                  buttonVariants({ size: 'xl', variant: 'outline' }),
+                  'border-2 border-white bg-transparent px-5 hover:border-brand hover:bg-transparent hover:text-brand',
+                )}
+              >
+                <Phone aria-hidden />
+                {company.phone}
               </a>
             </div>
             <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground motion-safe:animate-rise motion-safe:[animation-delay:380ms]">

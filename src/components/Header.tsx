@@ -55,13 +55,6 @@ export function Header() {
         </nav>
 
         <a
-          href={company.phoneHref}
-          className={cn(buttonVariants({ size: 'xl' }), 'hidden xl:inline-flex')}
-        >
-          <Phone aria-hidden />
-          {company.phone}
-        </a>
-        <a
           href={company.whatsappHref}
           target="_blank"
           rel="noreferrer"
@@ -72,6 +65,13 @@ export function Header() {
           )}
         >
           <WhatsAppIcon className="size-6" />
+        </a>
+        <a
+          href={company.phoneHref}
+          className={cn(buttonVariants({ size: 'xl' }), 'hidden xl:inline-flex')}
+        >
+          <Phone aria-hidden />
+          {company.phone}
         </a>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -106,18 +106,21 @@ export function Header() {
               </ul>
             </nav>
             <div className="mt-auto grid gap-3 p-4">
-              <a href={company.phoneHref} className={cn(buttonVariants({ size: 'xl' }), 'w-full')}>
-                <Phone aria-hidden />
-                {company.phone}
-              </a>
               <a
                 href={company.whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'w-full')}
+                className={cn(buttonVariants({ size: 'xl' }), 'w-full')}
               >
                 <WhatsAppIcon />
                 WhatsApp
+              </a>
+              <a
+                href={company.phoneHref}
+                className={cn(buttonVariants({ size: 'xl', variant: 'outline' }), 'w-full')}
+              >
+                <Phone aria-hidden />
+                {company.phone}
               </a>
             </div>
           </SheetContent>

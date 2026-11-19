@@ -45,18 +45,21 @@ export default function Zones() {
                 95
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
-                <a href={company.phoneHref} className={buttonVariants({ size: 'xl' })}>
-                  <Phone aria-hidden />
-                  {company.phone}
-                </a>
                 <a
                   href={company.whatsappHref}
                   target="_blank"
                   rel="noreferrer"
-                  className={buttonVariants({ size: 'xl', variant: 'outline' })}
+                  className={buttonVariants({ size: 'xl' })}
                 >
                   <WhatsAppIcon />
                   WhatsApp
+                </a>
+                <a
+                  href={company.phoneHref}
+                  className={buttonVariants({ size: 'xl', variant: 'outline' })}
+                >
+                  <Phone aria-hidden />
+                  {company.phone}
                 </a>
                 <Link to="/contact" className={buttonVariants({ size: 'xl', variant: 'outline' })}>
                   Devis gratuit

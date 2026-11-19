@@ -90,11 +90,7 @@ export function ContactForm() {
         <CheckCircle2 className="mx-auto mb-3 size-10 text-brand" aria-hidden />
         <h3 className="mb-2 text-3xl">Message envoyé</h3>
         <p>
-          Merci, nous revenons vers vous très rapidement. Pour une urgence, appelez-nous au{' '}
-          <a href={company.phoneHref} className="font-semibold text-brand-ink">
-            {company.phone}
-          </a>{' '}
-          ou écrivez-nous sur{' '}
+          Merci, nous revenons vers vous très rapidement. Pour une urgence, écrivez-nous sur{' '}
           <a
             href={company.whatsappHref}
             target="_blank"
@@ -102,6 +98,10 @@ export function ContactForm() {
             className="font-semibold text-brand-ink"
           >
             WhatsApp
+          </a>{' '}
+          ou appelez-nous au{' '}
+          <a href={company.phoneHref} className="font-semibold text-brand-ink">
+            {company.phone}
           </a>
           .
         </p>
