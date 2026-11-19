@@ -17,34 +17,36 @@ export default function Contact() {
       </PageHeader>
 
       <Section>
-        <div data-reveal="stagger" className="grid items-start gap-10 lg:grid-cols-[2fr_3fr]">
+        <div data-reveal="stagger" className="grid items-start gap-10 lg:grid-cols-2">
           <aside className="grid gap-7">
-            <a
-              href={company.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="group/button flex items-center gap-4 rounded-lg bg-brand p-6 text-ink transition-colors hover:bg-brand/90"
-            >
-              <WhatsAppIcon variant="black" className="size-7" />
-              <span className="font-heading text-[2.6rem] leading-none">
-                <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
-                  Photos & messages
-                </small>
-                WhatsApp
-              </span>
-            </a>
-            <a
-              href={company.phoneHref}
-              className="-mt-3 flex items-center gap-4 rounded-lg border-2 border-brand p-6 transition-colors hover:bg-brand/10"
-            >
-              <Phone className="size-7 shrink-0 text-brand-ink" aria-hidden />
-              <span className="font-heading text-[2.6rem] leading-none">
-                <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
-                  Urgence & devis
-                </small>
-                {company.phone}
-              </span>
-            </a>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="group/button flex items-center gap-4 rounded-lg bg-brand px-5 py-4 text-ink transition-colors hover:bg-brand/90"
+              >
+                <WhatsAppIcon variant="black" className="size-7" />
+                <span className="font-heading text-4xl leading-none whitespace-nowrap lg:text-[2rem] xl:text-4xl">
+                  <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                    Photos & messages
+                  </small>
+                  WhatsApp
+                </span>
+              </a>
+              <a
+                href={company.phoneHref}
+                className="flex items-center gap-4 rounded-lg border-2 border-brand px-5 py-4 transition-colors hover:bg-brand/10"
+              >
+                <Phone className="size-7 shrink-0 text-brand-ink" aria-hidden />
+                <span className="font-heading text-4xl leading-none whitespace-nowrap lg:text-[2rem] xl:text-4xl">
+                  <small className="mb-1 block font-sans text-xs font-semibold tracking-widest uppercase">
+                    Urgence & devis
+                  </small>
+                  {company.phone}
+                </span>
+              </a>
+            </div>
 
             <ul className="grid gap-3.5">
               <li className="flex items-center gap-3 break-all">
@@ -70,7 +72,7 @@ export default function Contact() {
               <p className="mb-3 text-sm text-muted-foreground">
                 Nos interventions en photos, au fil des semaines.
               </p>
-              <SocialLinks />
+              <SocialLinks withWhatsApp={false} />
             </div>
 
             <Card className="bg-cream ring-0">
@@ -90,7 +92,7 @@ export default function Contact() {
 
           <Card className="bg-paper p-2 md:p-5">
             <CardContent>
-              <h2 className="mb-5 text-4xl">Formulaire de contact</h2>
+              <h2 className="mb-5 text-3xl">Formulaire de contact</h2>
               <ContactForm />
             </CardContent>
           </Card>

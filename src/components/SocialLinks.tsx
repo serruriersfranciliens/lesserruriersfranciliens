@@ -10,20 +10,28 @@ const networks = [
   { name: 'Facebook', href: company.social.facebook, src: '/images/facebook-96.webp' },
 ];
 
-export function SocialLinks({ className }: { className?: string }) {
+export function SocialLinks({
+  className,
+  withWhatsApp = true,
+}: {
+  className?: string;
+  withWhatsApp?: boolean;
+}) {
   return (
     <ul className={cn('flex flex-wrap items-center gap-4', className)}>
-      <li>
-        <a
-          href={company.whatsappHref}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="WhatsApp"
-          className="block transition-opacity hover:opacity-80"
-        >
-          <WhatsAppIcon variant="green" className="size-7" />
-        </a>
-      </li>
+      {withWhatsApp && (
+        <li>
+          <a
+            href={company.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            className="block transition-opacity hover:opacity-80"
+          >
+            <WhatsAppIcon variant="green" className="size-7" />
+          </a>
+        </li>
+      )}
       {networks.map(({ name, href, src }) => (
         <li key={name}>
           <a

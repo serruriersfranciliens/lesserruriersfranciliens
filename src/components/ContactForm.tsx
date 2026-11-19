@@ -12,24 +12,12 @@ import { Textarea } from '@/components/ui/textarea';
 // visitor's mail client instead.
 const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 
-const profiles = [
-  'Syndic / copropriété',
-  'Bailleur / agence immobilière',
-  'Entreprise / commerce',
-  'Particulier',
-];
-const requestTypes = ['Demande de devis', 'Intervention urgente', 'Contrat / partenariat', 'Autre'];
-
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 const labels: Record<string, string> = {
-  profil: 'Profil',
-  type: 'Type de demande',
-  nom: 'Nom',
-  societe: 'Société',
   email: 'E-mail',
   telephone: 'Téléphone',
-  code_postal: 'Code postal',
+  departement: 'Département',
   message: 'Message',
 };
 
@@ -37,7 +25,7 @@ function toMailto(data: FormData) {
   const body = Object.keys(labels)
     .map((key) => `${labels[key]} : ${data.get(key) ?? ''}`)
     .join('\n');
-  const subject = `${data.get('type')} – ${data.get('nom')}`;
+  const subject = `Demande de contact (${data.get('departement')})`;
   return `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
@@ -67,7 +55,7 @@ export function ContactForm() {
 
     setStatus('sending');
     data.append('access_key', ACCESS_KEY);
-    data.append('subject', `Site web – ${data.get('type')} (${data.get('profil')})`);
+    data.append('subject', `Site web – demande de contact (${data.get('departement')})`);
     data.append('from_name', company.name);
 
     try {
@@ -111,81 +99,45 @@ export function ContactForm() {
 
   return (
     <form className="grid gap-5" onSubmit={handleSubmit}>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="profil" label="Vous êtes *">
-          <NativeSelect
-            id="profil"
-            name="profil"
-            required
-            defaultValue=""
-            className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
-          >
-            <NativeSelectOption value="" disabled>
-              Choisir…
-            </NativeSelectOption>
-            {profiles.map((p) => (
-              <NativeSelectOption key={p}>{p}</NativeSelectOption>
-            ))}
-          </NativeSelect>
-        </Field>
-        <Field id="type" label="Votre demande *">
-          <NativeSelect
-            id="type"
-            name="type"
-            required
-            defaultValue={requestTypes[0]}
-            className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
-          >
-            {requestTypes.map((t) => (
-              <NativeSelectOption key={t}>{t}</NativeSelectOption>
-            ))}
-          </NativeSelect>
-        </Field>
-      </div>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="nom" label="Nom et prénom *">
-          <Input id="nom" name="nom" required autoComplete="name" className={control} />
-        </Field>
-        <Field id="societe" label="Société / syndic">
-          <Input id="societe" name="societe" autoComplete="organization" className={control} />
-        </Field>
-      </div>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="email" label="E-mail *">
-          <Input
-            id="email"
-            type="email"
-            name="email"
-            required
-            autoComplete="email"
-            className={control}
-          />
-        </Field>
-        <Field id="telephone" label="Téléphone *">
-          <Input
-            id="telephone"
-            type="tel"
-            name="telephone"
-            required
-            autoComplete="tel"
-            className={control}
-          />
-        </Field>
-      </div>
-
-      <Field id="code_postal" label="Code postal du lieu d’intervention *">
+      <Field id="email" label="E-mail *">
         <Input
-          id="code_postal"
-          name="code_postal"
+          id="email"
+          type="email"
+          name="email"
           required
-          inputMode="numeric"
-          pattern="\d{5}"
-          maxLength={5}
-          autoComplete="postal-code"
-          className={`${control} sm:max-w-48`}
+          autoComplete="email"
+          className={control}
         />
+      </Field>
+
+      <Field id="telephone" label="Téléphone *">
+        <Input
+          id="telephone"
+          type="tel"
+          name="telephone"
+          required
+          autoComplete="tel"
+          className={control}
+        />
+      </Field>
+
+      <Field id="departement" label="Département d’intervention *">
+        <NativeSelect
+          id="departement"
+          name="departement"
+          required
+          defaultValue=""
+          className="w-full [&_select]:h-11 [&_select]:bg-background [&_select]:text-base"
+        >
+          <NativeSelectOption value="" disabled>
+            Choisir…
+          </NativeSelectOption>
+          {company.departments.map((d) => (
+            <NativeSelectOption key={d.code} value={`${d.code} – ${d.name}`}>
+              {d.code} – {d.name}
+            </NativeSelectOption>
+          ))}
+        </NativeSelect>
       </Field>
 
       <Field id="message" label="Votre message *">
