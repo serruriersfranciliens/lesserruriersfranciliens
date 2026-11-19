@@ -10,7 +10,7 @@ const linkClass = 'transition-colors hover:text-brand';
 export function Footer() {
   return (
     <footer className="border-t-[6px] border-brand bg-ink pt-16 pb-28 text-white/85 md:pb-6">
-      <div className="container-site grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-site grid gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4">
         <div>
           <div className="mb-4 font-heading text-[1.7rem] leading-none text-white uppercase">
             {company.name}
@@ -24,29 +24,29 @@ export function Footer() {
         <div>
           <h2 className="mb-4 text-2xl text-brand">Contact</h2>
           <ul className="grid gap-2.5 text-sm">
-            <li className="flex items-center gap-2.5">
+            <li className="flex items-center justify-center gap-2.5 sm:justify-start">
               <WhatsAppGlyph className="size-4 shrink-0 text-brand" />
               <a href={company.whatsappHref} target="_blank" rel="noreferrer" className={linkClass}>
                 WhatsApp
               </a>
             </li>
-            <li className="flex items-center gap-2.5">
+            <li className="flex items-center justify-center gap-2.5 sm:justify-start">
               <Phone className="size-4 shrink-0 text-brand" aria-hidden />
               <a href={company.phoneHref} className={linkClass}>
                 {company.phone}
               </a>
             </li>
-            <li className="flex items-center gap-2.5 break-all">
+            <li className="flex items-center justify-center gap-2.5 break-all sm:justify-start">
               <Mail className="size-4 shrink-0 text-brand" aria-hidden />
               <a href={`mailto:${company.email}`} className={linkClass}>
                 {company.email}
               </a>
             </li>
-            <li className="flex items-center gap-2.5">
+            <li className="flex items-center justify-center gap-2.5 sm:justify-start">
               <Clock className="size-4 shrink-0 text-brand" aria-hidden />
               {company.hours}
             </li>
-            <li className="flex items-center gap-2.5">
+            <li className="flex items-center justify-center gap-2.5 sm:justify-start">
               <MapPin className="size-4 shrink-0 text-brand" aria-hidden />
               <Link to="/zones-intervention" className={linkClass}>
                 Paris et toute l’Île-de-France
@@ -92,9 +92,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container-site mt-12 flex flex-wrap justify-between gap-3 border-t border-white/12 pt-5 text-xs text-white/55">
+      <div className="container-site mt-12 flex flex-col items-center gap-3 border-t border-white/12 pt-5 text-center text-xs text-white/55 sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
         <span>
-          © {new Date().getFullYear()} {company.name} · SAS · SIRET {company.legal.siret}
+          © {new Date().getFullYear()} {company.name} · SAS ·{' '}
+          <span className="whitespace-nowrap">SIRET {company.legal.siret}</span>
         </span>
         <Link to="/mentions-legales" className={linkClass}>
           Mentions légales
