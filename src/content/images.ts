@@ -73,40 +73,4 @@ export const images = {
     'Établi de serrurier avec cylindres et outillage',
     'Atelier / outillage (idéalement vraie photo de l’équipe)',
   ),
-  realisation1: slot(
-    'realisation-1',
-    '4 / 3',
-    'Porte de hall d’immeuble après remplacement de la serrure',
-    'Réalisation : porte de hall',
-  ),
-  realisation2: slot(
-    'realisation-2',
-    '4 / 3',
-    'Cylindres neufs prêts à être posés',
-    'Réalisation : cylindres entre locataires',
-  ),
-  realisation3: slot(
-    'realisation-3',
-    '4 / 3',
-    'Porte palière blindée',
-    'Réalisation : blindage porte palière',
-  ),
-  realisation4: slot(
-    'realisation-4',
-    '4 / 3',
-    'Couloir de caves en sous-sol avec portes sécurisées',
-    'Réalisation : caves / locaux techniques',
-  ),
-  realisation5: slot(
-    'realisation-5',
-    '4 / 3',
-    'Porte d’entrée renforcée après effraction',
-    'Réalisation : mise en sécurité après effraction',
-  ),
-  realisation6: slot(
-    'realisation-6',
-    '4 / 3',
-    'Logement vacant sécurisé',
-    'Réalisation : sécurisation logement vacant',
-  ),
 } satisfies Record<string, ImageSlot>;

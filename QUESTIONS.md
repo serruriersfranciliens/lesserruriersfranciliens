@@ -43,7 +43,7 @@ When you answer an open question, move it to "Answered" with the answer.
 | Show prices? | No: free quote and guaranteed prices only |
 | B2B targets | Syndics / copropriétés and bailleurs / gestionnaires |
 | Skills scope | Locksmithing and armoring only (alarms, video, glass breakage removed) |
-| Réalisations | 6 example cases for now, to be replaced by real projects |
+| Réalisations | Page and home section removed until there are real projects to show (restore from git history) |
 | Service area | All of Île-de-France (75, 77, 78, 91, 92, 93, 94, 95) |
 | Design stack | Tailwind CSS + shadcn/ui |
 | Legal identity | LES SERRURIERS FRANCILIENS, SAS au capital de 1 200 €, created 12/11/2025, RNE 04/12/2025 |

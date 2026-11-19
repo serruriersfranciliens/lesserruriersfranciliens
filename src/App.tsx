@@ -9,7 +9,6 @@ import Home from '@/pages/Home';
 import Entreprise from '@/pages/Entreprise';
 import Competences from '@/pages/Competences';
 import Professionnels from '@/pages/Professionnels';
-import Realisations from '@/pages/Realisations';
 import Zones from '@/pages/Zones';
 import Contact from '@/pages/Contact';
 import MentionsLegales from '@/pages/MentionsLegales';
@@ -34,7 +33,6 @@ export default function App() {
           <Route path="/entreprise" element={<Entreprise />} />
           <Route path="/competences" element={<Competences />} />
           <Route path="/professionnels" element={<Professionnels />} />
-          <Route path="/realisations" element={<Realisations />} />
           <Route path="/zones-intervention" element={<Zones />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />

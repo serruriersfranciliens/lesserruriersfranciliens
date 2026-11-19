@@ -1,9 +1,8 @@
 import { Link } from 'react-router';
-import { ArrowRight, Building2, Home as HomeIcon, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Building2, Home as HomeIcon, Phone } from 'lucide-react';
 import { commitments, company } from '@/content/company';
 import { generalFaq } from '@/content/faq';
 import { images } from '@/content/images';
-import { realisations } from '@/content/realisations';
 import { services } from '@/content/services';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
@@ -208,37 +207,6 @@ export default function Home() {
           lead="Une démarche simple et transparente, pensée pour les gestionnaires qui doivent rendre des comptes."
         />
         <ProcessSteps />
-      </Section>
-
-      {/* Realisations preview */}
-      <Section>
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-x-6">
-          <SectionHeading
-            eyebrow="Réalisations"
-            title="Ils nous ont fait confiance"
-            className="mb-0"
-          />
-          <Link to="/realisations" className={linkArrow}>
-            Toutes nos réalisations <ArrowRight className="size-4" aria-hidden />
-          </Link>
-        </div>
-        <div data-reveal="stagger" className="grid gap-6 md:grid-cols-3">
-          {realisations.slice(0, 3).map((r) => (
-            <article key={r.id}>
-              <ImagePlaceholder
-                slot={r.image}
-                sizes="(min-width: 1184px) 365px, (min-width: 768px) calc(33vw - 30px), calc(100vw - 40px)"
-              />
-              <Badge variant="secondary" className="mt-4 h-6 px-2.5 uppercase">
-                {r.client}
-              </Badge>
-              <h3 className="mt-2.5 mb-2 text-2xl">{r.title}</h3>
-              <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <MapPin className="size-3.5" aria-hidden /> {r.location}
-              </p>
-            </article>
-          ))}
-        </div>
       </Section>
 
       {/* Zone */}

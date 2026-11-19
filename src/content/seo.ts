@@ -58,14 +58,6 @@ export const pages: PageMeta[] = [
     faq: proFaq,
   },
   {
-    path: '/realisations',
-    title: `Nos réalisations en serrurerie et blindage${suffix}`,
-    description:
-      'Portes de hall, caves, cylindres entre locataires, blindage de portes palières : exemples d’interventions pour syndics, bailleurs et particuliers en Île-de-France.',
-    label: 'Réalisations',
-    priority: 0.6,
-  },
-  {
     path: '/zones-intervention',
     title: `Serrurier à Paris, 92, 93, 94 et toute l’Île-de-France${suffix}`,
     description:

@@ -10,13 +10,10 @@ Things only you can do, in rough priority order. Open questions are in [QUESTION
   - [ ] GitHub: Settings → Secrets and variables → Actions → `VITE_WEB3FORMS_KEY`
   - [ ] send a test message from `/contact`.
 - [ ] Replace the placeholders:
-  - [ ] key figures `XX` on `/entreprise` (`src/pages/Entreprise.tsx`);
-  - [ ] the 6 example cases in `src/content/realisations.ts`, then remove the
-        "Exemples illustratifs" notice in `src/pages/Realisations.tsx`.
+  - [ ] key figures `XX` on `/entreprise` (`src/pages/Entreprise.tsx`).
 - [x] Images: all 15 slots generated with fal (Nano Banana 2.1, prompts in
       `build_docs/images-prompts.md`), in `public/images/<slot-id>.webp`.
-- [ ] Replace the AI images of réalisations (`realisation-*.webp`) and the workshop
-      (`entreprise-atelier.webp`) with real photos.
+- [ ] Replace the AI image of the workshop (`entreprise-atelier.webp`) with a real photo.
 - [ ] Proofread all texts in `src/content/` and the pages (especially FAQ legal statements).
 
 ## Deployment (GitHub Pages)
