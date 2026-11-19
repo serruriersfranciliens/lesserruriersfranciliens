@@ -9,11 +9,9 @@ import { PageHeader } from '@/components/PageHeader';
 import { SocialLinks } from '@/components/SocialLinks';
 import { CheckList, Eyebrow, IconBadge, Section, SectionHeading } from '@/components/Section';
 
-// TODO: replace placeholder figures with real ones (see QUESTIONS.md).
 const figures = [
-  { value: 'XX', label: 'années d’expérience' },
-  { value: 'XX', label: 'immeubles suivis' },
-  { value: 'XXX', label: 'interventions par an' },
+  { value: '10', label: 'années d’expérience' },
+  { value: '+ de 200', label: 'interventions par an' },
   { value: '8', label: 'départements couverts' },
 ];
 
@@ -59,7 +57,7 @@ export default function Entreprise() {
 
       <Section tone="dark">
         <h2 className="sr-only">Chiffres clés</h2>
-        <ul data-reveal="stagger" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul data-reveal="stagger" className="grid gap-6 sm:grid-cols-3">
           {figures.map((f) => (
             <li key={f.label} className="flex flex-col">
               <strong className="font-heading text-7xl leading-none text-brand">{f.value}</strong>
@@ -67,7 +65,6 @@ export default function Entreprise() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-sm text-muted-foreground/70 italic">Chiffres à compléter.</p>
       </Section>
 
       <Section tone="paper">

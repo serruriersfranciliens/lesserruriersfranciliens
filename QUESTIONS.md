@@ -15,9 +15,6 @@ When you answer an open question, move it to "Answered" with the answer.
       to the `.fr`.
 
 ### Company (`/entreprise`)
-- [ ] Key figures: buildings served, interventions per year? The company was created in
-      November 2025, so "années d'expérience" should be the team's experience, not the
-      company's age (or remove that figure).
 - [ ] Short history: founding year, founders, team size?
 
 ### Skills (`/competences`)
@@ -40,6 +37,7 @@ When you answer an open question, move it to "Answered" with the answer.
 |---|---|
 | Hosting | GitHub Pages, custom domain `lesserruriersfranciliens.fr` (OVH, no www); `www` redirects to the bare domain |
 | Contact form | Web3Forms (key to create), `mailto:` fallback without a key |
+| Key figures (`/entreprise`) | 10 years of experience, 200+ interventions per year, 8 departments. "Buildings served" dropped |
 | Show prices? | Door opening only, fixed prices TTC (travel + labour included, parts extra): 99 € slammed door, 149 € locked without label, 199 € locked with label (A2P) or faulty lock. Everything else on free quote |
 | B2B targets | Syndics / copropriétés and bailleurs / gestionnaires |
 | Skills scope | Locksmithing and armoring only (alarms, video, glass breakage removed) |
