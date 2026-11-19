@@ -47,11 +47,7 @@ export default function Entreprise() {
               </p>
               <p>Retrouvez nos chantiers récents sur nos réseaux :</p>
             </div>
-            <SocialLinks
-              withLabels
-              className="mt-3"
-              linkClassName="font-medium text-brand-ink hover:underline"
-            />
+            <SocialLinks className="mt-3" />
             <blockquote className="mt-7 rounded-r-lg border-l-4 border-brand bg-cream px-6 py-5 font-heading text-3xl leading-tight">
               « Un service qualifié, des produits sélectionnés, un accompagnement complet, adapté et
               des tarifs garantis. »

@@ -70,7 +70,7 @@ export default function Contact() {
               <p className="mb-3 text-sm text-muted-foreground">
                 Nos interventions en photos, au fil des semaines.
               </p>
-              <SocialLinks withLabels linkClassName="font-medium text-brand-ink hover:underline" />
+              <SocialLinks />
             </div>
 
             <Card className="bg-cream ring-0">
