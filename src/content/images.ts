@@ -22,7 +22,7 @@ export const images = {
   hero: slot(
     'hero',
     '4 / 3',
-    'Serrurier posant une serrure multipoints sur une porte d’immeuble parisien',
+    'Serrurier réparant la serrure d’une porte d’immeuble haussmannien',
     'Artisan au travail sur une porte d’immeuble haussmannien',
   ),
   parcoursPro: slot(
